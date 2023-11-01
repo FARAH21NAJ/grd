@@ -1,0 +1,154 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: poppins;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+a{
+    text-decoration: none;
+    color:#122853;
+}
+ul{
+    list-style: none;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 7px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgb(233, 233, 233); 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(56, 56, 56); 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #1b1b1b; 
+  }
+
+body{
+    min-height: 700px;
+    background-color: #f5f7fb;
+   /*background-image: url(front2.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex; */
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.navigation{
+    display: flex;
+    justify-content: space-between;
+
+    align-items: center;
+    max-width: 1200px;
+    width: 90%;
+    margin: 0px auto;
+    padding: 30px 0px;
+}
+.logo{
+    color:#122853;
+    font-weight: 700;
+    font-size: 1.4rem;
+}
+.logo span{
+    background-color: #014dd5;
+    color: #ffffff;
+    padding: 0px 5px;
+    border-radius: 5px;
+    font-weight: 600;
+    margin-right: 5px;
+}
+.menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: auto;
+    margin-left: 40px;
+     
+}
+.menu li a{
+    margin: 0px 20px;
+
+    font-weight: 500;
+    transition: all ease 0.3s;
+}
+.menu li a:hover{
+    color: #014dd5;
+}
+
+/*==our-team====================*/
+#our-team{
+    max-width: 1200px;
+    width: 90%;
+    margin: 80px auto;
+}
+.our-team-heading{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.our-team-heading h3{
+    font-size: 2.4rem;
+    color: #122853;
+}
+.our-team-heading p{
+    color: #535353;
+    letter-spacing: 0.3px;
+    font-size: 0.9rem;
+}
+.team-box-container{
+    width: 100%;
+    overflow: hidden;
+    margin-top: 40px;
+}
+.team-box{
+    max-width: 300%;/*300px*/
+    display: flex;
+    flex-direction: row;
+}
+.team-img{
+ 
+    padding: 10px 10px 0px 10px;
+    border-radius: 10px;
+    height: 300px;
+    display: flex;
+    align-items: flex-end;
+}
+.team-img img{
+    width: 100%;
+    height: 95%;
+    object-fit: contain;
+    object-position: center bottom;
+}
+.team-text{
+    display: flex;
+   flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    margin-top: 10px;
+}
+.team-text strong{
+    color: #122853;
+}
+.team-text span{
+    color: #303030;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+
