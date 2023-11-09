@@ -1,157 +1,139 @@
+<!DOCTYPE html>
 <html>
 <head>
-<title> pure health</title>
-<meta charset="UTF-8">
+    <title>Pure Health</title>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="stylesheet" href="appoint.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+    <style>
+        table {
+            width: 420px;
+            background-color: rgba(255, 255, 255, 0.6);
+            margin: 20px auto; /* Center the table */
+            border-collapse: collapse; /* Merge borders */
+        }
 
-<title>Pure Health</title>
+        th, td {
+            border: 1px solid #000;
+            padding: 8px;
+        }
 
-<link rel="shortcut icon" href="logo.png">
+        .submit {
+            background-color: #315bb0;
+            display: block;
+            margin: 20px auto; /* Center the button */
+            text-align: center;
+            border-radius: 12px;
+            border: 2px solid rgb(173, 210, 244);
+            padding: 14px 50px; /* Adjust padding */
+            outline: none;
+            color: #122853;
+            cursor: pointer;
+        }
 
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-
-<link
-  rel="stylesheet" href="appoint.css"  />
-
-   <!-- Link Swiper's CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
-
-
-<style>
-
-    table{
-        height:160px;
-width: 420px;
-background-color: rgba(255,255,255,0.6);
-position: relative;left:900px;
-bottom:150px
-
-    }
-
-    .submit{
-		background-color:#315bb0; 
-	
-	display:block;
-	margin:20px 0px 0px 20px;
-	text-align:center;
-	border-radius:12px;
-	border:2px solid rgb(173, 210, 244);
-	padding :14px 110px;
-	outline:none;
-	color: #122853;
-	cursor:pointer;
-	transition:0.25px;
-    position: relative;left:980px;
-bottom:300px
-
-	}
-caption{    color:#122853;}
-
-    th{    color:#122853;}
-
-</style>
-
+        caption {
+            color: #122853;
+            font-size: 20px;
+            padding-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
-
-
-        
-<nav class="navigation">
-                <label for="menu-btn" class="menu-icon">
-                <span class="nav-icon"></span>
-            </label>
-           
-            <a href="" class="logo"><span>pure</span>health</a><img src="logo.png" alt="" width="80" height="80">
-            
-            
-     
-    <ul class="menu">
-        <li><a href="log.html"; style="font-weight: bolder;">Home  </a></li>
-        <li><a href="log.html";>Find center </a></li>
-        <li><a href="log.html">Our Services</a></li>
-        <li><a href="log.html"> Contact us </a></li>
-        <li><a href="log.html"> Location </a></li>
-        <li><a href="log.html"> Reviws</a></li> </ul>
-
-
+    <nav class="navigation">
+        <label for="menu-btn" class="menu-icon">
+            <span class="nav-icon"></span>
+        </label>
+        <a href="" class="logo"><span>pure</span>health</a><img src="logo.png" alt="" width="80" height="80">
+        <ul class="menu">
+            <li><a href="log.html" style="font-weight: bolder;">Home</a></li>
+            <li><a href="log.html">Find center</a></li>
+            <li><a href="log.html">Our Services</a></li>
+            <li><a href="log.html">Contact us</a></li>
+            <li><a href="log.html">Location</a></li>
+            <li><a href="log.html">Reviews</a></li>
+        </ul>
     </nav>
 
+    <?php
+// Database connection
+$db = mysqli_connect("localhost", "root", "12345678");
 
-<?php
+if (!$db) {
+    die("Connection failed: " . mysqli_connect_error());
+}
 
-
-
-
-
-
-
-
-
+mysqli_select_db($db, "purehelth");
 
 extract($_POST);
+date_default_timezone_set('Asia/Amman');
+// Get the current date and time
+$currentDate = date("Y-m-d");
+$currentTime = date("H:i");
 
+// Calculate the date one day after the current date
+$nextDay = date("Y-m-d", strtotime($currentDate . " +1 day"));
 
-print("<table border=1>"); 
-print("<caption style='font-size:20px;padding-bottom: 10px;'> <b>Your Appointment </b>  </caption>"); 
+if ($appoint >= $nextDay) {
+    // Check for duplicate appointments
+    $checkQuery = "SELECT * FROM appointment WHERE date = '$appoint' AND time = '$apptime'";
+    $checkResult = mysqli_query($db, $checkQuery);
+    
+    if (mysqli_num_rows($checkResult) > 0) {
+        // Duplicate appointment found
+        echo "The selected appointment date and time are already booked by another patient. Please choose a different date and time.";
+    } else {
+        // The appointment date is valid, so you can proceed to insert it into the database
+        $insertQuery = "INSERT INTO appointment (name, location, center, date, time) VALUES ('$firstna', '$location', '$treat', '$appoint', '$apptime')";
+        if (mysqli_query($db, $insertQuery)) {
+            echo "<table>";
+            echo "<caption>Your Appointment</caption>";
 
-print("<tr>");
-print("<th> Name </th>");
-print("<th> $firstna</th>");
-print("</tr>");
+            echo "<tr>";
+            echo "<th>Name</th>";
+            echo "<td>$firstna</td>";
+            echo "</tr>";
 
-print("<tr>");
-print("<th> Session location </th>");
-print("<th> $location </th>");
-print("</tr>");
+            echo "<tr>";
+            echo "<th>Session location</th>";
+            echo "<td>$location</td>";
+            echo "</tr>";
 
+            echo "<tr>";
+            echo "<th>Center name</th>";
+            echo "<td>$treat</td>";
+            echo "</tr>";
 
-print("<tr>");
-print("<th> Center name </th>");
-print("<th> $treat </th>");
-print("</tr>");
+            echo "<tr>";
+            echo "<th>Appointment date</th>";
+            echo "<td>$appoint</td>";
+            echo "</tr>";
 
-print("<tr>");
-print("<th> Appointment date </th>");
-print("<th> $appoint </th>");
-print("</tr>");
+            echo "<tr>";
+            echo "<th>Appointment time</th>";
+            echo "<td>$apptime</td>";
+            echo "</tr>";
 
+            echo "</table>";
+        } else {
+            echo "Error: " . mysqli_error($db);
+        }
+    }
+} else {
+    // The appointment date is not one day after the current date
+    echo "Invalid appointment date. Please choose a date one day after the current day.";
+}
 
-
-
-print("<tr>");
-print("<th> Appointment time </th>");
-print("<th> $apptime </th>");
-print("</tr>");
-print("</table>");
-
-
-
-/*
-
-$db1=mysqli_connect("localhost","root","12345678");
-
-mysqli_select_db($db1,"purehelth");
-
-
-$answer = $_POST['treat'];  
-if ($answer == "Creativity") {  
-
-    $b1="insert into physiotherapy (appiontmen) values ($appoint) where physiotherapy_phone='0771111111'";
-} 
-         mysqli_query($db1,$b1);
-
- mysqli_close($db1);
-*/
-
+// Close the database connection
+mysqli_close($db);
 ?>
 
-
-<form method="post" action="log.html">
-
-<input class="submit" type="submit" value="Log out">
-
-</form>
-
+    <form method="post" action="log.html">
+        <input class="submit" type="submit" value="Log out">
+    </form>
 </body>
 </html>
