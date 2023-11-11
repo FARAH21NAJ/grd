@@ -41,6 +41,8 @@
 	.main{
 	background-color: rgba(255,255,255,0.8);
 	width:800px;
+   border: solid  3px #315bb0; 
+   height: 740px;
 	margin:auto;
 	}
 	
@@ -220,7 +222,13 @@
 	color: #122853;
 	cursor:pointer;
 	transition:0.25px;
-	}
+
+position: relative; 
+bottom: 70px;
+left: 330px;
+
+	
+	}  
     .date{
 	position:relative;
 	left:200px;
@@ -239,6 +247,48 @@
 	
     
 }
+
+
+
+
+.sub{
+	
+   display:block;
+   margin:20px 0px 0px 20px;
+   text-align:center;
+   border-radius:12px;
+   border:2px solid rgb(173, 210, 244);
+   padding :14px 110px;
+ 
+   outline:none;
+   color: #122853;
+   cursor:pointer;
+   transition:0.25px;
+	}
+
+
+
+
+
+
+	.shet{	
+	display:block;
+	margin:20px 0px 0px 20px;
+	text-align:center;
+	border-radius:12px;
+	border:2px solid rgb(173, 210, 244);
+	padding :14px 110px;
+	outline:none;
+	color: #122853;
+	cursor:pointer;
+	transition:0.25px;
+
+	position: relative; left: 130px;
+
+
+	}
+
+
 
 	.submit:hover{
 	background-color:#5390F5;}
@@ -280,14 +330,14 @@
 
 	
 <div id="name" style="position: relative; top:20px">
-<h2 class="name" >Name</h2> 
+<h2 class="name" >The Name</h2> 
 <label>
 <input class="firstname" type="text" name="firstna"><br>
 </label>
 </div>
 
 
-<h2 class="name">Session location</h2>
+<h2 class="name" style="display: block;">The location</h2>
 
 <label class="rad">
 <input type="radio" name="location" value="our clinc">Our Clinic
@@ -297,39 +347,69 @@
 </label>
 
 
-
+<div style="display: block;">
 <h2 class="name">Chose center</h2>
 <div class="check">
 <label>
-<input type="radio" name="treat" value= "Creativity ">Creativity Center for Physiotherapy and Rehabilitation
+<input type="radio" name="treat" value= "Creativity " style="margin-left: 10px;"> 
+<img class="m" src="cen1.png" height="10%" width="10%">
+
+
+
+<label>
+<input type="radio" name="treat" value=" Mazaya " style="margin-left: 30px;">
+<img class="m" src="cen2.png" height="10%" width="10%">
+
 </label>
-<br/>
 
 <label>
-<input type="radio" name="treat" value=" Mazaya ">Physiotherapist Mazaya Physiotherapy
-</label>
-<br/>
+<input type="radio" name="treat" value="Tla'a Al Ali "  style="margin-left: 30px;">
+<img class="m" src="cen3.png" height="10%" width="10%">
+
 
 <label>
-<input type="radio" name="treat" value="Tla'a Al Ali ">Tlaa Al Ali Center for Physiotherapy
-<br/>
-
-<label>
-<input type="radio" name="treat" value="Al Shorouq ">Al Shorouq Center for Physiotherapy
+<input type="radio" name="treat" value="Al Shorouq "  style="margin-left: 30px;">
+<img class="m" src="cen 4.png" height="10%" width="10%">
 </label>
 </div>
-<br>
 
+
+</div>
+
+
+
+
+
+<!--
 <h2 class="name">Appointment date</h2>
     <input class="date" type="date"  name="appoint">
 
 
 	<h2 class="name">Appointment time</h2>
     <input class="date" type="time"  name="apptime">
+-->
+
+ 
+<div class="sub">
+
+    <label for="uploadBtn" style="padding-right: 90px;"><i class="fa-solid fa-upload"></i> Upload File</label>
+	<br>
+	<input type="file" id="uploadßtn" >
+</div>
 
 
-<input class="submit" type="submit" value="book">
-<input class="reset" type="reset" value="cancel">
+
+
+<label>
+	<a href="sheet.html">
+<input class="shet" type="button" value="Select date and time" >
+</a>
+</label>
+<br>
+
+
+<input class="submit" type="submit" value="Book">
+<input class="reset" type="reset" value="Cancel">
 
 </form>
 
