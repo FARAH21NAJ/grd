@@ -83,35 +83,49 @@
 </section>
 
 <script>
-    function submitFeedback() {
-        var name = document.getElementById("name").value;
-        var center = document.getElementById("center").value;
-        var rating = document.querySelector('input[name="rating"]:checked').value;
-        var comments = document.getElementById("comments").value;
+   function submitFeedback() {
+    var name = document.getElementById("name").value;
+    var center = document.getElementById("center").value;
+    var rating = document.querySelector('input[name="rating"]:checked').value;
+    var comments = document.getElementById("comments").value;
 
-        var feedbackBox = document.createElement("div");
-        feedbackBox.className = "feedback-box";
-        feedbackBox.innerHTML = `
-            <div class="feedback">
-                <div class="profile">
-                   
-                    <div class="profile-text">
-                        <strong>${name}</strong>
-                        <span>${center}</span>
-                        <div class="user-rating">
-                            ${'<span class="star">&#9733;</span>'.repeat(rating)}
-                        </div>
-                    </div>
-                </div>
-                <p>${comments}</p>
-            </div>
-        `;
+    var feedbackBox = document.createElement("div");
+    feedbackBox.className = "feedback-box";
+    feedbackBox.style.border = "2px solid #122853"; // Adjust color and thickness here
 
-        var feedbackSection = document.getElementById("feedback");
-        feedbackSection.appendChild(feedbackBox);
+    var profile = document.createElement("div");
+    profile.className = "profile";
 
-        document.getElementById("feedbackForm").reset();
-    }
+    var profileText = document.createElement("div");
+    profileText.className = "profile-text";
+
+    // Create a single gold star for the user's rating
+    var goldStar = '<span class="star" style="color: #ffd700;">&#9733;</span>';
+
+    profileText.innerHTML = `
+        <strong>${name}</strong> <p></p>
+        <span>${center}</span>
+        <div class="user-rating">
+            ${goldStar.repeat(rating)}
+        </div>
+    `;
+
+    profile.appendChild(profileText);
+
+    feedbackBox.appendChild(profile);
+
+    var commentsParagraph = document.createElement("p");
+    commentsParagraph.textContent = comments;
+
+    feedbackBox.appendChild(commentsParagraph);
+
+    var feedbackSection = document.getElementById("feedback");
+    feedbackSection.appendChild(feedbackBox);
+
+    document.getElementById("feedbackForm").reset();
+}
+
+
 </script>
 
 <style>

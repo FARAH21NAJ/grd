@@ -334,5 +334,16 @@ button {
 /* Style for checked stars */
 .rating-container input:checked + label:before {
     content: '\2605'; /* Unicode character for a filled star */
+} 
+.star {
+    color: #ffd700;
+}
+
+button {
+    background-color: #122853;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
 }
 
