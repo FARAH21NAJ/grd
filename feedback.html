@@ -1,139 +1,175 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--DOCTYPE html-->
+<html >
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feedback Form</title>
-    <link rel="stylesheet" href="feedback.css">
+
+    <title>Pure Health</title>
+
+    <link rel="shortcut icon" href="logo.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    
+    <link rel="stylesheet" href="forget.css"/>
+
+       <!-- Link Swiper's CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+
+
 </head>
-<body>
+<body >
+        
+    <nav class="navigation">
+        <label for="menu-btn" class="menu-icon">
+        <span class="nav-icon"></span>
+    </label>
+   
+    <a href="" class="logo"><span>pure</span>health</a><img src="logo.png" alt="" width="80" height="80">
+    
+    
 
-    <header>
-        <h1>Feedback Form</h1>
-    </header>
+<ul class="menu">
+<li><a href="log.html"; style="font-weight: bolder;"> Home </a></li>
+<li><a href="log.html">Find center </a></li>
+<li><a href="log.html">Our Services</a></li>
+<li><a href="log.html"> Contact us </a></li>
+      <!--<li><a href="#testimonials"> Location </a></li>-->
+      <li><a href="logtool.html"> Tool </a></li>
+<li><a href="log.html"> Reviws</a></li> </ul>
 
-    <section id="feedback">
-        <form id="feedbackForm">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
 
-            <label for="center">Select Center:</label>
-            <select id="center" name="center">
-                <option value="Creativity Center">Creativity Center</option>
-                <option value="Mazaya Physiotherapy">Mazaya Physiotherapy</option>
-                <option value="Tla'a Al Ali Center">Tla'a Al Ali Center</option>
-                <option value="Al Shorouq Physiotherapy Center">Al Shorouq Physiotherapy Center</option>
-            </select>
 
-            <label for="rating">Rating:</label>
-            <div class="rating-container">
-                <input type="radio" id="star5" name="rating" value="5" required>
-                <label for="star5" title="5 stars"></label>
-                <input type="radio" id="star4" name="rating" value="4" required>
-                <label for="star4" title="4 stars"></label>
-                <input type="radio" id="star3" name="rating" value="3" required>
-                <label for="star3" title="3 stars"></label>
-                <input type="radio" id="star2" name="rating" value="2" required>
-                <label for="star2" title="2 stars"></label>
-                <input type="radio" id="star1" name="rating" value="1" required>
-                <label for="star1" title="1 star"></label>
-            </div>
+</nav>
 
-            <label for="comments">Comments:</label>
-            <textarea id="comments" name="comments" rows="4" required></textarea>
+<header>
+    <h1>Feedback Form</h1>
+</header>
 
-            <button type="button" onclick="submitFeedback()">Submit Feedback</button>
-        </form>
-    </section>
+<section id="feedback">
+    <form id="feedbackForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
 
-    <script>
-        function submitFeedback() {
-            var name = document.getElementById("name").value;
-            var center = document.getElementById("center").value;
-            var rating = document.querySelector('input[name="rating"]:checked').value;
-            var comments = document.getElementById("comments").value;
+        <label for="center">Select Center:</label>
+        <select id="center" name="center">
+            <option value="Creativity Center">Creativity Center</option>
+            <option value="Mazaya Physiotherapy">Mazaya Physiotherapy</option>
+            <option value="Tla'a Al Ali Center">Tla'a Al Ali Center</option>
+            <option value="Al Shorouq Physiotherapy Center">Al Shorouq Physiotherapy Center</option>
+        </select>
 
-            var feedbackBox = document.createElement("div");
-            feedbackBox.className = "feedback-box";
-            feedbackBox.innerHTML = `
-                <div class="feedback">
-                    <div class="profile">
-                       
-                        <div class="profile-text">
-                            <strong>${name}</strong>
-                            <span>${center}</span>
-                            <div class="user-rating">
-                                ${'<span class="star">&#9733;</span>'.repeat(rating)}
-                            </div>
+        <label for="rating">Rating:</label>
+        <div class="rating-container">
+            <input type="radio" id="star5" name="rating" value="5" required>
+            <label for="star5" title="5 stars"></label>
+            <input type="radio" id="star4" name="rating" value="4" required>
+            <label for="star4" title="4 stars"></label>
+            <input type="radio" id="star3" name="rating" value="3" required>
+            <label for="star3" title="3 stars"></label>
+            <input type="radio" id="star2" name="rating" value="2" required>
+            <label for="star2" title="2 stars"></label>
+            <input type="radio" id="star1" name="rating" value="1" required>
+            <label for="star1" title="1 star"></label>
+        </div>
+
+        <label for="comments">Comments:</label>
+        <textarea id="comments" name="comments" rows="4" required></textarea>
+
+        <button type="button" onclick="submitFeedback()">Submit Feedback</button>
+    </form>
+</section>
+
+<script>
+    function submitFeedback() {
+        var name = document.getElementById("name").value;
+        var center = document.getElementById("center").value;
+        var rating = document.querySelector('input[name="rating"]:checked').value;
+        var comments = document.getElementById("comments").value;
+
+        var feedbackBox = document.createElement("div");
+        feedbackBox.className = "feedback-box";
+        feedbackBox.innerHTML = `
+            <div class="feedback">
+                <div class="profile">
+                   
+                    <div class="profile-text">
+                        <strong>${name}</strong>
+                        <span>${center}</span>
+                        <div class="user-rating">
+                            ${'<span class="star">&#9733;</span>'.repeat(rating)}
                         </div>
                     </div>
-                    <p>${comments}</p>
                 </div>
-            `;
+                <p>${comments}</p>
+            </div>
+        `;
 
-            var feedbackSection = document.getElementById("feedback");
-            feedbackSection.appendChild(feedbackBox);
+        var feedbackSection = document.getElementById("feedback");
+        feedbackSection.appendChild(feedbackBox);
 
-            document.getElementById("feedbackForm").reset();
-        }
-    </script>
+        document.getElementById("feedbackForm").reset();
+    }
+</script>
 
-    <style>
-        /* Your existing CSS styles here */
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-        }
+<style>
+    /* Your existing CSS styles here */
+    body {
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 0;
+    }
 
-        header {
-            background-color: #3498db;
-            color: #fff;
-            text-align: center;
-            padding: 20px 0;
-        }
+    header {
+        color: #fff;
+        text-align: center;
+        padding: 20px 0;
+    }
 
-        section {
-            max-width: 600px;
-            margin: 20px auto;
-        }
+    section {
+        max-width: 600px;
+        margin: 20px auto;
+    }
 
-        form {
-            display: grid;
-            gap: 15px;
-        }
+    form {
+        display: grid;
+        gap: 15px;
+    }
 
-        label {
-            font-weight: bold;
-        }
+    label {
+        font-weight: bold;
+    }
 
-        .rating-container {
-            display: flex;
-            gap: 5px;
-        }
+    .rating-container {
+        display: flex;
+        gap: 5px;
+    }
 
-        input[type="radio"] {
-            display: none;
-        }
+    input[type="radio"] {
+        display: none;
+    }
 
-        label[for^="star"] {
-            font-size: 24px;
-            cursor: pointer;
-        }
+    label[for^="star"] {
+        font-size: 24px;
+        cursor: pointer;
+    }
 
-        label[for^="star"]:before {
-            content: '\2605';
-            color: #ffd700;
-        }
+    label[for^="star"]:before {
+        content: '\2605';
+        color: #ffd700;
+    }
 
-        button {
-            background-color: #3498db;
-            color: #fff;
-            padding: 10px;
-            border: none;
-            cursor: pointer;
-        }
-    </style>
+    button {
+        background-color: #3498db;
+        color: #fff;
+        padding: 10px;
+        border: none;
+        cursor: pointer;
+    }
+</style>
+
 
 </body>
+
 </html>
