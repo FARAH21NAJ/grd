@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pure Health</title>
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="logo.png">
@@ -41,6 +43,28 @@
             font-size: 20px;
             padding-bottom: 10px;
         }
+                /* Additional styles for the PHP output */
+                .output-container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: rgba(255, 255, 255, 0.8);
+            border: solid 3px #315bb0;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .output-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .output-table th, .output-table td {
+            border: 1px solid #000;
+            padding: 8px;
+        }
+
     </style>
 </head>
 <body>
@@ -58,7 +82,7 @@
             <li><a href="log.html">Reviews</a></li>
         </ul>
     </nav>
-
+    <div class="output-container">
     <?php
 // Database connection
 $db = mysqli_connect("localhost", "root", "12345678");

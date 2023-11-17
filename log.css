@@ -1119,4 +1119,40 @@ footer{
     .story-numbers-container{
         grid-template-columns: 1fr;
     }
+} 
+/* Add this style to your existing CSS */
+.feedback-box {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 15px;
 }
+
+.profile {
+    display: flex;
+}
+
+.profile-img {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.user-rating {
+    display: flex;
+} 
+/* Add these styles to log.css or your custom CSS file */
+
+a.feedback-button {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    padding: 10px 20px;
+    background-color: #3498db; /* Choose a background color that matches your theme */
+    color: #fff; /* Text color */
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  a.feedback-button:hover {
+    background-color: #2980b9; /* Hover background color */
+  }

@@ -1,0 +1,338 @@
+#feedbackForm {
+    margin-top: 50px;
+    text-align: center;
+}
+
+#feedbackForm label {
+    display: block;
+    margin-bottom: 10px;
+    color: #122853;
+}
+
+#feedbackForm select,
+#feedbackForm input,
+#feedbackForm textarea {
+    width: 60%; /* Adjust the width as needed */
+    padding: 10px;
+    margin: 0 auto; /* Center the input elements */
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    border: 1px solid #e4e4e4;
+    border-radius: 4px;
+    outline: none;
+}
+
+.rating-container {
+    margin-bottom: 20px;
+}
+
+.rating-container input {
+    display: none;
+}
+
+.rating-container label {
+    display: inline-block;
+    font-size: 24px;
+    color: #ddd;
+    cursor: pointer;
+}
+
+.rating-container label:hover,
+.rating-container label:hover ~ label {
+    color: #ffd700;
+}
+
+.rating-container input:checked ~ label {
+    color: #ffd700;
+}
+
+#feedbackForm button {
+    background-color: #014dd5;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#feedbackForm button:hover {
+    background-color: #013494;
+}
+
+.testimonials-box {
+    background-color: #ffffff;
+    border: 1px solid #e4e4e4;
+    border-radius: 4px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.t-profile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.t-profile-img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #014dd5;
+    color: #ffffff;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.t-profile-text {
+    flex-grow: 1;
+    color: #122853;
+}
+
+.t-rating {
+    font-size: 0.8rem;
+    color: #ffbc02;
+    margin-top: 5px;
+}
+#feedbackForm {
+    margin-top: 50px;
+    text-align: center;
+}
+
+#feedbackForm label {
+    display: block;
+    margin-bottom: 10px;
+    color: #122853;
+}
+
+#feedbackForm select,
+#feedbackForm input,
+#feedbackForm textarea {
+    width: 60%;
+    padding: 10px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    border: 1px solid #e4e4e4;
+    border-radius: 4px;
+    outline: none;
+}
+
+.rating-container {
+    margin-bottom: 20px;
+}
+
+.rating-container input {
+    display: none;
+}
+
+.rating-container label {
+    display: inline-block;
+    font-size: 24px;
+    color: #ddd;
+    cursor: pointer;
+}
+
+.rating-container label:hover,
+.rating-container label:hover ~ label {
+    color: #ffd700;
+}
+
+.rating-container input:checked ~ label {
+    color: #ffd700;
+}
+
+#feedbackForm button {
+    background-color: #014dd5;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#feedbackForm button:hover {
+    background-color: #013494;
+}
+
+.testimonials-box {
+    background-color: #ffffff;
+    border: 1px solid #e4e4e4;
+    border-radius: 4px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.t-profile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.t-profile-img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #014dd5;
+    color: #ffffff;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.t-profile-text {
+    flex-grow: 1;
+    color: #122853;
+}
+
+.t-rating {
+    font-size: 0.8rem;
+    color: #ffbc02;
+    margin-top: 5px;
+}
+/* Add this to your existing CSS code */
+
+/* Styles for the rating input */
+/* Center the star rating */
+.rating-container {
+    display: flex;
+    gap: 5px;
+    margin-top: 5px;
+    justify-content: center; /* Center the stars horizontally */
+    align-items: center; /* Center the stars vertically */
+}
+
+
+.rating-container label {
+    font-size: 20px;
+    color: #ffd700; /* Yellow color for stars */
+    cursor: pointer;
+}
+
+.rating-container input {
+    display: none; /* Hide the actual radio buttons */
+}
+
+.rating-container label:before {
+    content: '\2605'; /* Unicode character for a star */
+}
+
+/* Style for checked stars */
+.rating-container input:checked + label:before {
+    content: '\2605'; /* Unicode character for a filled star */
+}
+/* Your existing CSS styles here */
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #3498db;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+section {
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+form {
+    display: grid;
+    gap: 15px;
+}
+
+label {
+    font-weight: bold;
+}
+
+.rating-container {
+    display: flex;
+    gap: 5px;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+label[for^="star"] {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+label[for^="star"]:before {
+    content: '\2605';
+    color: #ffd700;
+}
+
+button {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Add this to your existing CSS code */
+.feedback-box {
+    background-color: #ffffff;
+    border: 1px solid #e4e4e4;
+    border-radius: 4px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.profile-text {
+    flex-grow: 1;
+    color: #122853;
+}
+
+.user-rating {
+    font-size: 20px;
+    color: #ffd700;
+    margin-top: 5px;
+}
+
+/* Styles for the rating input */
+/* Center the star rating */
+.rating-container {
+    display: flex;
+    gap: 5px;
+    margin-top: 5px;
+    justify-content: center; /* Center the stars horizontally */
+    align-items: center; /* Center the stars vertically */
+}
+
+.rating-container label {
+    font-size: 20px;
+    color: #ffd700; /* Yellow color for stars */
+    cursor: pointer;
+}
+
+.rating-container input {
+    display: none; /* Hide the actual radio buttons */
+}
+
+.rating-container label:before {
+    content: '\2605'; /* Unicode character for a star */
+}
+
+/* Style for checked stars */
+.rating-container input:checked + label:before {
+    content: '\2605'; /* Unicode character for a filled star */
+}
+
