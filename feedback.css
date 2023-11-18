@@ -283,7 +283,9 @@ button {
 
 /* Add this to your existing CSS code */
 .feedback-box {
-    background-color: #ffffff;
+    background-color: rgb(255, 255, 0,0) ;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
     border: 1px solid #e4e4e4;
     border-radius: 4px;
     padding: 20px;
