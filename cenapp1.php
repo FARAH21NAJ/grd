@@ -4,16 +4,11 @@
 
 <style>
 
- 
-
-
-
 
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-
   color:#122853;
 background-image: url(front2.png);
 background-size: cover; 
