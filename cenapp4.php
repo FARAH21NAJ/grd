@@ -50,6 +50,7 @@ h2 {
 }
 
 .timeslots {
+  background-color:green;
   display: flex;
   flex-direction: column;
   border: 1px solid #ccc;
