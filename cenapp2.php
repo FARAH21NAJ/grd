@@ -58,7 +58,7 @@ h2 {
 }
 
 .slot {
-  background-color: rgb(77, 202, 72);" ;
+  background-color: rgb(93, 228, 88) ;
   border: 1px solid #ccc;
   padding: 5px;
   margin-bottom: 5px;
@@ -173,6 +173,8 @@ h2 {
       }
     ?>
   </div>
+
+  
   <div id="bookingForm" style="display: none;">
     <h3>Book an Appointment</h3>
     <form action="process_booking.php" method="post" id="appointmentForm">

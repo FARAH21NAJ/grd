@@ -58,7 +58,7 @@ h2 {
 }
 
 .slot {
-  background-color: rgb(77, 202, 72);" ;
+  background-color: rgb(93, 228, 88) ;
   border: 1px solid #ccc;
   padding: 5px;
   margin-bottom: 5px;

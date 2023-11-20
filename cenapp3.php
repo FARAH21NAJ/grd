@@ -23,7 +23,7 @@ margin-top:40px;
 }
 
 .calendar {
-    background-color: rgba(255,255,255,0.5);
+  background-color: rgba(255,255,255,0.5);
   max-width: 800px;
   margin: 20px auto;
   padding: 20px;
@@ -50,7 +50,7 @@ h2 {
 }
 
 .timeslots {
-
+ 
   display: flex;
   flex-direction: column;
   border: 1px solid #ccc;
@@ -58,13 +58,12 @@ h2 {
 }
 
 .slot {
-  background-color: rgb(77, 202, 72);" ;
+  background-color: rgb(93, 228, 88) ;
   border: 1px solid #ccc;
   padding: 5px;
   margin-bottom: 5px;
-
+ 
 }
-
 
 
 .submit{
@@ -83,6 +82,7 @@ h2 {
   position: relative;
   left:40%;
 	}
+
   .redBackground {
     background-color: orange;
   }
@@ -157,6 +157,7 @@ h2 {
         ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM","2:00 PM", "3:00 PM","4:00 PM","5:00 PM","6:00 PM","7:00 PM","8:00 PM"], 
 
 
+
       ];
 
       // Loop through each day of the week
@@ -165,7 +166,7 @@ h2 {
         
         // Display available time slots for each day
         foreach ($availableAppointments[$i] as $timeSlot) {
-          echo "<div class='slot' data-day='$i data-time='$timeSlot''>$timeSlot</div>";
+          echo "<div class='slot' data-day='$i' data-time='$timeSlot'>$timeSlot</div>";
         }
 
         echo "</div>";
@@ -173,6 +174,7 @@ h2 {
     ?>
   </div>
 
+  
   <div id="bookingForm" style="display: none;">
     <h3>Book an Appointment</h3>
     <form action="process_booking.php" method="post" id="appointmentForm">
@@ -184,7 +186,8 @@ h2 {
     </form>
   </div>
 </div>
-<div>
+
+  <div>
 <button class="submit"  onclick="openModal()"> To pay </button> 
     </div>
 <div id="myModal" class="modal">
@@ -205,6 +208,7 @@ h2 {
     </form>
   
 </div>
+
 
 
 
@@ -243,7 +247,8 @@ h2 {
 
   
 </script>
-<script src="credit.js"></script>
 
+<script src="credit.js"></script>
 </body>
 </html>
+

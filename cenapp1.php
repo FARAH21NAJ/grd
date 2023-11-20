@@ -52,7 +52,7 @@ h2 {
 }
 
 .slot {
-  background-color: rgb(77, 202, 72);" ;
+  background-color:  rgb(93, 228, 88) ;
   border: 1px solid #ccc;
   padding: 5px;
   margin-bottom: 5px;
@@ -187,7 +187,7 @@ h2 {
 <div>
 
 
-<button class="submit"  onclick="openModal()"> To pay </button> 
+<button class="submit"  onclick="openModal()"> To Pay </button> 
     </div>
 <div id="myModal" class="modal">
   <div class="modal-content">
