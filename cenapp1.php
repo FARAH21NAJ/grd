@@ -79,6 +79,42 @@ h2 {
     background-color: orange;
   }
 
+/* Add this CSS to your existing styles or in a separate style block */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  color: #122853;
+
+  background-color: rgba(255,255,255,0.8);
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 60%;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
 
 </style>
 
@@ -133,8 +169,10 @@ h2 {
         echo "</div>";
       }
     ?>
-  </div>
 
+
+
+  </div>
   <div id="bookingForm" style="display: none;">
     <h3>Book an Appointment</h3>
     <form action="process_booking.php" method="post" id="appointmentForm">
@@ -146,11 +184,37 @@ h2 {
     </form>
   </div>
 </div>
-
 <div>
-<a href="appointment.html"> <button class="submit"> Back </button> </a>
-    </div>
 
+
+<button class="submit"  onclick="openModal()"> To pay </button> 
+    </div>
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2>Enter Credit Card Details</h2>
+    <form id="paymentForm">
+      <label for="cardNumber">Card Number:</label>
+      <input type="text" id="cardNumber" placeholder="1234 5678 9101 1121" required><br><br>
+      
+      <label for="expiry">Expiration Date:</label>
+      <input type="text" id="expiry" placeholder="MM/YY" required><br><br>
+      
+      <label for="cvv">CVV:</label>
+      <input type="text" id="cvv" placeholder="123" required><br><br>
+      
+      <button type="button" onclick="processPayment()">Submit Payment</button>
+    </form>
+  
+</div>
+
+
+
+
+
+
+
+    
     <script>
   const slots = document.querySelectorAll('.slot');
   const bookingForm = document.getElementById('bookingForm');
@@ -184,9 +248,10 @@ h2 {
   });
 
 
+
   
 </script>
 
-
+<script src="credit.js"></script>
 </body>
 </html>
