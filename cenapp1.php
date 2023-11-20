@@ -48,6 +48,7 @@ h2 {
   flex-direction: column;
   border: 1px solid #ccc;
   padding: 5px;
+  background-color:green;
 }
 
 .slot {
