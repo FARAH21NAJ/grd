@@ -48,14 +48,14 @@ h2 {
   flex-direction: column;
   border: 1px solid #ccc;
   padding: 5px;
-  background-color:green;
+
 }
 
 .slot {
+  background-color: rgb(77, 202, 72);" ;
   border: 1px solid #ccc;
   padding: 5px;
   margin-bottom: 5px;
-  background-color: #fff;
 }
 
 .submit{
@@ -75,6 +75,9 @@ h2 {
   left:40%;
 	}
 
+  .redBackground {
+    background-color: orange;
+  }
 
 
 </style>
@@ -124,7 +127,7 @@ h2 {
         
         // Display available time slots for each day
         foreach ($availableAppointments[$i] as $timeSlot) {
-          echo "<div class='slot' data-day='$i'>$timeSlot</div>";
+          echo "<div class='slot' data-day='$i' data-time='$timeSlot'>$timeSlot</div>";
         }
 
         echo "</div>";
@@ -148,9 +151,42 @@ h2 {
 <a href="appointment.html"> <button class="submit"> Back </button> </a>
     </div>
 
+    <script>
+  const slots = document.querySelectorAll('.slot');
+  const bookingForm = document.getElementById('bookingForm');
+  const appointmentForm = document.getElementById('appointmentForm');
+  const selectedDayInput = document.getElementById('selectedDay');
+  const selectedTimeInput = document.getElementById('selectedTime');
+
+  slots.forEach(slot => {
+    slot.addEventListener('click', function() {
+      const day = this.dataset.day;
+      const time = this.textContent;
+
+      selectedDayInput.value = day;
+      selectedTimeInput.value = time;
+
+      bookingForm.style.display = 'block';
+    });
+  });
+
+  appointmentForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+    // Handle form submission logic
+
+    // Add this line to toggle the red background class when booking an appointment
+    const selectedTimeslot = document.querySelector(`.slot[data-day='${selectedDayInput.value}'][data-time='${selectedTimeInput.value}']`);
+    selectedTimeslot.classList.add('redBackground');
+
+    
+    alert('Appointment booked successfully!');
+    bookingForm.style.display = 'none';
+  });
 
 
-<script src="script1.js"></script>
+  
+</script>
+
 
 </body>
 </html>

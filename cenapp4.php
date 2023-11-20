@@ -50,7 +50,7 @@ h2 {
 }
 
 .timeslots {
-  background-color:green;
+
   display: flex;
   flex-direction: column;
   border: 1px solid #ccc;
@@ -58,10 +58,11 @@ h2 {
 }
 
 .slot {
+  background-color: rgb(77, 202, 72);" ;
   border: 1px solid #ccc;
   padding: 5px;
   margin-bottom: 5px;
-  background-color: #fff;
+
 }
 
 
@@ -82,6 +83,9 @@ h2 {
   left:40%;
 	}
 
+  .redBackground {
+    background-color: orange;
+  }
 
 </style>
 
@@ -109,13 +113,16 @@ h2 {
     <?php
       // Example of available appointments (replace this with your PHP logic)
       $availableAppointments = [
-        ["9:00 AM", "10:00 AM", "11:00 AM", "1:00 PM","3:00 PM","6:00 PM","7:00 PM","8:00 PM","10:00 PM","11:00 PM"], 
-        ["9:00 AM", "10:00 AM", "11:00 AM", "2:00 PM","3:00 PM","6:00 PM","7:00 PM","8:00 PM","10:00 PM","11:00 PM"],
-        ["9:00 AM", "10:00 AM", "1:00 PM", "3:00 PM","4:00 PM","6:00 PM","7:00 PM","8:00 PM","10:00 PM","11:00 PM"],
-        ["10:00 AM", "11:00 AM", "2:00 PM", "3:00 PM","5:00 PM","6:00 PM","7:00 PM","8:00 PM","10:00 PM","11:00 PM"],
-        ["9:00 AM", "10:00 AM", "11:00 AM", "1:00 PM","3:00 PM","6:00 PM","7:00 PM","8:00 PM","10:00 PM","11:00 PM"],
-        ["9:00 AM", "10:00 AM", "11:00 AM", "2:00 PM","3:00 PM","6:00 PM","7:00 PM","8:00 PM","10:00 PM","11:00 PM"],
-        ["9:00 AM", "10:00 AM", "1:00 PM", "3:00 PM","5:00 PM","6:00 PM","7:00 PM","8:00 PM","10:00 PM","11:00 PM"]
+        ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM","2:00 PM", "3:00 PM","4:00 PM","5:00 PM","6:00 PM","7:00 PM","8:00 PM"], 
+        ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM","2:00 PM", "3:00 PM","4:00 PM","5:00 PM","6:00 PM","7:00 PM","8:00 PM"], 
+        ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM","2:00 PM", "3:00 PM","4:00 PM","5:00 PM","6:00 PM","7:00 PM","8:00 PM"], 
+        ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM","2:00 PM", "3:00 PM","4:00 PM","5:00 PM","6:00 PM","7:00 PM","8:00 PM"], 
+        ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM","2:00 PM", "3:00 PM","4:00 PM","5:00 PM","6:00 PM","7:00 PM","8:00 PM"], 
+        ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM","2:00 PM", "3:00 PM","4:00 PM","5:00 PM","6:00 PM","7:00 PM","8:00 PM"], 
+        ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM","2:00 PM", "3:00 PM","4:00 PM","5:00 PM","6:00 PM","7:00 PM","8:00 PM"], 
+
+
+
       ];
 
       // Loop through each day of the week
@@ -124,7 +131,7 @@ h2 {
         
         // Display available time slots for each day
         foreach ($availableAppointments[$i] as $timeSlot) {
-          echo "<div class='slot' data-day='$i'>$timeSlot</div>";
+          echo "<div class='slot' data-day='$i' data-time='$timeSlot'>$timeSlot</div>";
         }
 
         echo "</div>";
@@ -150,7 +157,42 @@ h2 {
 
 
 
-<script src="script3.js"></script>
+    <script>
+  const slots = document.querySelectorAll('.slot');
+  const bookingForm = document.getElementById('bookingForm');
+  const appointmentForm = document.getElementById('appointmentForm');
+  const selectedDayInput = document.getElementById('selectedDay');
+  const selectedTimeInput = document.getElementById('selectedTime');
+
+  slots.forEach(slot => {
+    slot.addEventListener('click', function() {
+      const day = this.dataset.day;
+      const time = this.textContent;
+
+      selectedDayInput.value = day;
+      selectedTimeInput.value = time;
+
+      bookingForm.style.display = 'block';
+    });
+  });
+
+  appointmentForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+    // Handle form submission logic
+
+    // Add this line to toggle the red background class when booking an appointment
+    const selectedTimeslot = document.querySelector(`.slot[data-day='${selectedDayInput.value}'][data-time='${selectedTimeInput.value}']`);
+    selectedTimeslot.classList.add('redBackground');
+
+    
+    alert('Appointment booked successfully!');
+    bookingForm.style.display = 'none';
+  });
+
+
+  
+</script>
+
 
 </body>
 </html>
