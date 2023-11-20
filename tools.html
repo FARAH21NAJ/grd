@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+<link rel="shortcut icon" href="logo.png">
+  <title>Pure Health</title>
+  <style>
+
+
+/* Reset some default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color:	#122853;
+  color: #fff;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+header h1 {
+  margin: 0;
+}
+
+main {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+  color: #122853;
+}
+
+.categories {
+  flex-basis: 30%;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.categories h2 {
+  margin-bottom: 10px;
+}
+
+.categories ul {
+  list-style: none;
+  padding: 0;
+}
+
+.categories ul li {
+  margin-bottom: 8px;
+}
+
+.categories ul li a {
+  color: #333;
+  text-decoration: none;
+}
+
+.categories ul li a:hover {
+  color: #ff6347;
+}
+
+.products {
+  flex-basis: 65%;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.products h2 {
+  margin-bottom: 15px;
+}
+
+#productList {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+}
+
+#productList div {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+}
+#productList img {
+  width: 50%; /* Adjust the width of the images within the grid */
+  height: auto; /* Maintain aspect ratio */
+  border: 2px solid #504d4d;
+  border-radius: 5px;
+}
+.product-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.product-name {
+  margin-top: 5px;
+  text-align: center;
+}
+
+
+span{
+
+    float: left;;
+
+}
+
+#displayBillBtn {
+
+
+    background-color:#315bb0; 
+	
+	display:block;
+	margin:20px 0px 0px 20px;
+	text-align:center;
+	border-radius:12px;
+	border:2px solid rgb(173, 210, 244);
+	padding :14px 110px;
+	outline:none;
+	color: #122853;
+	cursor:pointer;
+    transition: background-color 0.3s ease;
+  position: relative;
+  left:40%;
+
+}
+
+
+#displayBillBtn:hover {
+  background-color:  #014dd5;
+}
+
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Pure Health Products</h1>
+</header>
+
+<main>
+  <section class="categories">
+    <h2>Categories</h2>
+    <div class="category-box" onclick="showProducts('All')">All</div>
+    <div class="category-box" onclick="showProducts('Equipment')">chronic diseases</div>
+    <div class="category-box" onclick="showProducts('Rehabilitation')">musculoskeletal</div>
+    <div class="category-box" onclick="showProducts('Sports Physio')">Sports Physio</div>
+    <div class="category-box" onclick="showProducts('Neurological')">Neurological</div>
+
+    <!-- Add more categories as needed -->
+  </section>
+<hr>
+  <section class="products">
+    <h2>Products</h2>
+    <h4>Please choose from the categories depending on your situation.</h4>
+    <div id="productList">
+      <!-- Product items will be displayed here -->
+    </div>
+
+
+    <button id="displayBillBtn">Display Bill</button>
+
+<div id="billContainer">
+ 
+  <p id="billContent"></p>
+</div>
+
+
+
+  </section>
+</main>
+
+<footer style="position: relative; left: 2%;">
+  <p>&copy; Pure Health</p>
+</footer>
+
+
+<script>
+const products = [
+  { name: 'Electro Stimulation', category: 'Equipment'  ,image: 'tt1.jpg' ,price: 19.99},
+  { name: 'Electrodes On Knee', category: 'Equipment' ,image: 'tt2.jpg', price: 29.99},
+  { name: 'walks on sensory', category: 'Equipment' ,image: 'tt3.jpg ' , price: 24.99},
+  { name: 'Acupuncture needles', category: 'Equipment',image: 'tt4.jpg' , price: 9.99},
+  { name: 'mats and black roll', category: 'Rehabilitation' ,image: 'tt5.jpg' , price: 49.99},
+  { name: 'Fitness ball<', category: 'Rehabilitation' ,image: 'tt6.png' , price: 24.99},
+  { name: 'crutches', category: 'Rehabilitation' ,image: 'tt11.png', price: 29.99},
+  { name: 'Walker', category: 'Rehabilitation' ,image: 'ttt10.jpg' , price: 23.99},
+  { name: 'cupping therapy', category: 'Sports Physio' ,image: 'tt9.png' , price: 49.99},
+  { name: 'exercise chair', category: 'Sports Physio' ,image: 'tt8.png' , price: 23.99},
+  { name: 'Wheelchair', category: 'Sports Physio' ,image: 'tt7.png' , price: 24.99},
+  { name: 'Massage gun ', category: 'Sports Physio' ,image: 'tt12.png' , price: 49.99},
+  { name: 'Wheelchair', category: 'Neurological' ,image: 'tt7.png' , price: 24.99},
+  { name: 'Electro Stimulation', category: 'Neurological',image: 'tt1.jpg' ,price: 19.99 },
+  { name: 'crutches', category: 'Neurological',image: 'tt11.png', price: 29.99 },
+  { name: 'Acupuncture needles', category: 'Neurological' ,image: 'tt4.jpg', price: 9.99},
+  // Add more products with categories including Sports Physio and Neurological
+];
+
+
+
+function showProducts(category) {
+  const productList = document.getElementById('productList');
+  productList.innerHTML = ''; // Clear existing content
+  
+  let filteredProducts = products;
+  if (category !== 'All') {
+    filteredProducts = products.filter(product => product.category === category);
+  }
+
+  filteredProducts.forEach(product => {
+    const productItem = document.createElement('div');
+    productItem.classList.add('product-item');
+
+    const img = document.createElement('img');
+    img.src = `${product.image}`;
+    img.alt = product.name;
+
+    const productName = document.createElement('p');
+    productName.textContent = product.name;
+    productName.classList.add('product-name');
+
+    const productPrice = document.createElement('p');
+    productPrice.textContent = `$${product.price.toFixed(2)}`;
+    productPrice.classList.add('product-price');
+
+ 
+
+    
+    const addToCartText = document.createElement('span');
+    addToCartText.textContent = 'Add to Cart:';
+    addToCartText.classList.add('add-to-cart');
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.classList.add('product-checkbox');
+
+
+    productItem.appendChild(img);
+    productItem.appendChild(productName);
+    productItem.appendChild(productPrice);
+    productItem.appendChild(addToCartText);
+    productItem.appendChild(checkbox);
+ 
+    productList.appendChild(productItem);
+  });
+}
+
+
+
+
+// Existing products array and showProducts function remain unchanged
+
+document.getElementById('displayBillBtn').addEventListener('click', displayBill);
+
+function displayBill() {
+  const selectedProducts = Array.from(document.querySelectorAll('.product-checkbox:checked')).map(checkbox => {
+    const productItem = checkbox.parentElement;
+    return {
+      name: productItem.querySelector('.product-name').textContent,
+      price: parseFloat(productItem.querySelector('.product-price').textContent.replace('$', ''))
+    };
+  });
+
+  const totalBill = selectedProducts.reduce((total, product) => total + product.price, 0);
+  const formattedBill = selectedProducts.map(product => `${product.name}: $${product.price.toFixed(2)}`).join('<br>');
+  
+  document.getElementById('billContent').innerHTML = formattedBill;
+  document.getElementById('billContent').innerHTML += `<hr><strong>Total: $${totalBill.toFixed(2)}</strong>`;
+
+  const billContainer = document.getElementById('billContainer');
+  billContainer.style.display = 'block';
+}
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
