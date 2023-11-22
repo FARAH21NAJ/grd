@@ -134,12 +134,36 @@ span{
 	cursor:pointer;
     transition: background-color 0.3s ease;
   position: relative;
-  left:40%;
+  left:30%;
 
 }
 
 
 #displayBillBtn:hover {
+  background-color:  #014dd5;
+}
+
+
+#log{
+    background-color:#315bb0; 
+	
+	display:block;
+	margin:20px 0px 0px 20px;
+	text-align:center;
+	border-radius:12px;
+	border:2px solid rgb(173, 210, 244);
+	padding :14px 110px;
+	outline:none;
+	color: #122853;
+	cursor:pointer;
+    transition: background-color 0.3s ease;
+  position: relative;
+  left:30%;
+
+
+}
+
+#log:hover {
   background-color:  #014dd5;
 }
 
@@ -172,6 +196,8 @@ span{
 
 
     <button id="displayBillBtn">Display Bill</button>
+<a href="log.html"> <button id="log"> Log Out </button></a>
+
 
 <div id="billContainer">
  
@@ -202,7 +228,7 @@ const products = [
   { name: 'exercise chair', category: 'Sports Physio' ,image: 'tt8.png' , price: 23.99},
   { name: 'Wheelchair', category: 'Sports Physio' ,image: 'tt7.png' , price: 24.99},
   { name: 'Massage gun ', category: 'Sports Physio' ,image: 'tt12.png' , price: 49.99},
-  { name: 'Wheelchair', category: 'Neurological' ,image: 'tt7.png' , price: 24.99},
+  { name: 'walks on sensory', category: 'Neurological' ,image: 'tt3.jpg' , price: 24.99},
   { name: 'Electro Stimulation', category: 'Neurological',image: 'tt1.jpg' ,price: 19.99 },
   { name: 'crutches', category: 'Neurological',image: 'tt11.png', price: 29.99 },
   { name: 'Acupuncture needles', category: 'Neurological' ,image: 'tt4.jpg', price: 9.99},
