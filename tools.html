@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -128,7 +129,7 @@ span{
 	text-align:center;
 	border-radius:12px;
 	border:2px solid rgb(173, 210, 244);
-	padding :14px 110px;
+	padding :14px 100px;
 	outline:none;
 	color: #122853;
 	cursor:pointer;
@@ -190,6 +191,11 @@ form input[type="submit"] {
 
 form input[type="submit"]:hover {
   background-color: #014dd5;
+}
+
+.category-box:hover{
+font-size: 18px;
+color:  #014dd5;;
 }
 
   </style>
@@ -356,6 +362,50 @@ function displayBill() {
   const billContainer = document.getElementById('billContainer');
   billContainer.style.display = 'block';
 }
+
+
+
+document.querySelector('form').addEventListener('submit', function(e) {
+    e.preventDefault(); // Prevent the default form submission
+
+    // Get form data
+    const formData = new FormData(this);
+
+    // Extract totalBill and tool_ids from the form
+    const selectedProducts = Array.from(document.querySelectorAll('.product-checkbox:checked')).map(checkbox => {
+        const productItem = checkbox.parentElement;
+        return {
+            price: parseFloat(productItem.querySelector('.product-price').textContent.replace('$', '')),
+            toolId: productItem.querySelector('input[name="tool_id"]').value
+        };
+    });
+
+    // Calculate totalBill
+    const totalBill = selectedProducts.reduce((total, product) => total + product.price, 0);
+
+    // Extract all tool_ids for selected products
+    const toolIds = selectedProducts.map(product => product.toolId); // Array of tool_ids
+
+    // Add totalBill and tool_ids to the form data
+    formData.append('totalBill', totalBill);
+    toolIds.forEach((toolId, index) => {
+        formData.append(`tool_ids[${index}]`, toolId);
+    });
+
+    // Send form data to save_order.php using AJAX
+    fetch('save_order.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.text())
+    .then(data => {
+        // Display an alert based on the response from save_order.php
+        alert(data);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+});
 
 
 
