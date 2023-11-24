@@ -84,76 +84,42 @@
     </nav>
     <div class="output-container">
     <?php
-// Database connection
-$db = mysqli_connect("localhost", "root", "12345678");
+// Connect to the database
+$servername = "localhost";
+$username = "root";
+$password = "12345678";
+$dbname = "purehelth";
 
-if (!$db) {
-    die("Connection failed: " . mysqli_connect_error());
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
 
-mysqli_select_db($db, "purehelth");
+// Get form data
+$firstName = $_POST['firstna'];
+$location = $_POST['location'];
+$chosenCenter = $_POST['treat'];
 
-extract($_POST);
-date_default_timezone_set('Asia/Amman');
-// Get the current date and time
-$currentDate = date("Y-m-d");
-$currentTime = date("H:i");
+// Upload file
+$targetDir = "uploads/";
+$targetFile = $targetDir . basename($_FILES["uploadBtn"]["name"]);
+move_uploaded_file($_FILES["uploadBtn"]["tmp_name"], $targetFile);
 
-// Calculate the date one day after the current date
-$nextDay = date("Y-m-d", strtotime($currentDate . " +1 day"));
+$uploadedFile = $targetFile;
 
-if ($appoint >= $nextDay) {
-    // Check for duplicate appointments
-    $checkQuery = "SELECT * FROM appointment WHERE date = '$appoint' AND time = '$apptime'";
-    $checkResult = mysqli_query($db, $checkQuery);
-    
-    if (mysqli_num_rows($checkResult) > 0) {
-        // Duplicate appointment found
-        echo "The selected appointment date and time are already booked by another patient. Please choose a different date and time.";
-    } else {
-        // The appointment date is valid, so you can proceed to insert it into the database
-        $insertQuery = "INSERT INTO appointment (name, location, center, date, time) VALUES ('$firstna', '$location', '$treat', '$appoint', '$apptime')";
-        if (mysqli_query($db, $insertQuery)) {
-            echo "<table>";
-            echo "<caption>Your Appointment</caption>";
+// Insert data into the database
+$sql = "INSERT INTO Appointments (firstName, location, chosenCenter, uploadedFile) VALUES ('$firstName', '$location', '$chosenCenter', '$uploadedFile')";
 
-            echo "<tr>";
-            echo "<th>Name</th>";
-            echo "<td>$firstna</td>";
-            echo "</tr>";
-
-            echo "<tr>";
-            echo "<th>Session location</th>";
-            echo "<td>$location</td>";
-            echo "</tr>";
-
-            echo "<tr>";
-            echo "<th>Center name</th>";
-            echo "<td>$treat</td>";
-            echo "</tr>";
-
-            echo "<tr>";
-            echo "<th>Appointment date</th>";
-            echo "<td>$appoint</td>";
-            echo "</tr>";
-
-            echo "<tr>";
-            echo "<th>Appointment time</th>";
-            echo "<td>$apptime</td>";
-            echo "</tr>";
-
-            echo "</table>";
-        } else {
-            echo "Error: " . mysqli_error($db);
-        }
-    }
+if ($conn->query($sql) === TRUE) {
+    echo "Appointment booked successfully!";
 } else {
-    // The appointment date is not one day after the current date
-    echo "Invalid appointment date. Please choose a date one day after the current day.";
+    echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
 // Close the database connection
-mysqli_close($db);
+$conn->close();
 ?>
 
     <form method="post" action="log.html">
