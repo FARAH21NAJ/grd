@@ -133,7 +133,7 @@ h2 {
  text-align:center;
  border-radius:12px;
  border:2px solid rgb(173, 210, 244);
- padding :14px 83px;
+ padding :14px 120px;
  outline:none;
  color: #122853;
  cursor:pointer;
@@ -286,7 +286,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
  
  
 <button class="submit"  onclick="openModal()"> To Pay </button>
-<a href="seeappoint1.php"><button class="submits" onclick="seeAppointment()">See Appointment</button></a>
+<a href="appointment.html"><button class="submits" onclick="seeAppointment()">Back</button></a>
     </div>
 <div id="myModal" class="modal">
   <div class="modal-content">
