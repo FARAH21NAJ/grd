@@ -166,6 +166,31 @@ span{
 #log:hover {
   background-color:  #014dd5;
 }
+/* CSS to style input fields */
+form input[type="text"],
+form input[type="submit"] {
+  margin: 5px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+form input[type="text"]:focus,
+form input[type="submit"]:hover {
+  border-color: #315bb0;
+  outline: none;
+}
+
+form input[type="submit"] {
+  background-color: #315bb0;
+  color: white;
+  cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+  background-color: #014dd5;
+}
 
   </style>
 </head>
@@ -176,6 +201,11 @@ span{
 </header>
 
 <main>
+
+
+
+
+
   <section class="categories">
     <h2>Categories</h2>
     <div class="category-box" onclick="showProducts('All')">All</div>
@@ -183,6 +213,18 @@ span{
     <div class="category-box" onclick="showProducts('Rehabilitation')">musculoskeletal</div>
     <div class="category-box" onclick="showProducts('Sports Physio')">Sports Physio</div>
     <div class="category-box" onclick="showProducts('Neurological')">Neurological</div>
+
+<br>
+    
+  <form action="save_order.php" method="post">
+    <!-- Add input fields for patient name, bill content, and total bill -->
+    <input type="text" name="patientName" placeholder="Patient Name" required>
+    <input type="hidden" id="billContentInput" name="billContent">
+    <input type="hidden" id="totalBillInput" name="totalBill">
+    <input type="hidden" name="tool_id" placeholder="Tool ID">
+    <input type="submit" value="Place Order">
+  </form>
+
 
     <!-- Add more categories as needed -->
   </section>
@@ -262,7 +304,10 @@ function showProducts(category) {
     productPrice.textContent = `$${product.price.toFixed(2)}`;
     productPrice.classList.add('product-price');
 
- 
+    const toolIdInput = document.createElement('input');
+    toolIdInput.type = 'hidden';
+    toolIdInput.name = 'tool_id'; // Set the name attribute to 'tool_id'
+    toolIdInput.value = product.id; 
 
     
     const addToCartText = document.createElement('span');
@@ -276,6 +321,7 @@ function showProducts(category) {
     productItem.appendChild(img);
     productItem.appendChild(productName);
     productItem.appendChild(productPrice);
+    productItem.appendChild(toolIdInput); 
     productItem.appendChild(addToCartText);
     productItem.appendChild(checkbox);
  
@@ -290,15 +336,17 @@ function showProducts(category) {
 
 document.getElementById('displayBillBtn').addEventListener('click', displayBill);
 
+
+
 function displayBill() {
   const selectedProducts = Array.from(document.querySelectorAll('.product-checkbox:checked')).map(checkbox => {
     const productItem = checkbox.parentElement;
     return {
       name: productItem.querySelector('.product-name').textContent,
-      price: parseFloat(productItem.querySelector('.product-price').textContent.replace('$', ''))
+      price: parseFloat(productItem.querySelector('.product-price').textContent.replace('$', '')),
+      toolId: productItem.querySelector('input[name="tool_id"]').value // Fetch tool_id of selected products
     };
   });
-
   const totalBill = selectedProducts.reduce((total, product) => total + product.price, 0);
   const formattedBill = selectedProducts.map(product => `${product.name}: $${product.price.toFixed(2)}`).join('<br>');
   
@@ -309,6 +357,13 @@ function displayBill() {
   billContainer.style.display = 'block';
 }
 
+
+
+
+
+
+
+
 </script>
 </body>
 </html>
@@ -319,7 +374,3 @@ function displayBill() {
 
 
 
-
-</script>
-</body>
-</html>
