@@ -75,9 +75,14 @@ h2 {
   left:40%;
 	}
 
-  .redBackground {
+  .orangeBackground {
     background-color: orange;
-  }
+  } 
+  .redBackground {
+  background-color: red;
+  
+}
+
 
 /* Add this CSS to your existing styles or in a separate style block */
 .modal {
@@ -167,7 +172,85 @@ h2 {
         }
 
         echo "</div>";
+      }  
+
+
+
+
+
+
+      
+      error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+   // Establish a database connection
+$db = mysqli_connect("localhost", "root", "12345678");
+
+if (!$db) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+mysqli_select_db($db, "purehealth");
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  // Output POST data for debugging
+  var_dump($_POST);
+
+  if (isset($_POST['patientName']) && isset($_POST['selectedDay']) && isset($_POST['selectedTime'])) {
+      $patientName = $_POST['patientName'];
+      $selectedDay = $_POST['selectedDay'];
+      $selectedTime = $_POST['selectedTime'];
+
+      // Check if payment is made (you may need to adjust this logic based on your actual payment processing)
+      $paymentStatus = isset($_POST['paymentMade']) && $_POST['paymentMade'] === 'true' ? 1 : 0;
+
+      // Output values for debugging
+      var_dump($patientName, $selectedDay, $selectedTime, $paymentStatus);
+
+      // Insert the appointment into the database
+      $sql = "INSERT INTO app_book1 (patient_name, day, time_slot, payment_status) VALUES ('$patientName', $selectedDay, '$selectedTime', $paymentStatus)";
+
+      // Output the SQL query for debugging
+      echo "SQL Query: $sql";
+
+      // Check for errors during the query
+      if (mysqli_query($db, $sql)) {
+          echo "Appointment booked successfully!";
+      } else {
+          echo "Error: " . $sql . "<br>" . mysqli_error($db);
       }
+  }
+} 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// Establish a database connection
+$db = mysqli_connect("localhost", "root", "12345678");
+
+if (!$db) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+mysqli_select_db($db, "purehelth");
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST['patientName']) && isset($_POST['selectedDay']) && isset($_POST['selectedTime'])) {
+        $patientName = $_POST['patientName'];
+        $selectedDay = $_POST['selectedDay'];
+        $selectedTime = $_POST['selectedTime'];
+        
+        // Insert the appointment into the database
+        $sql = "INSERT INTO app_book1 (patient_name, day, time_slot, payment_status) VALUES ('$patientName', $selectedDay, '$selectedTime', false)";
+        
+        if (mysqli_query($db, $sql)) {
+            echo "Appointment booked successfully!";
+        } else {
+            echo "Error: " . $sql . "<br>" . mysqli_error($db);
+        }
+    }
+}
+
+
     ?>
 
 
@@ -175,7 +258,7 @@ h2 {
   </div>
   <div id="bookingForm" style="display: none;">
     <h3>Book an Appointment</h3>
-    <form action="process_booking.php" method="post" id="appointmentForm">
+    <form action="seeapoint.php" method="post" id="appointmentForm">
       <input type="hidden" id="selectedDay" name="selectedDay">
       <input type="hidden" id="selectedTime" name="selectedTime">
       <label for="patientName">Your Name:</label>
@@ -188,6 +271,7 @@ h2 {
 
 
 <button class="submit"  onclick="openModal()"> To Pay </button> 
+<a href="seeappoint1.php"><button class="submit seeAppointment" onclick="seeAppointment()">See Appointment</button></a>
     </div>
 <div id="myModal" class="modal">
   <div class="modal-content">
@@ -207,51 +291,6 @@ h2 {
     </form>
   
 </div>
-
-
-
-
-    
-<script>
-      
-      const slots = document.querySelectorAll('.slot');
-      const bookingForm = document.getElementById('bookingForm');
-      const appointmentForm = document.getElementById('appointmentForm');
-      const selectedDayInput = document.getElementById('selectedDay');
-      const selectedTimeInput = document.getElementById('selectedTime');
-    
-      slots.forEach(slot => {
-        slot.addEventListener('click', function() {
-          const day = this.dataset.day;
-          const time = this.textContent;
-    
-          selectedDayInput.value = day;
-          selectedTimeInput.value = time;
-    
-          bookingForm.style.display = 'block';
-        });
-      });
-    
-      appointmentForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-        // Handle form submission logic
-    
-        // Add this line to toggle the red background class when booking an appointment
-        const selectedTimeslot = document.querySelector(`.slot[data-day='${selectedDayInput.value}'][data-time='${selectedTimeInput.value}']`);
-        selectedTimeslot.classList.add('redBackground');
-    
-        
-        alert('Appointment booked successfully!');
-        bookingForm.style.display = 'none';
-      });
-    
-    
-    
-      
-    </script>
-
-<!--
-
 <script>
   const slots = document.querySelectorAll('.slot');
   const bookingForm = document.getElementById('bookingForm');
@@ -259,36 +298,10 @@ h2 {
   const selectedDayInput = document.getElementById('selectedDay');
   const selectedTimeInput = document.getElementById('selectedTime');
 
-  // Load booked slots from localStorage and apply 'redBackground' class
-  function loadBookedSlots() {
-    const bookedSlots = JSON.parse(localStorage.getItem('bookedSlots')) || [];
-    bookedSlots.forEach(slotId => {
-      const slot = document.getElementById(slotId);
-      if (slot) {
-        slot.classList.add('redBackground');
-      }
-    });
-  }
-
-  // Function to save booked slot IDs to localStorage
-  function saveBookedSlot(slotId) {
-    const bookedSlots = JSON.parse(localStorage.getItem('bookedSlots')) || [];
-    if (!bookedSlots.includes(slotId)) {
-      bookedSlots.push(slotId);
-      localStorage.setItem('bookedSlots', JSON.stringify(bookedSlots));
-    }
-  }
-
-  // Add event listener when the DOM is loaded
-  document.addEventListener('DOMContentLoaded', function() {
-    loadBookedSlots();
-  });
-
   slots.forEach(slot => {
     slot.addEventListener('click', function() {
       const day = this.dataset.day;
       const time = this.textContent;
-      const slotId = `slot_${day}_${time}`;
 
       selectedDayInput.value = day;
       selectedTimeInput.value = time;
@@ -297,44 +310,59 @@ h2 {
     });
   });
 
+  function bookAppointment(paymentMade) {
+    // Add this line to toggle the background class based on paymentMade
+    const selectedTimeslot = document.querySelector(.slot[data-day='${selectedDayInput.value}'][data-time='${selectedTimeInput.value}']);
+selectedTimeslot.classList.add(paymentMade ? 'redBackground' : 'orangeBackground');
+
+
+    // Store information about the appointment (modify this part as needed)
+    const formData = new FormData(appointmentForm);
+    formData.append('paymentMade', paymentMade); // Add payment status to the form data
+
+    // Send the form data to the server for processing (you may need to modify this part based on your server-side logic)
+    fetch('process_booking.php', {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        alert('Appointment booked successfully!');
+        bookingForm.style.display = 'none';
+      } else {
+        alert('Error booking appointment. Please try again.');
+      }
+    });
+  }
+
   appointmentForm.addEventListener('submit', function(event) {
     event.preventDefault();
-    // Handle form submission logic
-
-    // Add this line to toggle the red background class when booking an appointment
-    const selectedTimeslot = document.querySelector(`.slot[data-day='${selectedDayInput.value}'][data-time='${selectedTimeInput.value}']`);
-    if (selectedTimeslot) {
-      selectedTimeslot.classList.add('redBackground');
-      // Save the booked slot to localStorage
-      const slotId = `slot_${selectedDayInput.value}_${selectedTimeInput.value}`;
-      saveBookedSlot(slotId);
-    }
-
-    alert('Appointment booked successfully!');
-    bookingForm.style.display = 'none';
+    // Handle form submission logic for non-payment appointment
+    bookAppointment(false);
   });
 
-  // Additional code for payment modal and other functionalities...
+  function processPayment() {
+    // Get credit card details from the form
+    const cardNumber = document.getElementById('cardNumber').value;
+    const expiry = document.getElementById('expiry').value;
+    const cvv = document.getElementById('cvv').value;
+
+    // Perform validation and payment processing (simulated)
+    if (cardNumber && expiry && cvv) {
+      // Simulate processing by displaying a message
+      alert('Payment processed successfully!');
+
+      // Handle form submission logic for payment appointment
+      bookAppointment(true);
+    } else {
+      // Handle errors or incomplete form data
+      alert('Please fill in all required fields.');
+    }
+  }
+
+  // Other existing code...
 </script>
-
-
- -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <script src="credit.js"></script>

@@ -83,9 +83,13 @@ h2 {
   left:40%;
 	}
 
-  .redBackground {
+  .orangeBackground {
     background-color: orange;
-  }
+  } 
+  .redBackground {
+  background-color: red;
+  
+}
 
 /* Add this CSS to your existing styles or in a separate style block */
 .modal {
@@ -189,6 +193,8 @@ h2 {
 
   <div>
 <button class="submit"  onclick="openModal()"> To pay </button> 
+<a href="seeappoint2.php"><button class="submit seeAppointment" onclick="seeAppointment()">See Appointment</button></a>
+
     </div>
 <div id="myModal" class="modal">
   <div class="modal-content">
@@ -212,7 +218,7 @@ h2 {
 
 
 
-    <script>
+<script>
   const slots = document.querySelectorAll('.slot');
   const bookingForm = document.getElementById('bookingForm');
   const appointmentForm = document.getElementById('appointmentForm');
@@ -237,12 +243,40 @@ h2 {
 
     // Add this line to toggle the red background class when booking an appointment
     const selectedTimeslot = document.querySelector(`.slot[data-day='${selectedDayInput.value}'][data-time='${selectedTimeInput.value}']`);
-    selectedTimeslot.classList.add('redBackground');
+    selectedTimeslot.classList.add('orangeBackground');
 
     
     alert('Appointment booked successfully!');
     bookingForm.style.display = 'none';
-  });
+  }); 
+  function processPayment() {
+  // Get credit card details from the form
+  const cardNumber = document.getElementById('cardNumber').value;
+  const expiry = document.getElementById('expiry').value;
+  const cvv = document.getElementById('cvv').value;
+
+  // Perform validation and payment processing (simulated)
+  if (cardNumber && expiry && cvv) {
+    // Simulate processing by displaying a message
+    alert('Payment processed successfully!');
+
+    // Add the redBackground class to the selected appointment slot after the modal is closed
+    closeModal();
+
+    // Check if the modal is fully closed before adding the class
+    const checkModalClosed = setInterval(function () {
+      if (document.getElementById('myModal').style.display === 'none') {
+        clearInterval(checkModalClosed);
+
+        const selectedTimeslot = document.querySelector(`.slot[data-day='${selectedDayInput.value}'][data-time='${selectedTimeInput.value}']`);
+        selectedTimeslot.classList.add('redBackground');
+      }
+    }, 100); // Check every 100 milliseconds if the modal is closed
+  } else {
+    // Handle errors or incomplete form data
+    alert('Please fill in all required fields.');
+  }
+}
 
 
   
