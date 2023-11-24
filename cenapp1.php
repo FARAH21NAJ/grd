@@ -211,21 +211,84 @@ h2 {
 
 
 
-
-
-
     
-    <script>
+<script>
+      
+      const slots = document.querySelectorAll('.slot');
+      const bookingForm = document.getElementById('bookingForm');
+      const appointmentForm = document.getElementById('appointmentForm');
+      const selectedDayInput = document.getElementById('selectedDay');
+      const selectedTimeInput = document.getElementById('selectedTime');
+    
+      slots.forEach(slot => {
+        slot.addEventListener('click', function() {
+          const day = this.dataset.day;
+          const time = this.textContent;
+    
+          selectedDayInput.value = day;
+          selectedTimeInput.value = time;
+    
+          bookingForm.style.display = 'block';
+        });
+      });
+    
+      appointmentForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        // Handle form submission logic
+    
+        // Add this line to toggle the red background class when booking an appointment
+        const selectedTimeslot = document.querySelector(`.slot[data-day='${selectedDayInput.value}'][data-time='${selectedTimeInput.value}']`);
+        selectedTimeslot.classList.add('redBackground');
+    
+        
+        alert('Appointment booked successfully!');
+        bookingForm.style.display = 'none';
+      });
+    
+    
+    
+      
+    </script>
+
+<!--
+
+<script>
   const slots = document.querySelectorAll('.slot');
   const bookingForm = document.getElementById('bookingForm');
   const appointmentForm = document.getElementById('appointmentForm');
   const selectedDayInput = document.getElementById('selectedDay');
   const selectedTimeInput = document.getElementById('selectedTime');
 
+  // Load booked slots from localStorage and apply 'redBackground' class
+  function loadBookedSlots() {
+    const bookedSlots = JSON.parse(localStorage.getItem('bookedSlots')) || [];
+    bookedSlots.forEach(slotId => {
+      const slot = document.getElementById(slotId);
+      if (slot) {
+        slot.classList.add('redBackground');
+      }
+    });
+  }
+
+  // Function to save booked slot IDs to localStorage
+  function saveBookedSlot(slotId) {
+    const bookedSlots = JSON.parse(localStorage.getItem('bookedSlots')) || [];
+    if (!bookedSlots.includes(slotId)) {
+      bookedSlots.push(slotId);
+      localStorage.setItem('bookedSlots', JSON.stringify(bookedSlots));
+    }
+  }
+
+  // Add event listener when the DOM is loaded
+  document.addEventListener('DOMContentLoaded', function() {
+    loadBookedSlots();
+  });
+
   slots.forEach(slot => {
     slot.addEventListener('click', function() {
       const day = this.dataset.day;
       const time = this.textContent;
+      const slotId = `slot_${day}_${time}`;
 
       selectedDayInput.value = day;
       selectedTimeInput.value = time;
@@ -240,17 +303,39 @@ h2 {
 
     // Add this line to toggle the red background class when booking an appointment
     const selectedTimeslot = document.querySelector(`.slot[data-day='${selectedDayInput.value}'][data-time='${selectedTimeInput.value}']`);
-    selectedTimeslot.classList.add('redBackground');
+    if (selectedTimeslot) {
+      selectedTimeslot.classList.add('redBackground');
+      // Save the booked slot to localStorage
+      const slotId = `slot_${selectedDayInput.value}_${selectedTimeInput.value}`;
+      saveBookedSlot(slotId);
+    }
 
-    
     alert('Appointment booked successfully!');
     bookingForm.style.display = 'none';
   });
 
-
-
-  
+  // Additional code for payment modal and other functionalities...
 </script>
+
+
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <script src="credit.js"></script>
 </body>
