@@ -222,9 +222,9 @@ color:  #014dd5;;
 
 <br>
     
-  <form action="save_order.php" method="post">
+  <form action="save_order.php" method="post" Autocomplete="off">
     <!-- Add input fields for patient name, bill content, and total bill -->
-    <input type="text" name="patientName" placeholder="Patient Name" required>
+    <input type="text" name="patientName" placeholder="Patient Name" required    >
     <input type="hidden" id="billContentInput" name="billContent">
     <input type="hidden" id="totalBillInput" name="totalBill">
     <input type="hidden" name="tool_id" placeholder="Tool ID">
@@ -243,8 +243,8 @@ color:  #014dd5;;
     </div>
 
 
-    <button id="displayBillBtn">Display Bill</button>
-<a href="log.html"> <button id="log"> Log Out </button></a>
+    <button id="displayBillBtn">Chick Out</button>
+<a href="log.html"> <button id="log">Log Out </button></a>
 
 
 <div id="billContainer">

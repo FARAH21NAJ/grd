@@ -24,6 +24,7 @@ margin-top:40px;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 8px;
+  height: 700px;
 }
  
 h2 {
@@ -59,22 +60,7 @@ h2 {
   margin-bottom: 5px;
 }
  
-.submit{
-    background-color:#315bb0;
- 
-  display:block;
-  margin:20px 0px 0px 20px;
-  text-align:center;
-  border-radius:12px;
-  border:2px solid rgb(173, 210, 244);
-  padding :14px 110px;
-  outline:none;
-  color: #122853;
-  cursor:pointer;
-  transition:0.25px;
-  position: relative;
-  left:40%;
-  }
+
  
   .orangeBackground {
     background-color: orange;
@@ -122,27 +108,39 @@ h2 {
   cursor: pointer;
 }
  
-.submits{
+
+.button-container {
+              text-align: center;
+              margin-top: 20px;
+              position: relative;
+            bottom: 210px;
+          } 
+
+
+          .submit, .reset {
+              background-color: #315bb0;
+              display: inline-block;
+              text-align: center;
+              border-radius: 12px;
+              border: 2px solid rgb(173, 210, 244);
+              padding: 14px 110px;
+              outline: none;
+              color: white;
+              cursor: pointer;
+              transition: 0.2s;
+              margin: 0 10px; /* Adjusted margin */
+              margin-top: 230px;
+
+
+          }
+          .submit {
+              width: 8.4cm;
+          }
 
 
 
-  background-color:#315bb0;
- 
- display:block;
- margin:15px 0px 0px 15px;
- text-align:center;
- border-radius:12px;
- border:2px solid rgb(173, 210, 244);
- padding :14px 120px;
- outline:none;
- color: #122853;
- cursor:pointer;
- transition:0.25px;
- position: relative;
- left:40%;
 
 
-}
 </style>
  
  
@@ -281,13 +279,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <input type="submit" value="Book Appointment">
     </form>
   </div>
+
+<div  class="button-container">
+<a href="#"> <button class="submit"  onclick="openModal()"> To Pay </button></a>
+<a href="seeappoint1.php"><button class="reset" onclick="seeAppointment()">See Appointment</button></a>
 </div>
-<div>
- 
- 
-<button class="submit"  onclick="openModal()"> To Pay </button>
-<a href="appointment.html"><button class="submits" onclick="seeAppointment()">Back</button></a>
-    </div>
+
+    
 <div id="myModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal()">&times;</span>

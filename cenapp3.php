@@ -29,6 +29,7 @@ margin-top:40px;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 8px;
+  height: 700px;
 }
 
 h2 {
@@ -66,22 +67,7 @@ h2 {
 }
 
 
-.submit{
-		background-color:#315bb0; 
-	
-	display:block;
-	margin:20px 0px 0px 20px;
-	text-align:center;
-	border-radius:12px;
-	border:2px solid rgb(173, 210, 244);
-	padding :14px 110px;
-	outline:none;
-	color: #122853;
-	cursor:pointer;
-	transition:0.25px;
-  position: relative;
-  left:40%;
-	}
+
 
   .orangeBackground {
     background-color: orange;
@@ -126,9 +112,37 @@ h2 {
   text-decoration: none;
   cursor: pointer;
 }
+
+.button-container {
+              text-align: center;
+              margin-top: 20px;
+              position: relative;
+            bottom: 220px;
+          } 
+
+
+          .submit, .reset {
+              background-color: #315bb0;
+              display: inline-block;
+              text-align: center;
+              border-radius: 12px;
+              border: 2px solid rgb(173, 210, 244);
+              padding: 14px 110px;
+              outline: none;
+              color: white;
+              cursor: pointer;
+              transition: 0.2s;
+              margin: 0 10px; /* Adjusted margin */
+              margin-top: 230px;
+
+
+          }
+          .submit {
+              width: 8.4cm;
+          }
+
+
 </style>
-
-
 
 
 
@@ -189,13 +203,13 @@ h2 {
       <input type="submit" value="Book Appointment">
     </form>
   </div>
-</div>
 
-  <div>
+
+<div  class="button-container">
 <button class="submit"  onclick="openModal()"> To pay </button> 
-<a href="seeappoint3.php"><button class="submit seeAppointment" onclick="seeAppointment()">See Appointment</button></a>
-
-    </div>
+<a href="seeappoint3.php"><button class="reset" onclick="seeAppointment()">See Appointment</button></a>
+</div>
+   
 <div id="myModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal()">&times;</span>
