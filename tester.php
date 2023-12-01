@@ -172,7 +172,7 @@ h2 {
   display: none;
 }
 
-
+h1{     text-align:center ;}
 
 </style>
  
@@ -189,6 +189,7 @@ h2 {
     </div>
  
       <div class="calendar-content ">
+        <div> <h1> Week 1 </h1></div>
         <div class="tab-content gallery mt-5">
        <!-- Display days of the week -->
 
@@ -303,6 +304,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       </div>
 </div>
       <div class="calendar-content" >
+      <div> <h1> Week 2 </h1></div>
       <div class="week"  id="calendar2" >
          <!-- Display days of the week -->
     <div class="day">Sunday</div>
@@ -418,6 +420,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
   
       <div class="calendar-content">
+      <div> <h1> Week 3 </h1></div>
       <div class="week"  id="calendar3">
 <!-- Display days of the week -->
 <div class="day">Sunday</div>
@@ -525,11 +528,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 }
- 
     ?>
   </div>
 </div>
       <div class="calendar-content">
+      <div> <h1> Week 4 </h1></div>
        <div class="week"  id="calendar4" >
        <!-- Display days of the week -->
     <div class="day">Sunday</div>
@@ -678,70 +681,72 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </div>
  
 <script>
-
-
- 
   const slots = document.querySelectorAll('.slot');
   const bookingForm = document.getElementById('bookingForm');
   const appointmentForm = document.getElementById('appointmentForm');
   const selectedDayInput = document.getElementById('selectedDay');
   const selectedTimeInput = document.getElementById('selectedTime');
- 
+
   slots.forEach(slot => {
     slot.addEventListener('click', function() {
       const day = this.dataset.day;
       const time = this.textContent;
- 
+
       selectedDayInput.value = day;
       selectedTimeInput.value = time;
- 
+
       bookingForm.style.display = 'block';
     });
   });
- 
+
+  // Other existing code...
+
   function bookAppointment(paymentMade) {
-    // Add this line to toggle the background class based on paymentMade
-    const selectedTimeslot = document.querySelector(`.slot[data-day='${selectedDayInput.value}'][data-time='${selectedTimeInput.value}']`);
-selectedTimeslot.classList.add(paymentMade ? 'redBackground' : 'orangeBackground');
- 
- 
-    // Store information about the appointment (modify this part as needed)
+    const selectedTimeslot = document.querySelector(`.timeslot[data-day='${selectedDayInput.value}'][data-time='${selectedTimeInput.value}']`);
+    
+    // Remove existing color classes
+    selectedTimeslot.classList.remove('redBackground', 'orangeBackground');
+    
+    // Add the new color class
+    const colorClass = paymentMade ? 'redBackground' : 'orangeBackground';
+    selectedTimeslot.classList.add(colorClass);
+
     const formData = new FormData(appointmentForm);
-    formData.append('paymentMade', paymentMade); // Add payment status to the form data
- 
-    // Send the form data to the server for processing (you may need to modify this part based on your server-side logic)
+    formData.append('paymentMade', paymentMade);
+
     fetch('process_booking.php', {
-      method: 'POST',
-      body: formData
+        method: 'POST',
+        body: formData
     })
     .then(response => response.json())
     .then(data => {
-      if (data.success) {
-        alert('Appointment booked successfully!');
-        bookingForm.style.display = 'none';
-      } else {
-        alert('Error booking appointment. Please try again.');
-      }
+        if (data.success) {
+            // Handle success, if needed
+        } else {
+            // Handle error, if needed
+        }
     });
-  }
- 
+}
+
+// Other existing code...
+
   appointmentForm.addEventListener('submit', function(event) {
     event.preventDefault();
     // Handle form submission logic for non-payment appointment
     bookAppointment(false);
   });
- 
+
   function processPayment() {
     // Get credit card details from the form
     const cardNumber = document.getElementById('cardNumber').value;
     const expiry = document.getElementById('expiry').value;
     const cvv = document.getElementById('cvv').value;
- 
+
     // Perform validation and payment processing (simulated)
     if (cardNumber && expiry && cvv) {
       // Simulate processing by displaying a message
       alert('Payment processed successfully!');
- 
+
       // Handle form submission logic for payment appointment
       bookAppointment(true);
     } else {
@@ -749,10 +754,6 @@ selectedTimeslot.classList.add(paymentMade ? 'redBackground' : 'orangeBackground
       alert('Please fill in all required fields.');
     }
   }
- 
-  // Other existing code...
-
-
   let currentCalendar = 0;
 const totalCalendars = 4;
 

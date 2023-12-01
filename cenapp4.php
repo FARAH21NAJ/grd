@@ -1,18 +1,19 @@
 <!DOCTYPE html5>
 <html>
 <head>
-<meta charset="UTF-8">
-      <title>Pure Health</title>
-      <link rel="shortcut icon" href="logo.png">
-      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-<style>
+<meta charset="utf-8">
+    <title>Al Shorouq  Center</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    
+    
+    <link rel="shortcut icon" href="cen 4.png">
+
+    <style>
 
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-
   color:#122853;
 background-image: url(front2.png);
 background-size: cover; 
@@ -22,13 +23,12 @@ margin-top:40px;
 }
 
 .calendar {
-    background-color: rgba(255,255,255,0.5);
-  max-width: 800px;
+  background-color: rgba(255,255,255,0.5);
+  max-width: 900px;
   margin: 20px auto;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 8px;
-  height: 700px;
 }
 
 h2 {
@@ -50,23 +50,66 @@ h2 {
 }
 
 .timeslots {
-
   display: flex;
   flex-direction: column;
   border: 1px solid #ccc;
-  padding: 5px;
+  padding: 5px; 
+  margin-bottom: 5px;
+
+} 
+.bookedSlot {
+    background-color: grey; /* You can use a different color for booked slots */
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin-bottom: 5px;
 }
 
+
 .slot {
-  background-color: rgb(93, 228, 88) ;
+  background-color:  rgb(93, 228, 88) ;
   border: 1px solid #ccc;
   padding: 5px;
   margin-bottom: 5px;
-
 }
 
+.submit{
+		background-color:#315bb0; 
+	
+	display:block;
+	margin:20px 0px 0px 20px;
+	text-align:center;
+	border-radius:12px;
+	border:2px solid rgb(173, 210, 244);
+	padding :14px 110px;
+	outline:none;
 
+	cursor:pointer;
+	transition:0.25px;
+  position: relative;
+  left:40%;
+	}
 
+  
+
+  .reset {
+              background-color: #315bb0;
+              display: inline-block;
+              text-align: center;
+              border-radius: 12px;
+              border: 2px solid rgb(173, 210, 244);
+              padding: 14px 110px;
+              outline: none;
+              color: white;
+              cursor: pointer;
+              transition: 0.2s;
+              margin: 0 10px; /* Adjusted margin */
+              margin-top: 20px;
+              position: relative;
+              left: 41%;
+              width:7.1cm;
+          }
+
+ 
   .orangeBackground {
     background-color: orange;
   } 
@@ -74,7 +117,8 @@ h2 {
   background-color: red;
   
 }
-  
+
+
 /* Add this CSS to your existing styles or in a separate style block */
 .modal {
   display: none;
@@ -85,11 +129,13 @@ h2 {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .modal-content {
-  background-color: #fefefe;
+  color: #122853;
+
+  background-color: rgba(255,255,255,0.8);
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
@@ -97,7 +143,6 @@ h2 {
 }
 
 .close {
-  color: #122853;
   color: #aaa;
   float: right;
   font-size: 28px;
@@ -111,36 +156,9 @@ h2 {
   cursor: pointer;
 }
 
-.button-container {
-              text-align: center;
-              margin-top: 10px;
-              position: relative;
-            bottom: 210px;
-          } 
-
-
-          .submit, .reset {
-              background-color: #315bb0;
-              display: inline-block;
-              text-align: center;
-              border-radius: 12px;
-              border: 2px solid rgb(173, 210, 244);
-              padding: 14px 110px;
-              outline: none;
-              color: white;
-              cursor: pointer;
-              transition: 0.2s;
-              margin: 0 10px; /* Adjusted margin */
-              margin-top: 230px;
-
-
-          }
-          .submit {
-              width: 8.4cm;
-          }
-
-
 </style>
+
+
 
 
 
@@ -150,7 +168,8 @@ h2 {
 <body>
 
 <div class="calendar">
-  <h2>  <img src="cen 4.png" height="5%" width="5%">  Available Appointments</h2>
+  <h2>  <img src="cen1.png" height="5%" width="5%">  Available Appointments</h2>
+
   
   <div class="week">
     <!-- Display days of the week -->
@@ -164,36 +183,84 @@ h2 {
 
     <!-- Loop through time slots for each day -->
     <?php
-      // Example of available appointments (replace this with your PHP logic)
-      $availableAppointments = [
-        ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM","2:00 PM", "3:00 PM","4:00 PM","5:00 PM","6:00 PM","7:00 PM","8:00 PM"], 
-        ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM","2:00 PM", "3:00 PM","4:00 PM","5:00 PM","6:00 PM","7:00 PM","8:00 PM"], 
-        ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM","2:00 PM", "3:00 PM","4:00 PM","5:00 PM","6:00 PM","7:00 PM","8:00 PM"], 
-        ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM","2:00 PM", "3:00 PM","4:00 PM","5:00 PM","6:00 PM","7:00 PM","8:00 PM"], 
-        ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM","2:00 PM", "3:00 PM","4:00 PM","5:00 PM","6:00 PM","7:00 PM","8:00 PM"], 
-        ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM","2:00 PM", "3:00 PM","4:00 PM","5:00 PM","6:00 PM","7:00 PM","8:00 PM"], 
-        ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM","2:00 PM", "3:00 PM","4:00 PM","5:00 PM","6:00 PM","7:00 PM","8:00 PM"], 
+// Example of available appointments (replace this with your PHP logic)
+$availableAppointments = [
+    ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM","2:00 PM", "3:00 PM","4:00 PM","5:00 PM","6:00 PM","7:00 PM","8:00 PM"], 
+    ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM","2:00 PM", "3:00 PM","4:00 PM","5:00 PM","6:00 PM","7:00 PM","8:00 PM"], 
+    ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM","2:00 PM", "3:00 PM","4:00 PM","5:00 PM","6:00 PM","7:00 PM","8:00 PM"], 
+    ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM","2:00 PM", "3:00 PM","4:00 PM","5:00 PM","6:00 PM","7:00 PM","8:00 PM"], 
+    ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM","2:00 PM", "3:00 PM","4:00 PM","5:00 PM","6:00 PM","7:00 PM","8:00 PM"], 
+    ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM","2:00 PM", "3:00 PM","4:00 PM","5:00 PM","6:00 PM","7:00 PM","8:00 PM"], 
+    ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM","2:00 PM", "3:00 PM","4:00 PM","5:00 PM","6:00 PM","7:00 PM","8:00 PM"], 
+];
 
 
 
-      ];
+// Establish a database connection (modify with your database credentials)
+$db1 = mysqli_connect("localhost", "root", "12345678");
 
-      // Loop through each day of the week
-      for ($i = 0; $i < 7; $i++) {
-        echo "<div class='timeslots' id='timeslots_$i'>";
-        
-        // Display available time slots for each day
-        foreach ($availableAppointments[$i] as $timeSlot) {
-          echo "<div class='slot' data-day='$i' data-time='$timeSlot'>$timeSlot</div>";
-        }
+if (!$db1) {
+    die("Connection failed: " . mysqli_connect_error());
+}
 
-        echo "</div>";
+mysqli_select_db($db1, "purehelth");
+
+// Function to check if a slot is booked
+function checkIfSlotBooked($day, $timeSlot) {
+    global $db1;
+    $sql = "SELECT * FROM app_book4 WHERE day = $day AND time_slot = '$timeSlot'";
+    $result = mysqli_query($db1, $sql);
+    return mysqli_num_rows($result) > 0;
+}
+
+// Function to get the color of a slot
+function getSlotColor($day, $timeSlot) {
+    global $db1;
+    $sql = "SELECT color FROM app_book4 WHERE day = $day AND time_slot = '$timeSlot'";
+    $result = mysqli_query($db1, $sql);
+    $row = mysqli_fetch_assoc($result);
+    return isset($row['color']) ? $row['color'] : 'orange'; // Default to orange if color is not set
+}
+
+
+
+
+// Loop through each day of the week
+for ($i = 0; $i < 7; $i++) {
+  echo "<div class='timeslots' id='timeslots_$i'>";
+
+  // Display available time slots for each day with an index
+  foreach ($availableAppointments[$i] as $index => $timeSlot) {
+      $isBooked = checkIfSlotBooked($i, $timeSlot);
+      $color = getSlotColor($i, $timeSlot);
+      $class = $isBooked ? $color : 'slot';
+
+      // Add the class 'orangeBackground' or 'redBackground' based on the booking status
+      if ($isBooked) {
+          $class .= ($color == 'orange') ? ' orangeBackground' : ' redBackground';
       }
-    ?>
+
+      echo "<div class='timeslot $class' data-day='$i' data-index='$index' data-time='$timeSlot'>$timeSlot</div>";
+  }
+
+  echo "</div>";
+}
+
+
+// Close the database connection
+mysqli_close($db1);
+
+
+
+
+?>
+
+
+
   </div>
   <div id="bookingForm" style="display: none;">
     <h3>Book an Appointment</h3>
-    <form action="process_booking.php" method="post" id="appointmentForm">
+    <form action="seeapoint1.php" method="post" id="appointmentForm">
       <input type="hidden" id="selectedDay" name="selectedDay">
       <input type="hidden" id="selectedTime" name="selectedTime">
       <label for="patientName">Your Name:</label>
@@ -201,11 +268,13 @@ h2 {
       <input type="submit" value="Book Appointment">
     </form>
   </div>
-  <div  class="button-container">
- <a href=#> <button class="submit"  onclick="openModal()"> To pay </button> </a>
-<a href="seeappoint4.php"><button class="reset" onclick="seeAppointment()">See Appointment</button></a>
+</div>
+<div>
+
+
+<button class="submit"  onclick="openModal()"> To Pay </button> 
+<a href="appointment.html"><button class="reset" onclick="seeAppointment()">Back</button></a>
     </div>
-    
 <div id="myModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal()">&times;</span>
@@ -224,10 +293,6 @@ h2 {
     </form>
   
 </div>
-
-
-
-
 
 <script>
   const slots = document.querySelectorAll('.slot');
@@ -248,51 +313,70 @@ h2 {
     });
   });
 
+  // Other existing code...
+
+  function bookAppointment(paymentMade) {
+    const selectedTimeslot = document.querySelector(`.timeslot[data-day='${selectedDayInput.value}'][data-time='${selectedTimeInput.value}']`);
+    
+    // Remove existing color classes
+    selectedTimeslot.classList.remove('redBackground', 'orangeBackground');
+    
+    // Add the new color class
+    const colorClass = paymentMade ? 'redBackground' : 'orangeBackground';
+    selectedTimeslot.classList.add(colorClass);
+
+    const formData = new FormData(appointmentForm);
+    formData.append('paymentMade', paymentMade);
+
+    fetch('process_booking4.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Handle success, if needed
+        } else {
+            // Handle error, if needed
+        }
+    });
+}
+
+// Other existing code...
+
   appointmentForm.addEventListener('submit', function(event) {
     event.preventDefault();
-    // Handle form submission logic
+    // Handle form submission logic for non-payment appointment
+    bookAppointment(false);
+  });
 
-    // Add this line to toggle the red background class when booking an appointment
-    const selectedTimeslot = document.querySelector(`.slot[data-day='${selectedDayInput.value}'][data-time='${selectedTimeInput.value}']`);
-    selectedTimeslot.classList.add('orangeBackground');
-
-    
-    alert('Appointment booked successfully!');
-    bookingForm.style.display = 'none';
-  }); 
   function processPayment() {
-  // Get credit card details from the form
-  const cardNumber = document.getElementById('cardNumber').value;
-  const expiry = document.getElementById('expiry').value;
-  const cvv = document.getElementById('cvv').value;
+    // Get credit card details from the form
+    const cardNumber = document.getElementById('cardNumber').value;
+    const expiry = document.getElementById('expiry').value;
+    const cvv = document.getElementById('cvv').value;
 
-  // Perform validation and payment processing (simulated)
-  if (cardNumber && expiry && cvv) {
-    // Simulate processing by displaying a message
-    alert('Payment processed successfully!');
+    // Perform validation and payment processing (simulated)
+    if (cardNumber && expiry && cvv) {
+      // Simulate processing by displaying a message
+      alert('Payment processed successfully!');
 
-    // Add the redBackground class to the selected appointment slot after the modal is closed
-    closeModal();
-
-    // Check if the modal is fully closed before adding the class
-    const checkModalClosed = setInterval(function () {
-      if (document.getElementById('myModal').style.display === 'none') {
-        clearInterval(checkModalClosed);
-
-        const selectedTimeslot = document.querySelector(`.slot[data-day='${selectedDayInput.value}'][data-time='${selectedTimeInput.value}']`);
-        selectedTimeslot.classList.add('redBackground');
-      }
-    }, 100); // Check every 100 milliseconds if the modal is closed
-  } else {
-    // Handle errors or incomplete form data
-    alert('Please fill in all required fields.');
+      // Handle form submission logic for payment appointment
+      bookAppointment(true);
+    } else {
+      // Handle errors or incomplete form data
+      alert('Please fill in all required fields.');
+    }
   }
-}
+
+  // Other existing code...
+</script>
+
 
 
   
-</script>
-<script src="credit.js"></script>
 
+
+<script src="credit.js"></script>
 </body>
 </html>

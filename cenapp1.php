@@ -76,13 +76,34 @@ h2 {
 	border:2px solid rgb(173, 210, 244);
 	padding :14px 110px;
 	outline:none;
-	color: #122853;
+
 	cursor:pointer;
 	transition:0.25px;
   position: relative;
   left:40%;
 	}
 
+  
+
+  .reset {
+              background-color: #315bb0;
+              display: inline-block;
+              text-align: center;
+              border-radius: 12px;
+              border: 2px solid rgb(173, 210, 244);
+              padding: 14px 110px;
+              outline: none;
+              color: white;
+              cursor: pointer;
+              transition: 0.2s;
+              margin: 0 10px; /* Adjusted margin */
+              margin-top: 20px;
+              position: relative;
+              left: 41%;
+              width:7.1cm;
+          }
+
+ 
   .orangeBackground {
     background-color: orange;
   } 
@@ -195,6 +216,9 @@ function getSlotColor($day, $timeSlot) {
     return isset($row['color']) ? $row['color'] : 'orange'; // Default to orange if color is not set
 }
 
+
+
+
 // Loop through each day of the week
 for ($i = 0; $i < 7; $i++) {
   echo "<div class='timeslots' id='timeslots_$i'>";
@@ -243,7 +267,7 @@ mysqli_close($db1);
 
 
 <button class="submit"  onclick="openModal()"> To Pay </button> 
-<a href="seeappoint1.php"><button class="submit seeAppointment" onclick="seeAppointment()">See Appointment</button></a>
+<a href="appointment.html"><button class="reset" onclick="seeAppointment()">Back</button></a>
     </div>
 <div id="myModal" class="modal">
   <div class="modal-content">

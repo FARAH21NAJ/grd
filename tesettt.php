@@ -2,13 +2,15 @@
 <html>
 <head>
 <meta charset="utf-8">
-    <title>Tlaa AlAli Center</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title>    physiocare  Center</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
    
    
-    <link rel="shortcut icon" href="cen3.png">
+   
+    <link rel="shortcut icon" href="cen1.png">
 
-    <style>
+<style>
 
 body {
   font-family: Arial, sans-serif;
@@ -82,7 +84,7 @@ h2 {
 	border:2px solid rgb(173, 210, 244);
 	padding :14px 110px;
 	outline:none;
-
+  color: white;
 	cursor:pointer;
 	transition:0.25px;
   position: relative;
@@ -156,15 +158,18 @@ h2 {
   cursor: pointer;
 }
 
+/* Style for disabled past days */
+.pastDay {
+  background-color: #ccc; /* Change to your preferred style for past days */
+  color: #888; /* Change to your preferred text color for past days */
+  pointer-events: none; /* Disable click events */
+}
+
 </style>
-
-
-
-
-
-
-
 </head>
+
+
+
 <body>
 
 <div class="calendar">
@@ -190,7 +195,7 @@ $availableAppointments = [
     ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM","2:00 PM", "3:00 PM","4:00 PM","5:00 PM","6:00 PM","7:00 PM","8:00 PM"], 
     ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM","2:00 PM", "3:00 PM","4:00 PM","5:00 PM","6:00 PM","7:00 PM","8:00 PM"], 
     ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM","2:00 PM", "3:00 PM","4:00 PM","5:00 PM","6:00 PM","7:00 PM","8:00 PM"], 
-    ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM","2:00 PM", "3:00 PM","4:00 PM","5:00 PM","6:00 PM","7:00 PM","8:00 PM"], 
+    ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM","2:00 PM", "3:00 PM","4:00 PM","5:00 PM","6:00 PM","7:00 PM","8:00 PM","9:00 PM", "10:00 PM", "11:00 PM", "12:00 AM"], 
     ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM","2:00 PM", "3:00 PM","4:00 PM","5:00 PM","6:00 PM","7:00 PM","8:00 PM"], 
 ];
 
@@ -208,7 +213,7 @@ mysqli_select_db($db1, "purehelth");
 // Function to check if a slot is booked
 function checkIfSlotBooked($day, $timeSlot) {
     global $db1;
-    $sql = "SELECT * FROM app_book3 WHERE day = $day AND time_slot = '$timeSlot'";
+    $sql = "SELECT * FROM app_book1 WHERE day = $day AND time_slot = '$timeSlot'";
     $result = mysqli_query($db1, $sql);
     return mysqli_num_rows($result) > 0;
 }
@@ -216,7 +221,7 @@ function checkIfSlotBooked($day, $timeSlot) {
 // Function to get the color of a slot
 function getSlotColor($day, $timeSlot) {
     global $db1;
-    $sql = "SELECT color FROM app_book3 WHERE day = $day AND time_slot = '$timeSlot'";
+    $sql = "SELECT color FROM app_book1 WHERE day = $day AND time_slot = '$timeSlot'";
     $result = mysqli_query($db1, $sql);
     $row = mysqli_fetch_assoc($result);
     return isset($row['color']) ? $row['color'] : 'orange'; // Default to orange if color is not set
@@ -224,40 +229,64 @@ function getSlotColor($day, $timeSlot) {
 
 
 
+// ...
+
+// Set the timezone to Jordan (Amman)
+date_default_timezone_set('Asia/Amman');
+
+// Rest of your PHP code...
+
+
+$currentDay = date('w'); // Current day of the week (0 for Sunday, 1 for Monday, etc.)
+$currentHour = date('H'); // Current hour in 24-hour format
 
 // Loop through each day of the week
 for ($i = 0; $i < 7; $i++) {
-  echo "<div class='timeslots' id='timeslots_$i'>";
+    echo "<div class='timeslots' id='timeslots_$i'>";
 
-  // Display available time slots for each day with an index
-  foreach ($availableAppointments[$i] as $index => $timeSlot) {
-      $isBooked = checkIfSlotBooked($i, $timeSlot);
-      $color = getSlotColor($i, $timeSlot);
-      $class = $isBooked ? $color : 'slot';
+    // Display available time slots for each day with an index
+    foreach ($availableAppointments[$i] as $index => $timeSlot) {
+        $isBooked = checkIfSlotBooked($i, $timeSlot);
+        $color = getSlotColor($i, $timeSlot);
+        $class = $isBooked ? $color : 'slot';
 
-      // Add the class 'orangeBackground' or 'redBackground' based on the booking status
-      if ($isBooked) {
-          $class .= ($color == 'orange') ? ' orangeBackground' : ' redBackground';
-      }
+        // Check if the current day is in the past or if it's the current day but past time
+        if ($i < $currentDay || ($i == $currentDay && (int) substr($timeSlot, 0, 2) < $currentHour)) {
+            echo "<div class='timeslot pastDay' data-day='$i' data-index='$index' data-time='$timeSlot' disabled>$timeSlot</div>";
+        } else {
+            // Add the class 'orangeBackground' or 'redBackground' based on the booking status
+            if ($isBooked) {
+                $class .= ($color == 'orange') ? ' orangeBackground' : ' redBackground';
+            }
+            echo "<div class='timeslot $class' data-day='$i' data-index='$index' data-time='$timeSlot'>$timeSlot</div>";
+        }
+    }
 
-      echo "<div class='timeslot $class' data-day='$i' data-index='$index' data-time='$timeSlot'>$timeSlot</div>";
-  }
-
-  echo "</div>";
+    echo "</div>";
 }
 
 
-// Close the database connection
+// ...
+
+
 mysqli_close($db1);
+?></div>
 
 
 
 
-?>
 
 
 
-  </div>
+
+
+
+
+
+
+
+
+
   <div id="bookingForm" style="display: none;">
     <h3>Book an Appointment</h3>
     <form action="seeapoint1.php" method="post" id="appointmentForm">
@@ -328,7 +357,7 @@ mysqli_close($db1);
     const formData = new FormData(appointmentForm);
     formData.append('paymentMade', paymentMade);
 
-    fetch('process_booking3.php', {
+    fetch('process_booking.php', {
         method: 'POST',
         body: formData
     })
