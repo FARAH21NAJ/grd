@@ -1,13 +1,12 @@
 <!DOCTYPE html5>
 <html>
 <head>
-
+<meta charset="UTF-8">
+      <title>Pure Health</title>
+      <link rel="shortcut icon" href="logo.png">
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 <style>
-
- 
-
-
-
 
 body {
   font-family: Arial, sans-serif;

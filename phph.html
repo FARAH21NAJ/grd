@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Monthly Calendar</title>
+  <style>
+    /* Your styles for calendar layout */
+.calendar {
+  text-align: center;
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.navigation button {
+  font-size: 18px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.month-view {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  margin-top: 20px;
+}
+
+.day {
+  font-weight: bold;
+  border: 1px solid #ccc;
+  padding: 5px;
+  background-color: #f0f0f0;
+}
+
+/* Add more styles as needed */
+
+    </style>
+</head>
+
+<body>
+  <div class="calendar">
+    <h2 id="currentMonth"></h2>
+    <div class="navigation">
+      <button onclick="previousMonth()">&lt;</button>
+      <button onclick="nextMonth()">&gt;</button>
+    </div>
+    <div class="month-view" id="monthView">
+      <!-- Calendar content will be generated here -->
+    </div>
+  </div>
+  <script>
+
+
+const months = [
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
+
+let currentMonth = new Date().getMonth();
+let currentYear = new Date().getFullYear();
+
+function displayCalendar() {
+  const calendarTitle = document.getElementById('currentMonth');
+  calendarTitle.textContent = `${months[currentMonth]} ${currentYear}`;
+
+  const monthView = document.getElementById('monthView');
+  monthView.innerHTML = ''; // Clear previous content
+
+  const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+  const startingDay = new Date(currentYear, currentMonth, 1).getDay();
+
+  for (let i = 0; i < startingDay; i++) {
+    const emptyDay = document.createElement('div');
+    emptyDay.classList.add('day');
+    monthView.appendChild(emptyDay);
+  }
+
+  for (let i = 1; i <= daysInMonth; i++) {
+    const day = document.createElement('div');
+    day.textContent = i;
+    day.classList.add('day');
+    monthView.appendChild(day);
+  }
+}
+
+function previousMonth() {
+  currentMonth -= 1;
+  if (currentMonth < 0) {
+    currentMonth = 11;
+    currentYear -= 1;
+  }
+  displayCalendar();
+}
+
+function nextMonth() {
+  currentMonth += 1;
+  if (currentMonth > 11) {
+    currentMonth = 0;
+    currentYear += 1;
+  }
+  displayCalendar();
+}
+
+displayCalendar(); // Display the calendar initially
+
+
+
+
+  </script>
+
+  <script src="calendar.js"></script>
+</body>
+</html>
