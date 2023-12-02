@@ -28,7 +28,7 @@ margin-top:40px;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 8px;
-  height: 700px;
+  height: 900px;
 }
  
 h2 {
@@ -172,8 +172,10 @@ h2 {
   display: none;
 }
 
-h1{     text-align:center ;}
 
+/*
+h1{text-align:center ;}
+*/
 </style>
  
 </head>
@@ -187,14 +189,16 @@ h1{     text-align:center ;}
       <button onclick="previousCalendar()"><i class="fa-solid fa-backward"></i></button>
       <button onclick="nextCalendar()"><i class="fa-sharp fa-solid fa-forward"></i></button>
     </div>
- 
+  
       <div class="calendar-content ">
-        <div> <h1> Week 1 </h1></div>
+      
         <div class="tab-content gallery mt-5">
        <!-- Display days of the week -->
-
+       <div  style="  position: relative;
+            bottom: 20px;"> <h4 ><span style="margin-right: 30px;"></span>3/DEC<span style="margin-right: 90px;"></span>4/DEC<span style="margin-right: 75px;"></span>5/DEC<span style="margin-right: 78px;"></span>6/DEC<span style="margin-right: 83px;"></span>7/DEC<span style="margin-right: 80px;"></span>8/DEC<span style="margin-right: 80px;"></span>9/DEC  </h4>
+    </div>
        <div class="week"   id="calendar1" style="position: relative;
-            bottom: 48px;">
+            bottom:26.5px;">
     <div class="day">Sunday</div>
     <div class="day">Monday</div>
     <div class="day">Tuesday</div>
@@ -302,9 +306,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     ?>
         </div>
       </div>
-</div>
+</div><div id="bookingForm" style="display: none;">
+    <h3>Book an Appointment</h3>
+    <form action="seeapoint1.php" method="post" id="appointmentForm">
+      <input type="hidden" id="selectedDay" name="selectedDay">
+      <input type="hidden" id="selectedTime" name="selectedTime">
+      <label for="patientName">Your Name:</label>
+      <input type="text" id="patientName" name="patientName" required>
+      <input type="submit" value="Book Appointment">
+    </form>
+  </div>
       <div class="calendar-content" >
-      <div> <h1> Week 2 </h1></div>
+      <div  style="  position: relative;
+            top: 7px;"> <h4 ><span style="margin-right: 20px;"></span>10/DEC<span style="margin-right: 90px;"></span>11/DEC<span style="margin-right: 75px;"></span>12/DEC<span style="margin-right: 68px;"></span>13/DEC<span style="margin-right: 63px;"></span>14/DEC<span style="margin-right: 80px;"></span>15/DEC<span style="margin-right: 80px;"></span>16/DEC  </h4>
+    </div>
       <div class="week"  id="calendar2" >
          <!-- Display days of the week -->
     <div class="day">Sunday</div>
@@ -418,9 +433,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     ?>
 </div>
         </div>
-  
+        <div id="bookingForm" style="display: none;">
+    <h3>Book an Appointment</h3>
+    <form action="seeapoint1.php" method="post" id="appointmentForm">
+      <input type="hidden" id="selectedDay" name="selectedDay">
+      <input type="hidden" id="selectedTime" name="selectedTime">
+      <label for="patientName">Your Name:</label>
+      <input type="text" id="patientName" name="patientName" required>
+      <input type="submit" value="Book Appointment">
+    </form>
+  </div>
+
+
+
       <div class="calendar-content">
-      <div> <h1> Week 3 </h1></div>
+      <div  style="  position: relative;
+            top: 7px;"> <h4 ><span style="margin-right: 20px;"></span>17/DEC<span style="margin-right: 90px;"></span>18/DEC<span style="margin-right: 75px;"></span>19/DEC<span style="margin-right: 68px;"></span>20/DEC<span style="margin-right: 63px;"></span>21/DEC<span style="margin-right: 80px;"></span>22/DEC<span style="margin-right: 80px;"></span>23/DEC  </h4></div>
       <div class="week"  id="calendar3">
 <!-- Display days of the week -->
 <div class="day">Sunday</div>
@@ -531,8 +559,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     ?>
   </div>
 </div>
+<div id="bookingForm" style="display: none;">
+    <h3>Book an Appointment</h3>
+    <form action="seeapoint1.php" method="post" id="appointmentForm">
+      <input type="hidden" id="selectedDay" name="selectedDay">
+      <input type="hidden" id="selectedTime" name="selectedTime">
+      <label for="patientName">Your Name:</label>
+      <input type="text" id="patientName" name="patientName" required>
+      <input type="submit" value="Book Appointment">
+    </form>
+  </div>
+
+
+
       <div class="calendar-content">
-      <div> <h1> Week 4 </h1></div>
+      <div  style="  position: relative;
+            top: 7px;"> <h4 ><span style="margin-right: 20px;"></span>24/DEC<span style="margin-right: 90px;"></span>25/DEC<span style="margin-right: 75px;"></span>26/DEC<span style="margin-right: 68px;"></span>27/DEC<span style="margin-right: 63px;"></span>28/DEC<span style="margin-right: 80px;"></span>29/DEC<span style="margin-right: 80px;"></span>30/DEC  </h4>
+    </div>
        <div class="week"  id="calendar4" >
        <!-- Display days of the week -->
     <div class="day">Sunday</div>
@@ -654,6 +697,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <input type="submit" value="Book Appointment">
     </form>
   </div>
+
+
 
 <div  class="button-container">
 <a href="#"> <button class="submit"  onclick="openModal()"> To Pay </button></a>
