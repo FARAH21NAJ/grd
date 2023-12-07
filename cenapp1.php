@@ -355,6 +355,9 @@ mysqli_close($db1);
       // Simulate processing by displaying a message
       alert('Payment processed successfully!');
 
+
+
+
       // Handle form submission logic for payment appointment
       bookAppointment(true);
     } else {

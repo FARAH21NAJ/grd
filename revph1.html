@@ -1,0 +1,282 @@
+
+<!DOCTYPE html>
+<title>Pure Health</title>
+  <link rel="shortcut icon" href="logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Physical Therapy Skills</title>
+  <style>
+    body {
+       background-color: #dadbdf;
+       font-family: Arial, sans-serif;
+       margin: 0;
+       padding: 0;
+        color: #122853;
+        
+    background-image: url(front2.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    }
+     
+
+.rating-form {
+   width: 80%;
+ margin: 50px auto;
+ padding: 20px;
+ background-color: #fff;
+ border-radius: 8px;
+ box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.stars input[type="radio"] {
+ display: none;
+}
+
+.stars label {
+ font-size: 30px;
+ cursor: pointer;
+}
+
+.stars label:before {
+ content: '★';
+ color: #ddd;
+}
+
+.stars input[type="radio"]:checked ~ label:before {
+ color: #ffcc00;
+}
+
+     .container {
+       width: 80%;
+       margin: 0 auto;
+       padding: 20px;
+       background-color: #fff;
+       border-radius: 5px;
+       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+     }
+     
+     label {
+       font-weight: bold;
+     }
+     
+     input[type="text"] {
+       width: 100%;
+       padding: 8px;
+       margin-bottom: 10px;
+       border-radius: 5px;
+       border: 1px solid #ccc;
+     }
+     
+     input[type="submit"] {
+       padding: 10px 20px;
+       background-color: #007bff;
+       color: #fff;
+       border: none;
+       border-radius: 5px;
+       cursor: pointer;
+     }
+     
+     input[type="submit"]:hover {
+       background-color: #0056b3;
+     }
+     
+     #patientName {
+ width: 30%;
+ padding: 8px;
+ margin-bottom: 10px;
+ border-radius: 5px;
+ border: 1px solid #ccc;
+ /* Add more styling properties as needed */
+}
+
+input[type="range"] {
+ width: 60%; /* Adjust the width as needed */
+ height: 20px; /* Adjust the height as needed */
+ /* Add more styling properties as desired */
+}
+
+.sub{
+   padding: 10px 20px;
+       background-color: #007bff;
+       color: #fff;
+       border: none;
+       border-radius: 5px;
+       cursor: pointer;
+
+
+
+
+
+
+
+}
+
+   </style>
+</head>
+
+<body>
+
+
+  <div > <h1 style="text-align: center; font-size: 33px;">  <i class="fa-solid fa-star"></i> Pure Health Reviews  </h1></div>
+    
+  <div class="rating-form">
+    <h1><img class="m" src="cen2.png" height="7%" width="7%"> Review Physiotherapist Mazaya Physiotherapy  </h1> 
+    <form id="ratingForm" method="post" action="submit_rating1.php">
+        <label for="patientName">Patient Name:</label>
+        <input type="text" id="patientName" name="patientName"><br><br>
+
+      <label for="rating">Rate the center:</label>
+      <div class="stars">
+        <input type="radio" id="star5" name="rating" value="5"><label for="star5"></label>
+        <input type="radio" id="star4" name="rating" value="4"><label for="star4"></label>
+        <input type="radio" id="star3" name="rating" value="3"><label for="star3"></label>
+        <input type="radio" id="star2" name="rating" value="2"><label for="star2"></label>
+        <input type="radio" id="star1" name="rating" value="1"><label for="star1"></label>
+      </div>
+      <button type="submit" class="sub">Submit Rating</button>
+    </form>
+  </div>
+
+  
+  <div class="container">
+    <h1><img class="m" src="ali.png" height="7%" width="7%"> Review Ali LafiPhysical Therapy Skills </h1>
+    <form id="skillsForm" action="process.php" method="post">
+
+        <label for="patientName">Patient Name:</label>
+        <input type="text" id="patientName" name="patientName"><br><br>
+
+        <label for="patientCare">Patient Care:</label>
+        <input type="range" id="patientCare" name="patientCare" min="1" max="100" value="30"><span id="patientCareValue">30</span><br><br>
+
+        <!-- Other skills rating fields (Rehabilitation, Exercise, Mobility, Communication, Documentation) -->
+
+        <label for="rehabilitation">Rehabilitation:</label>
+        <input type="range" id="rehabilitation" name="rehabilitation" min="1" max="100" value="40"><span id="rehabilitationValue">40</span><br><br>
+
+        <!-- Include fields for other skills -->
+
+        <label for="exercise">Exercise: </label>
+        <input type="range" id="exercise" name="exercise" min="1" max="100" value="50"><span id="exerciseValue">50</span><br><br>
+
+        <label for="mobility">Mobility:</label>
+        <input type="range" id="mobility" name="mobility" min="1" max="100" value="60"><span id="mobilityValue">60</span><br><br>
+
+        <label for="communication">Communication: </label>
+        <input type="range" id="communication" name="communication" min="1" max="100" value="70"><span id="communicationValue">70</span><br><br>
+
+        <label for="documentation">Documentation:</label>
+        <input type="range" id="documentation" name="documentation" min="1" max="100" value="80"><span id="documentationValue">80</span><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+
+
+
+
+  <script>
+
+// Get all range input elements
+const rangeInputs = document.querySelectorAll('input[type="range"]');
+
+// Function to update the tooltip value
+function updateTooltip(input) {
+    const tooltip = document.getElementById(input.id + 'Value');
+    tooltip.textContent = input.value + '%'; // Append '%' to the value
+}
+
+// Add event listeners to all range inputs
+rangeInputs.forEach(input => {
+    // Initialize tooltip value
+    updateTooltip(input);
+
+    // Update tooltip value when range input changes
+    input.addEventListener('input', function() {
+        updateTooltip(this);
+    });
+});
+
+
+  // Retrieve other skill ratings similarly
+// JavaScript to handle form submission response
+document.getElementById("skillsForm").addEventListener("submit", function(event) {
+      event.preventDefault(); // Prevent form submission
+
+      // Fetch form data
+      const formData = new FormData(this);
+
+      // Send form data via AJAX
+      fetch('process1.php', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.text())
+      .then(data => {
+        alert(data); // Display response as an alert
+        document.getElementById("skillsForm").reset();
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+    });
+
+
+
+    // script.js
+    document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('ratingForm');
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevents the form from submitting by default
+
+    const ratingInputs = document.querySelectorAll('input[name="rating"]');
+    let selectedRating = false;
+
+    // Check if a rating is selected
+    for (const ratingInput of ratingInputs) {
+      if (ratingInput.checked) {
+        selectedRating = true;
+        break;
+      }
+    }
+
+    if (!selectedRating) {
+      alert('Please select a rating before submitting.');
+    } else {
+      // If a rating is selected, submit the form using fetch API
+      fetch('submit_rating1.php', {
+        method: 'POST',
+        body: new FormData(this)
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.status === 'success') {
+          alert(data.message); // Display success message as an alert
+          form.reset(); // Reset the form after success
+        } else {
+          alert(data.message); // Display error message as an alert
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred while submitting the rating.');
+      });
+    }
+  });
+});
+
+
+
+
+
+
+
+
+  </script>
+  
+</body>
+</html>
