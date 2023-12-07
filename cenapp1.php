@@ -257,8 +257,9 @@ mysqli_close($db1);
     <form action="seeapoint1.php" method="post" id="appointmentForm">
       <input type="hidden" id="selectedDay" name="selectedDay">
       <input type="hidden" id="selectedTime" name="selectedTime">
-      <label for="patientName">Your Name:</label>
-      <input type="text" id="patientName" name="patientName" required>
+      <label for="patientName">Full Name (First and Last):</label>
+      <input type="text" id="patientName" name="patientName" pattern="[A-Z][a-zA-Z]*\s[A-Z][a-zA-Z]*" 
+         title="Please enter both names starting with a capital letter" required autocomplet="off" >
       <input type="submit" value="Book Appointment">
     </form>
   </div>
@@ -354,7 +355,7 @@ mysqli_close($db1);
     if (cardNumber && expiry && cvv) {
       // Simulate processing by displaying a message
       alert('Payment processed successfully!');
-
+    
 
 
 
@@ -366,6 +367,8 @@ mysqli_close($db1);
     }
   }
 
+  
+ 
   // Other existing code...
 </script>
 

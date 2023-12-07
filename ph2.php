@@ -110,9 +110,14 @@ body{
 }
 
 
-p{font-size:30px ;text-align:center ;margin-left:550px ; margin-right:540px;
-	position:relative;left:380px ; padding-bottom:10px; padding-top:10px ;
+p{font-size:40px ;text-align:center ;margin-left:550px ; margin-right:540px;
+	position:relative;left:-10px ; padding-bottom:10px; padding-top:10px ;
+   width:500px;
     color:#122853;
+    background-color: rgba(255,255,255,0.8);
+border-radius:50px;
+
+margin-bottom:20px;
     ;}
 
 
@@ -130,21 +135,19 @@ p{font-size:30px ;text-align:center ;margin-left:550px ; margin-right:540px;
               margin: 0 10px; /* Adjusted margin */
               margin-top: 20px;
               position: relative;
-              left: 65%;
+              left: 40%;
           }
 
 
-  
-
     table{
         border-collapse: collapse;
-
         background-color: rgba(255,255,255,0.8);
-	width:500px;
-
+	width:800px;
    height: 500px;
-
    position: relative; bottom: 10px;
+   right:55%;
+
+   
 
     }
     th,td{
@@ -160,19 +163,12 @@ td{
 </style>
 </head>
 <body >
- 
-
-    
-        
-        <nav class="navigation">
+   <nav class="navigation">
                 <label for="menu-btn" class="menu-icon">
                 <span class="nav-icon"></span>
             </label>
            
             <a href="" class="logo"><span>pure</span>health</a><img src="logo.png" alt="" width="80" height="80">
-            
-            
-     
     <ul class="menu">
         <li><a href="log.html"; style="font-weight: bolder;">Home  </a></li>
         <li><a href="log.html";>Find center </a></li>
@@ -183,14 +179,7 @@ td{
 
 
     </nav>
-
-
-
-
-
-
-<?php
-
+    <?php
 // Replace these variables with your actual database credentials
 $host = 'localhost';
 $dbname = 'purehelth';
@@ -202,7 +191,7 @@ try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
 
     // Prepare SQL query
-    $stmt = $pdo->prepare("SELECT patient_name, day, time_slot FROM app_book2");
+    $stmt = $pdo->prepare("SELECT patient_name, day, time_slot, payment_status FROM app_book2");
 
     // Execute the query
     $stmt->execute();
@@ -210,16 +199,31 @@ try {
     // Fetch the results as an associative array
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+    // Define an array for day names
+    $daysOfWeek = [
+        0 => 'Sunday',
+        1 => 'Monday',
+        2 => 'Tuesday',
+        3 => 'Wednesday',
+        4 => 'Thursday',
+        5 => 'Friday',
+        6 => 'Saturday'
+    ];
+
     // Display results in a table
     if (count($results) > 0) {
-        echo" <p>Your Appointment </p>";
-        echo "<table border='1' >";
-        echo "<tr><th>Patient Name</th><th>Day</th><th>Time Slot</th></tr>";
+        echo "<p> <i class='fa-solid fa-calendar-check'></i> Your Appointments</p>";
+        echo "<table border='1'>";
+        echo "<tr><th> <i class='fa-solid fa-person'></i> Patient Name</th><th> <i class='fa-regular fa-calendar'></i> Day</th><th> <i class='fa-regular fa-clock'></i>Time Slot</th><th> <i class='fa-regular fa-credit-card'></i> Payment Status</th></tr>";
         foreach ($results as $row) {
+            $day = $row['day'];
+            $dayName = isset($daysOfWeek[$day]) ? $daysOfWeek[$day] : 'Unknown';
+            $paymentStatus = $row['payment_status'] == 1 ? ' The payment was made <i class="fa-solid fa-check"></i>' : 'The payment wasn\'t made <i class="fa-solid fa-xmark"></i>';
             echo "<tr>";
             echo "<td>" . $row['patient_name'] . "</td>";
-            echo "<td>" . $row['day'] . "</td>";
+            echo "<td>" . $dayName . "</td>";
             echo "<td>" . $row['time_slot'] . "</td>";
+            echo "<td>" . $paymentStatus . "</td>";
             echo "</tr>";
         }
         echo "</table>";
@@ -230,6 +234,8 @@ try {
     die("Error: " . $e->getMessage());
 }
 ?>
+
+
 
 <a href="ph1.html"> <button class="reset"> Back </button></a>
 
