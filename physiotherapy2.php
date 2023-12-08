@@ -52,7 +52,7 @@
         <nav class="navbar navbar-expand-lg fixed-top navbar-transparent bg-primary" color-on-scroll="400">
           <div class="container">
            
-            <div class="navbar-translate"><a class="navbar-brand" href="#" rel="tooltip"> <img class="m" src="cen 4.png" height="10%" width="10%">  Al Shorouq Center </a>
+            <div class="navbar-translate"><a class="navbar-brand" href="#" rel="tooltip">  <img class="m" src="cen2.png" height="6%" width="6%">  Mazaya  Center </a>
                 <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-bar bar1"></span><span class="navbar-toggler-bar bar2"></span><span class="navbar-toggler-bar bar3"></span></button>
               </div>
 
@@ -72,9 +72,9 @@
       <div class="page-header-image" data-parallax="true" style="background-image: url('front2.png')"></div>
       <div class="container">
         <div class="content-center">
-          <div class="cc-profile-image"><a href="#"><img src="sara.png" alt="Image"/></a></div>
-          <div class="h2 title">Sara Badran</div>
-          <p class="category text-white">Physical Therapist, Diagnoser, department manager</p><a href="ph4.php" > <button class="btn btn-primary smooth-scroll mr-2" >Appointments</button></a>
+          <div class="cc-profile-image"><a href="#"><img src="ali.png" alt="Image"/></a></div>
+          <div class="h2 title">Ali Lafi</div>
+          <p class="category text-white">Physical Therapist, Diagnoser, department manager</p><a href="ph2.php" > <button class="btn btn-primary smooth-scroll mr-2" >Appointments</button></a>
         </div>
       </div>
       <div class="section">
@@ -102,8 +102,8 @@
         <div class="col-lg-6 col-md-12">
           <div class="card-body">
             <div class="h4 mt-0 title">About</div>
-            <p>Hello! I am Sara Badran. Physical Therapist, Diagnoser, department manager</p>
-            <p>experienced physical therapist with 6 years providing patients care, rehabilitation and therapy, skilled in developing individual treatment plan and assessment. <a href="https://templateflip.com/templates/creative-cv/" target="_blank">Learn More</a></p>
+            <p>Hello! I am Ali Lafi. Physical Therapist, Diagnoser, department manager</p>
+            <p>experienced physical therapist with 5 years providing patients care, rehabilitation and therapy, skilled in developing individual treatment plan and assessment. <a href="https://templateflip.com/templates/creative-cv/" target="_blank">Learn More</a></p>
           </div>
         </div>
         <div class="col-lg-6 col-md-12">
@@ -111,19 +111,19 @@
             <div class="h4 mt-0 title">Basic Information</div>
             <div class="row">
               <div class="col-sm-4"><strong class="text-uppercase">Age:</strong></div>
-              <div class="col-sm-8">30</div>
+              <div class="col-sm-8">29</div>
             </div>
             <div class="row mt-3">
               <div class="col-sm-4"><strong class="text-uppercase">Email:</strong></div>
-              <div class="col-sm-8">Sarabadran@Gmail.com</div>
+              <div class="col-sm-8">AliLafi@Gmail.com</div>
             </div>
             <div class="row mt-3">
               <div class="col-sm-4"><strong class="text-uppercase">Phone:</strong></div>
-              <div class="col-sm-8">078-4689-638</div>
+              <div class="col-sm-8">078-6755-181</div>
             </div>
             <div class="row mt-3">
               <div class="col-sm-4"><strong class="text-uppercase">Address:</strong></div>
-              <div class="col-sm-8">89, City Center, Irbid, Jordan</div>
+              <div class="col-sm-8">150, City Center, Amman, Jordan</div>
             </div>
             <div class="row mt-3">
               <div class="col-sm-4"><strong class="text-uppercase">Language:</strong></div>
@@ -139,24 +139,70 @@
 
 
 
-
+<div class="section" id="about">
+  <div class="container">
+    <div class="card" data-aos="fade-up" data-aos-offset="10">
+      <div class="row">
+        <div class="col-lg-6 col-md-12">
+          <div class="card-body">
+            <div class="h4 mt-0 title">About</div>
+            <p>Hello! I am Ahmad Qutob. Physical Therapist, Diagnoser, department manager</p>
+            <p>experienced physical therapist with 2 years providing patients care, rehabilitation and therapy, skilled in developing individual treatment plan and assessment. <a href="https://templateflip.com/templates/creative-cv/" target="_blank">Learn More</a></p>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-12">
+          <div class="card-body">
+            <div class="h4 mt-0 title">Basic Information</div>
+            <div class="row">
+              <div class="col-sm-4"><strong class="text-uppercase">Age:</strong></div>
+              <div class="col-sm-8">24</div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-sm-4"><strong class="text-uppercase">Email:</strong></div>
+              <div class="col-sm-8">AhmadQut@Gmail.com</div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-sm-4"><strong class="text-uppercase">Phone:</strong></div>
+              <div class="col-sm-8">078-6135-942</div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-sm-4"><strong class="text-uppercase">Address:</strong></div>
+              <div class="col-sm-8">140, City Center, Amman, Jordan</div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-sm-4"><strong class="text-uppercase">Language:</strong></div>
+              <div class="col-sm-8">Arabic,English, German,</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="section" id="skill">
   <div class="container">
     <div class="h4 text-center mb-4 title">Professional Skills</div>
     <div class="card" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
       <div class="card-body">
+
+        <?php include 'skill2.php'; ?>
+
         <div class="row">
           <div class="col-md-6">
             <div class="progress-container progress-primary"><span class="progress-badge">patient care</span>
               <div class="progress">
-                <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div><span class="progress-value">80%</span>
+               
+              <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $avgCare; ?>%;"></div><span class="progress-value"><?php echo $avgCare; ?>%</span>
+              
+
               </div>
             </div>
           </div>
           <div class="col-md-6">
             <div class="progress-container progress-primary"><span class="progress-badge">rehabilitation</span>
               <div class="progress">
-                <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div><span class="progress-value">75%</span>
+              <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo  $avgRehabilitation ; ?>%;"></div><span class="progress-value"><?php echo $avgRehabilitation ; ?>%</span>
+          
               </div>
             </div>
           </div>
@@ -165,14 +211,14 @@
           <div class="col-md-6">
             <div class="progress-container progress-primary"><span class="progress-badge">exercise</span>
               <div class="progress">
-                <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div><span class="progress-value">60%</span>
+              <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo      $avgExercise ; ?>%;"></div><span class="progress-value"><?php echo     $avgExercise ; ?>%</span>
               </div>
             </div>
           </div>
           <div class="col-md-6">
             <div class="progress-container progress-primary"><span class="progress-badge">mobility</span>
               <div class="progress">
-                <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div><span class="progress-value">60%</span>
+              <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo     $avgMobility ; ?>%;"></div><span class="progress-value"><?php echo    $avgMobility ; ?>%</span>
               </div>
             </div>
           </div>
@@ -181,14 +227,14 @@
           <div class="col-md-6">
             <div class="progress-container progress-primary"><span class="progress-badge">communication</span>
               <div class="progress">
-                <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div><span class="progress-value">75%</span>
+              <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo   $avgCommunication ; ?>%;"></div><span class="progress-value"><?php echo   $avgCommunication ; ?>%</span>
               </div>
             </div>
           </div>
           <div class="col-md-6">
             <div class="progress-container progress-primary"><span class="progress-badge">documentation</span>
               <div class="progress">
-                <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div><span class="progress-value">70%</span>
+              <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo    $avgDocumentation  ; ?>%;"></div><span class="progress-value"><?php echo   $avgDocumentation  ; ?>%</span>
               </div>
             </div>
           </div>
@@ -197,6 +243,7 @@
     </div>
   </div>
 </div>
+
 
 
 <a href="log.html"> <button style="

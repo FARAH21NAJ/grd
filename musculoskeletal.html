@@ -1,76 +1,372 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
-<!--DOCTYPE html-->
-<html >
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
-
     <title>Pure Health</title>
-
     <link rel="shortcut icon" href="logo.png">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-   
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-    
-    <link
-      rel="stylesheet" href="musculoskeletal.css"  />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+    <style>
+        /* Reset and base styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #f5f5f5;
+            color: #122853;
+            
+        }
 
-       <!-- Link Swiper's CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+        /* Navigation styles */
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            width: 90%;
+            margin: 20px auto 0;
+            padding: 15px 0;
+        }
 
+        .logo {
+            font-weight: 700;
+            font-size: 2rem;
+            text-transform: uppercase;
+            color: #122853;
+            display: flex;
+            align-items: center;
+        }
 
-</head>
-<body >
+        .logo span {
+            background-color: #014dd5;
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 30px;
+            margin-right: 15px;
+        }
+
+        *{
+    margin: 0px;
+    padding: 0px;
+    font-family: poppins;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+
+  
+  }
+
+a{
+    text-decoration: none;
+    color:#122853;
+}
+ul{
+    list-style: none;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 7px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgb(233, 233, 233); 
+  }
    
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(56, 56, 56); 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #1b1b1b; 
+  }
 
 
 
-        <nav class="navigation">
-                <label for="menu-btn" class="menu-icon">
-                <span class="nav-icon"></span>
-            </label>
-           
-            <a href="" class="logo"><span>pure</span>health</a><img src="logo.png" alt="" width="80" height="80">
-            
-            
+
+.navigation{
+    display: flex;
+    justify-content: space-between;
+
+    align-items: center;
+    max-width: 1200px;
+    width: 90%;
+    margin: 0px auto;
+    padding: 30px 0px;
+}
+.logo{
+    color:#122853;
+    font-weight: 700;
+    font-size: 1.4rem;
+}
+.logo span{
+    background-color: #014dd5;
+    color: #ffffff;
+    padding: 0px 5px;
+    border-radius: 5px;
+    font-weight: 600;
+    margin-right: 5px;
+}
+.menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: auto;
+    margin-left: 40px;
      
-    <ul class="menu">
-        <li><a href="log.html"; style="font-weight: bolder;">Home  </a></li>
-        <li><a href="#our-team";>Find center </a></li>
-        <li><a href="#our-services">Our Services</a></li>
-        <li><a href="#testimonials"> Contact us </a></li>
-           <!--<li><a href="#testimonials"> Location </a></li>-->
-           <li><a href="logtool.html"> Tool </a></li>
-        <li><a href="#testimonials"> Reviws</a></li> </ul>
+}
+.menu li a{
+    margin: 0px 20px;
+
+    font-weight: 500;
+    transition: all ease 0.3s;
+}
+.menu li a:hover{
+    color: #014dd5;
+}
+
+        /* Section styles */
+        section {
+            padding: 80px 0;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 30px;
+            color: #122853;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Home1 section styles */
+        #home1 {  
+		background-image: url(front.jpg);
+      
+        background-size: cover;
+    background-repeat: no-repeat;
+            max-width: 1600px;
+            text-align: center;
+            padding: 50px;
+           
+        }
+
+        #home1 img {
+            width: 300px;
+            height: auto;
+            margin-bottom: 40px;
+            border-radius: 50%;
+    
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 18%;
+            height: 18%;
+        }
+
+        /* Home2 section styles */
+        #home2 {
+            background-color: #f5f7fb;
+            padding: 50px;
+            max-width: 1700px;
+   
+            text-align: left;
+        }
+
+        #home2 p{
+
+            margin-right: 290px;
+        }
+
+         /* New styles for the Chronic Diseases section */
+         #chronic-diseases {
+            background-color: #f5f7fb;
+            padding: 50px;
+        }
+
+        #chronic-diseases div {
+            max-width: 1500px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        #chronic-diseases h1 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #122853;
+            text-align: center;
+        }
+
+        #chronic-diseases p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        #chronic-diseases strong {
+            font-weight: bold;
+                  color: #122853;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            color: #122853;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        strong {
+            font-weight: 600;
+               color: #122853;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navigation">
+        <a href="#" class="logo"><span>Pure</span>Health</a><img src="logo.png" alt="" width="80" height="80">
+        <ul class="menu">
+            <li><a href="log.html">Home</a></li>
+            <li><a href="#our-team">Find Center</a></li>
+            <li><a href="#our-services">Our Services</a></li>
+            <li><a href="#testimonials">Contact Us</a></li>
+            <li><a href="#testimonials">Location</a></li>
+            <li><a href="#testimonials">Reviews</a></li>
+        </ul>
     </nav>
- <h1 style="text-align: center; font-size:50px;  color:#122853;"> Our Service </h1>
 
     <section id="home1">
-
-    <img src="dd2.png" width="450" height="450" style="float:left;" />
-
-<h1 style="position: relative;left:300px; top:30px ;color:#122853;"> musculoskeletal </h1> 
-<p style="position: relative; top:30px;left:20px;" class="p1">
-A The musculoskeletal system in  the human body helps provide proper form and support<br>,It contributes to the stability of the body,
- and forms an important part of the movements.<br>This system is made up of several parts, including muscle tissue, cartilage,
-tendons, joints, and ligaments. The skeleton itself, along with additional connective tissues, forms part of <br>the musculoskeletal system.
+        <div >
+            <h1 style="      font-size: 2.5rem;">   <i class="fa-solid fa-wheelchair-move"></i> musculoskeletal</h1>
+            <img src="dd4.png" alt="Chronic Diseases" />
+            <p style="font-size: 1.3rem; color:#122853 ;   text-align: left;">
+              
+A The musculoskeletal system in  the human body helps provide proper form and support,It contributes to the stability of the body,
+and forms an important part of the movements.This system is made up of several parts, including muscle tissue, cartilage,
+tendons, joints, and ligaments. The skeleton itself, along with additional connective tissues, forms part of the musculoskeletal system.
 Because of the role of the musculoskeletal system, injury or disorders affecting any part of it can lead to long-term complications. In some cases,
- there may be obstruction. Numerous musculoskeletal conditions have been identified in recent years, some more serious and disabling than others.
-        </section>
+there may be obstruction. Numerous musculoskeletal conditions have been identified in recent years, some more serious and disabling than others.
+            </p>
+        </div>
+    </section>
+<hr>
+       <!-- New section for Chronic Diseases examples -->
+       <section id="chronic-diseases">
+        <div>
+            <h1> <i class="fa-solid fa-disease"></i> Some Status</h1>
+            <p>
 
-        <section id="home2">
-<h3> There are many methods that can be used in physiotherapy for the musculoskeletal system. These methods include</h3>
+                Here are some musculoskeletal diseases and conditions commonly addressed through physical therapy:<br><br>
+                
+                <strong>1-Osteoarthritis:</strong> This is a degenerative joint disease characterized by the breakdown of joint cartilage and underlying bone. Physical therapy interventions focus on exercises to strengthen muscles supporting the affected joints.<br><br>
+                
+                <strong>2-Rheumatoid Arthritis:</strong> An autoimmune disease affecting joints, leading to inflammation, pain, and potential joint damage. Physical therapy aims to preserve joint function,  In conditions like heart disease or post-heart attack, physical therapy focuses on cardiac rehabilitation, <br><br>
+                
+                <strong>3-Back Pain: </strong> Conditions like herniated discs, sciatica, or general lower back pain benefit from physical therapy interventions such as stretching exercises, core strengthening, postural corrections, manual therapy techniques,<br><br>
+                
+                <strong>4-Fractures and Orthopedic Injuries:</strong> Physical therapy is crucial during the rehabilitation process post-fracture or orthopedic surgery.<br><br>
+                
+                <strong>5-Muscle Strains and Ligament Injuries: </strong> Whether due to sports-related injuries or overuse, physical therapy helps in the rehabilitation process by guiding individuals through progressive exercises,<br><br>
+                
+                <strong>6-CTendonitis and Bursitis: </strong> These conditions involve inflammation of tendons or bursae, leading to pain and limited mobility.<br><br>
+            
+            </p>
+        </div>
+    </section>
+    <hr>
+    <section id="home2">
+        <div>
+            <h1 style="font-size: 2.5rem;text-align:center"> <i class="fa-solid fa-stethoscope"></i> Natural Remedies</h1>
+            <p>Natural remedies include a variety of options, including:</p> <br>
+            <p>
+                <strong>1- Physical exercises:</strong>Physiotherapy exercises are used to improve the flexibility, strength and ductility of the
+                muscles and surrounding tissues.  <br><br>
+           
+                <strong>2- Manual Therapy:</strong> It is used through massage and other techniques to reduce pain and improve range of motion and flexibility.  <br><br>
+               
+                <strong> 3- Heat therapy: </strong> It is used to relieve pain and improve blood flow to the affected area. Moist or dry heat can be used. <br><br>
+               
+                    <strong>4-Cold therapy: </strong> It is used to relieve pain and reduce inflammation.
+               . <br><br>
+               
+               <strong>5-Electrotherapy: </strong> It is used to stimulate muscles and reduce pain.<br><br>
+               </p> 
+        </div>
+    </section>
 
-<p style="padding-top:10px;"> 1- Physical exercises: Physiotherapy exercises are used to improve the flexibility, strength and ductility of the
-     muscles and surrounding tissues.  <br><br>
+    
+</body>
 
-    2- Manual Therapy: It is used through massage and other techniques to reduce pain and improve range of motion and flexibility.  <br><br>
-    
-    3- Heat therapy: It is used to relieve pain and improve blood flow to the affected area. Moist or dry heat can be used. <br><br>
-    
-    4-Cold therapy: It is used to relieve pain and reduce inflammation.
-    . <br><br>
-    
-    5-Electrotherapy: It is used to stimulate muscles and reduce pain. </p> <br><br>
-            </section>
+</html>
+
 

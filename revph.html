@@ -128,8 +128,9 @@ input[type="range"] {
     <div class="rating-form">
         <h1><img class="m" src="cen1.png" height="7%" width="7%"> Review Creativity Center for Physiotherapy  </h1> 
         <form id="ratingForm" method="post" action="submit_rating.php">
-            <label for="patientName">Patient Name:</label>
-            <input type="text" id="patientName" name="patientName"><br><br>
+            <label for="patientName">Full Name (First and Last):</label>
+            <input type="text" id="patientName" name="patientName" pattern="[A-Z][a-zA-Z]*\s[A-Z][a-zA-Z]*" 
+            title="Please enter both names starting with a capital letter" required Autocomplete="off"><br><br>
     
           <label for="rating">Rate the center:</label>
           <div class="stars">
@@ -148,8 +149,9 @@ input[type="range"] {
         <h1><img class="m" src="ahmad.png" height="7%" width="7%"> Review Ahmad Qutob Physical Therapy Skills </h1>
         <form id="skillsForm" action="process.php" method="post">
     
-            <label for="patientName">Patient Name:</label>
-            <input type="text" id="patientName" name="patientName"><br><br>
+            <label for="patientName">Full Name (First and Last):</label>
+            <input type="text" id="patientName" name="patientName" pattern="[A-Z][a-zA-Z]*\s[A-Z][a-zA-Z]*" 
+            title="Please enter both names starting with a capital letter" required Autocomplete="off"><br><br>
     
             <label for="patientCare">Patient Care:</label>
             <input type="range" id="patientCare" name="patientCare" min="1" max="100" value="30"><span id="patientCareValue">30</span><br><br>

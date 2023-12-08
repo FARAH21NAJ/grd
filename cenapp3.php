@@ -82,11 +82,12 @@ h2 {
 	border:2px solid rgb(173, 210, 244);
 	padding :14px 110px;
 	outline:none;
-
+  color: white;
 	cursor:pointer;
 	transition:0.25px;
   position: relative;
-  left:40%;
+  left:30%;
+  float: left;
 	}
 
   
@@ -105,7 +106,7 @@ h2 {
               margin: 0 10px; /* Adjusted margin */
               margin-top: 20px;
               position: relative;
-              left: 41%;
+              left: 30%;
               width:7.1cm;
           }
 
@@ -264,7 +265,8 @@ mysqli_close($db1);
       <input type="hidden" id="selectedDay" name="selectedDay">
       <input type="hidden" id="selectedTime" name="selectedTime">
       <label for="patientName">Your Name:</label>
-      <input type="text" id="patientName" name="patientName" required>
+      <input type="text" id="patientName" name="patientName" pattern="[A-Z][a-zA-Z]*\s[A-Z][a-zA-Z]*" 
+         title="Please enter both names starting with a capital letter" required Autocomplete="off">
       <input type="submit" value="Book Appointment">
     </form>
   </div>

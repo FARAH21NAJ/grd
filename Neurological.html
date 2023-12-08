@@ -1,5 +1,393 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
-<!--DOCTYPE html-->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Pure Health</title>
+    <link rel="shortcut icon" href="logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+    <style>
+        /* Reset and base styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #f5f5f5;
+            color: #122853;
+            
+        }
+
+        /* Navigation styles */
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            width: 90%;
+            margin: 20px auto 0;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 2rem;
+            text-transform: uppercase;
+            color: #122853;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            background-color: #014dd5;
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 30px;
+            margin-right: 15px;
+        }
+
+        *{
+    margin: 0px;
+    padding: 0px;
+    font-family: poppins;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+
+  
+  }
+
+a{
+    text-decoration: none;
+    color:#122853;
+}
+ul{
+    list-style: none;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 7px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgb(233, 233, 233); 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(56, 56, 56); 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #1b1b1b; 
+  }
+
+
+
+
+.navigation{
+    display: flex;
+    justify-content: space-between;
+
+    align-items: center;
+    max-width: 1200px;
+    width: 90%;
+    margin: 0px auto;
+    padding: 30px 0px;
+}
+.logo{
+    color:#122853;
+    font-weight: 700;
+    font-size: 1.4rem;
+}
+.logo span{
+    background-color: #014dd5;
+    color: #ffffff;
+    padding: 0px 5px;
+    border-radius: 5px;
+    font-weight: 600;
+    margin-right: 5px;
+}
+.menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: auto;
+    margin-left: 40px;
+     
+}
+.menu li a{
+    margin: 0px 20px;
+
+    font-weight: 500;
+    transition: all ease 0.3s;
+}
+.menu li a:hover{
+    color: #014dd5;
+}
+
+        /* Section styles */
+        section {
+            padding: 80px 0;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 30px;
+            color: #122853;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Home1 section styles */
+        #home1 {  
+		background-image: url(front.jpg);
+      
+        background-size: cover;
+    background-repeat: no-repeat;
+            max-width: 1600px;
+            text-align: center;
+            padding: 50px;
+           
+        }
+
+        #home1 img {
+            width: 300px;
+            height: auto;
+            margin-bottom: 40px;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Home2 section styles */
+        #home2 {
+            background-color: #f5f7fb;
+            padding: 50px;
+            max-width: 1700px;
+   
+            text-align: left;
+        }
+
+        #home2 p{
+
+            margin-right: 290px;
+        }
+
+         /* New styles for the Chronic Diseases section */
+         #chronic-diseases {
+            background-color: #f5f7fb;
+            padding: 50px;
+        }
+
+        #chronic-diseases div {
+            max-width: 1500px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        #chronic-diseases h1 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #122853;
+            text-align: center;
+        }
+
+        #chronic-diseases p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        #chronic-diseases strong {
+            font-weight: bold;
+                  color: #122853;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            color: #122853;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        strong {
+            font-weight: 600;
+               color: #122853;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navigation">
+        <a href="#" class="logo"><span>Pure</span>Health</a><img src="logo.png" alt="" width="80" height="80">
+        <ul class="menu">
+            <li><a href="log.html">Home</a></li>
+            <li><a href="#our-team">Find Center</a></li>
+            <li><a href="#our-services">Our Services</a></li>
+            <li><a href="#testimonials">Contact Us</a></li>
+            <li><a href="#testimonials">Location</a></li>
+            <li><a href="#testimonials">Reviews</a></li>
+        </ul>
+    </nav>
+
+    <section id="home1">
+        <div >
+            <h1 style="      font-size: 2.5rem;">     <i class="fa-sharp fa-solid fa-brain"></i> Neurological</h1>
+            <img src="d4d.jpg" alt="Chronic Diseases" />
+            <p style="font-size: 1.3rem; color:#122853 ;   text-align: left;">
+                Neurological diseases encompass a range of conditions affecting the nervous system, including the brain, spinal cord, and nerves. Physical therapy is instrumental in managing these conditions by addressing impairments in movement, balance, coordination, strength, and functional abilities. It aims to maximize independence and improve the overall quality of life for individuals affected by neurological disorders,>It is the treatment of patients who suffer from neurological disorders that affect 
+                the brain ,<br>.and spinal cord, such as: stroke, multiple sclerosis, 
+        </section>
+            </p>
+        </div>
+    </section>
+<hr>
+       <!-- New section for Chronic Diseases examples -->
+       <section id="chronic-diseases">
+        <div>
+            <h1> <i class="fa-solid fa-disease"></i> Some Status</h1>
+            <p>
+                Some of the common sports-related diseases and conditions addressed by sports physiotherapy include:<br><br>
+                
+                <strong>1-Stroke (Cerebrovascular Accident, CVA):</strong> Physical therapy plays a vital role in stroke rehabilitation. Therapists focus on restoring movement and function lost due to brain damage caused by a stroke. <br><br>
+                
+                <strong>2-Multiple Sclerosis (MS):</strong> MS is a chronic autoimmune disease affecting the central nervous system. Physical therapy helps manage symptoms such as muscle weakness.<br><br>
+                
+                <strong>3-Parkinson's Disease: </strong>Physical therapy aims to address the movement difficulties, stiffness, and tremors associated with Parkinson's. <br><br>
+                
+                <strong>4-Spinal Cord Injuries (SCI): </strong>These injuries often result in paralysis or impaired movement. Physical therapy concentrates on strengthening muscles.<br><br>
+                
+                <strong>5-Traumatic Brain Injury (TBI): </strong>Physical therapists aid in restoring function, balance, coordination, and cognitive skills post-TBI. Therapy focuses on regaining motor control, relearning skills.<br><br>
+                
+                <strong>6-Cerebral Palsy: </strong>This condition affects movement and muscle coordination. Physical therapy helps manage symptoms by working on muscle tone.<br><br>
+            </p>
+        </div>
+    </section>
+    <hr>
+    <section id="home2">
+        <div>
+            <h1 style="font-size: 2.5rem;text-align:center"> <i class="fa-solid fa-stethoscope"></i> Natural Remedies</h1>
+            <p>Natural remedies include a variety of options, including:</p> <br>
+            <p>
+            <strong> 1- Physical exercises: </strong> Physiotherapy exercises are used to improve the flexibility, strength and ductility of the
+                muscles and surrounding tissues.  <br><br>
+           
+            <strong>2- Manual Therapy: </strong>It is used through massage and other techniques to reduce pain and improve range of motion and flexibility.  <br><br>
+               
+        <strong>3- Heat therapy: </strong>It is used to relieve pain and improve blood flow to the affected area. Moist or dry heat can be used. <br><br>
+               
+    <strong>  4-Cold therapy: </strong>It is used to relieve pain and reduce inflammation.
+               . <br><br>
+               
+            <strong> 5-Electrotherapy: </strong>It is used to stimulate muscles and reduce pain. </p> <br><br>
+                      
+            </p>
+        </div>
+    </section>
+
+    
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--DOCTYPE html
 <html >
 <head>
     <meta charset="UTF-8">
@@ -15,7 +403,6 @@
     <link
       rel="stylesheet" href="Neurological.css"  />
 
-       <!-- Link Swiper's CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
 
 
@@ -39,7 +426,7 @@
         <li><a href="#our-team";>Find center </a></li>
         <li><a href="#our-services">Our Services</a></li>
         <li><a href="#testimonials"> Contact us </a></li>
-           <!--<li><a href="#testimonials"> Location </a></li>-->
+   
            <li><a href="logtool.html"> Tool </a></li>
         <li><a href="#testimonials"> Reviws</a></li> </ul>
     </nav>
@@ -71,3 +458,4 @@
     5-Electrotherapy: It is used to stimulate muscles and reduce pain. </p> <br><br>
             </section>
 
+-->

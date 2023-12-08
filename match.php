@@ -33,20 +33,20 @@ $result4=mysqli_query($db1,$b4);
 
 		 
  if(mysqli_num_rows($result)>0) {
-    header("Location:http://localhost/grd/ph1.html");
+    header("Location:http://localhost/grd/physiotherapy1.php");
     }
 	 
     if(mysqli_num_rows($result2)>0) {
-        header("Location:http://localhost/grd/ph2.html");
+        header("Location:http://localhost/grd/physiotherapy2.php");
         }
 
         if(mysqli_num_rows($result3)>0) {
-            header("Location:http://localhost/grd/ph3.html");
+            header("Location:http://localhost/grd/physiotherapy3.php");
             }
     
 
             if(mysqli_num_rows($result4)>0) {
-                header("Location:http://localhost/grd/ph4.html");
+                header("Location:http://localhost/grd/physiotherapy4.php");
                 }
         
         

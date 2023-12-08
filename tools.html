@@ -224,7 +224,8 @@ color:  #014dd5;;
     
   <form action="save_order.php" method="post" Autocomplete="off">
     <!-- Add input fields for patient name, bill content, and total bill -->
-    <input type="text" name="patientName" placeholder="Patient Name" required    >
+    <input type="text" name="patientName" placeholder="Full Name (First and Last):" pattern="[A-Z][a-zA-Z]*\s[A-Z][a-zA-Z]*" 
+    title="Please enter both names starting with a capital letter" required Autocomplete="off"    >
     <input type="hidden" id="billContentInput" name="billContent">
     <input type="hidden" id="totalBillInput" name="totalBill">
     <input type="hidden" name="tool_id" placeholder="Tool ID">

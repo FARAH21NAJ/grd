@@ -1,73 +1,309 @@
 <!DOCTYPE html>
-<!--DOCTYPE html-->
-<html >
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
-
     <title>Pure Health</title>
-
     <link rel="shortcut icon" href="logo.png">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-   
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-    
-    <link
-      rel="stylesheet" href="chronic.css"  />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+    <style>
+        /* Reset and base styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #f5f5f5;
+            color: #122853;
+            
+        }
 
-       <!-- Link Swiper's CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+        /* Navigation styles */
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            width: 90%;
+            margin: 20px auto 0;
+            padding: 15px 0;
+        }
 
+        .logo {
+            font-weight: 700;
+            font-size: 2rem;
+            text-transform: uppercase;
+            color: #122853;
+            display: flex;
+            align-items: center;
+        }
 
-</head>
-<body >
+        .logo span {
+            background-color: #014dd5;
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 30px;
+            margin-right: 15px;
+        }
+
+        *{
+    margin: 0px;
+    padding: 0px;
+    font-family: poppins;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+
+  
+  }
+
+a{
+    text-decoration: none;
+    color:#122853;
+}
+ul{
+    list-style: none;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 7px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgb(233, 233, 233); 
+  }
    
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(56, 56, 56); 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #1b1b1b; 
+  }
 
-    
-        
-        <nav class="navigation">
-                <label for="menu-btn" class="menu-icon">
-                <span class="nav-icon"></span>
-            </label>
-           
-            <a href="" class="logo"><span>pure</span>health</a><img src="logo.png" alt="" width="80" height="80">
-            
-            
+
+
+
+.navigation{
+    display: flex;
+    justify-content: space-between;
+
+    align-items: center;
+    max-width: 1200px;
+    width: 90%;
+    margin: 0px auto;
+    padding: 30px 0px;
+}
+.logo{
+    color:#122853;
+    font-weight: 700;
+    font-size: 1.4rem;
+}
+.logo span{
+    background-color: #014dd5;
+    color: #ffffff;
+    padding: 0px 5px;
+    border-radius: 5px;
+    font-weight: 600;
+    margin-right: 5px;
+}
+.menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: auto;
+    margin-left: 40px;
      
-    <ul class="menu">
-        <li><a href="log.html"; style="font-weight: bolder;">Home  </a></li>
-        <li><a href="#our-team";>Find center </a></li>
-        <li><a href="#our-services">Our Services</a></li>
-        <li><a href="#testimonials"> Contact us </a></li>
-        <li><a href="#testimonials"> Location </a></li>
-        <li><a href="#testimonials"> Reviws</a></li> </ul>
+}
+.menu li a{
+    margin: 0px 20px;
+
+    font-weight: 500;
+    transition: all ease 0.3s;
+}
+.menu li a:hover{
+    color: #014dd5;
+}
+
+        /* Section styles */
+        section {
+            padding: 80px 0;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 30px;
+            color: #122853;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Home1 section styles */
+        #home1 {  
+		background-image: url(front.jpg);
+      
+        background-size: cover;
+    background-repeat: no-repeat;
+            max-width: 1600px;
+            text-align: center;
+            padding: 50px;
+           
+        }
+
+        #home1 img {
+            width: 300px;
+            height: auto;
+            margin-bottom: 40px;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Home2 section styles */
+        #home2 {
+            background-color: #f5f7fb;
+            padding: 50px;
+            max-width: 1700px;
+   
+            text-align: left;
+        }
+
+        #home2 p{
+
+            margin-right: 290px;
+        }
+
+         /* New styles for the Chronic Diseases section */
+         #chronic-diseases {
+            background-color: #f5f7fb;
+            padding: 50px;
+        }
+
+        #chronic-diseases div {
+            max-width: 1500px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        #chronic-diseases h1 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #122853;
+            text-align: center;
+        }
+
+        #chronic-diseases p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        #chronic-diseases strong {
+            font-weight: bold;
+                  color: #122853;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            color: #122853;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        strong {
+            font-weight: 600;
+               color: #122853;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navigation">
+        <a href="#" class="logo"><span>Pure</span>Health</a> <img src="logo.png" alt="" width="80" height="80">
+        <ul class="menu">
+            <li><a href="log.html">Home</a></li>
+            <li><a href="#our-team">Find Center</a></li>
+            <li><a href="#our-services">Our Services</a></li>
+            <li><a href="#testimonials">Contact Us</a></li>
+            <li><a href="#testimonials">Location</a></li>
+            <li><a href="#testimonials">Reviews</a></li>
+        </ul>
     </nav>
- <h1 style="text-align: center; font-size:50px;  color:#122853;"> Our Service </h1>
 
     <section id="home1">
+        <div >
+            <h1 style="      font-size: 2.5rem;"> <i class="fa-solid fa-bed-pulse"></i> Chronic Diseases</h1>
+            <img src="dd1.png" alt="Chronic Diseases" />
+            <p style="font-size: 1.3rem; color:#122853 ;   text-align: left;">
+                A chronic disease is a condition or disease that is permanent or long-term in its effects, or an illness that comes with time and progresses slowly. Physical therapy can help in managing chronic diseases such as arthritis, migraines, back pain, constipation, heart diseases, diabetes, autism, mental health disorders, and chronic health conditions , crucial role in managing various chronic diseases by helping individuals improve their mobility, reduce pain, and enhance overall quality of life. Some chronic diseases where physical therapy is often utilized .
+            </p>
+        </div>
+    </section>
+<hr>
+       <!-- New section for Chronic Diseases examples -->
+       <section id="chronic-diseases">
+        <div>
+            <h1> <i class="fa-solid fa-disease"></i> Some Status</h1>
+            <p>
+                Examples of how physical therapy assists in managing chronic diseases:<br><br>
+                
+                <strong>1-Arthritis:</strong> Physical therapy helps manage pain, improve joint function, and increase flexibility through exercises, joint mobilization, and modalities like heat or cold therapy.<br><br>
+                
+                <strong>2-Cardiovascular Diseases:</strong> In conditions like heart disease or post-heart attack, physical therapy focuses on cardiac rehabilitation, including exercises to improve cardiovascular endurance, strength, and overall heart health.<br><br>
+                
+                <strong>3-Chronic Obstructive Pulmonary Disease (COPD):</strong> Physical therapy assists in breathing techniques, exercises to improve lung function, and energy conservation strategies to manage fatigue.<br><br>
+                
+                <strong>4-Neurological Disorders (e.g., Multiple Sclerosis, Parkinson's Disease):</strong> Physical therapy aims to improve balance, coordination, mobility, and muscle strength through targeted exercises and specific interventions.<br><br>
+                
+                <strong>5-Diabetes:</strong> Physical therapy can aid in managing diabetic complications such as neuropathy by promoting exercises for circulation, nerve health, and overall fitness.<br><br>
+                
+                <strong>6-Chronic Pain Syndromes:</strong> Conditions like fibromyalgia or chronic back pain benefit from physical therapy through various modalities, exercises, and pain management strategies.<br><br>
+            </p>
+        </div>
+    </section>
+    <hr>
+    <section id="home2">
+        <div>
+            <h1 style="font-size: 2.5rem;text-align:center"> <i class="fa-solid fa-stethoscope"></i> Natural Remedies</h1>
+            <p>Natural remedies include a variety of options, including:</p> <br>
+            <p>
 
-    <img src="dd1.png" width="450" height="450" style="float:left;" />
+               <strong> 1- Exercise:</strong> Regular exercise may help improve physical fitness, motor functions, and reduce pain.<br><br>
+                <strong>2- Proper nutrition:</strong> Diet can affect health in general. Eating healthy foods rich in important nutrients may help improve your health.<br><br>
+                <strong>3- Psychotherapy:</strong> Psychotherapy can help deal with the psychological and emotional stresses associated with chronic diseases.<br><br>
+                <strong> 4- Phytotherapy: </strong> Certain herbs and natural oils can help relieve pain, improve health, and feel comfortable.<br><br>
+                    <strong>5- Massage: </strong>Massage may help reduce pain and stress, improve blood circulation, and relax.<br><br>
+            </p>
+        </div>
+    </section>
 
-<h1 style="position: relative;left:300px; top:30px ;color:#122853;"> chronic diseases </h1> 
-<p style="position: relative; top:30px;left:20px;" class="p1">
-A chronic disease is a condition or disease that is permanent or long-term in its effects <br>,or an illness that comes with time and progresses 
-slowly .This disease often lasts for <br> three months or more. The World Health Organization indicates that chronic diseases  <br>are not transmitted from one
- person to another, and there are several of these diseases <br> that require physical therapy, as physical therapy can help in managing chronic 
- diseases such as arthritis, migraines, back pain, constipation, and patients suffering from heart diseases. pain, diabetes mellitus,
-  type 2 autism, mental health disorders and chronic <br> health conditions .
-        </section>
-
-        <section id="home2">
-<h3> Natural remedies include a variety of options, including: </h3>
-
-<p style="padding-top:10px;"> 1- Exercise: Regular exercise may help improve physical fitness, motor functions, and reduce pain.  <br><br>
-
-    2- Proper nutrition: Diet can affect health in general. Eating healthy foods rich in important nutrients may help improve your health.  <br><br>
     
-    3- Psychotherapy: Psychotherapy can help deal with the psychological and emotional stresses associated with chronic diseases. <br><br>
-    
-    4- Phytotherapy: Certain herbs and natural oils can help relieve pain, improve health, and feel comfortable. <br><br>
-    
-    5-Massage: Massage may help reduce pain and stress, improve blood circulation, and relax. </p> <br>
-            </section>
+</body>
+
+</html>
 

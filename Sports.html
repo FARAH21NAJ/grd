@@ -1,81 +1,354 @@
 <!DOCTYPE html>
-<!--DOCTYPE html-->
-<html >
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
-
     <title>Pure Health</title>
-
     <link rel="shortcut icon" href="logo.png">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-   
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-    
-    <link
-      rel="stylesheet" href="Sports.css"  />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+    <style>
+        /* Reset and base styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #f5f5f5;
+            color: #122853;
+            
+        }
 
-       <!-- Link Swiper's CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+        /* Navigation styles */
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            width: 90%;
+            margin: 20px auto 0;
+            padding: 15px 0;
+        }
 
+        .logo {
+            font-weight: 700;
+            font-size: 2rem;
+            text-transform: uppercase;
+            color: #122853;
+            display: flex;
+            align-items: center;
+        }
 
-</head>
-<body >
+        .logo span {
+            background-color: #014dd5;
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 30px;
+            margin-right: 15px;
+        }
+
+        *{
+    margin: 0px;
+    padding: 0px;
+    font-family: poppins;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+
+  
+  }
+
+a{
+    text-decoration: none;
+    color:#122853;
+}
+ul{
+    list-style: none;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 7px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgb(233, 233, 233); 
+  }
    
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(56, 56, 56); 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #1b1b1b; 
+  }
 
-    
-        
-        <nav class="navigation">
-                <label for="menu-btn" class="menu-icon">
-                <span class="nav-icon"></span>
-            </label>
-           
-            <a href="" class="logo"><span>pure</span>health</a><img src="logo.png" alt="" width="80" height="80">
-            
-            
+
+
+
+.navigation{
+    display: flex;
+    justify-content: space-between;
+
+    align-items: center;
+    max-width: 1200px;
+    width: 90%;
+    margin: 0px auto;
+    padding: 30px 0px;
+}
+.logo{
+    color:#122853;
+    font-weight: 700;
+    font-size: 1.4rem;
+}
+.logo span{
+    background-color: #014dd5;
+    color: #ffffff;
+    padding: 0px 5px;
+    border-radius: 5px;
+    font-weight: 600;
+    margin-right: 5px;
+}
+.menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: auto;
+    margin-left: 40px;
      
-    <ul class="menu">
-        <li><a href="log.html"; style="font-weight: bolder;">Home  </a></li>
-        <li><a href="#our-team";>Find center </a></li>
-        <li><a href="#our-services">Our Services</a></li>
-        <li><a href="#testimonials"> Contact us </a></li>
-           <!--<li><a href="#testimonials"> Location </a></li>-->
-           <li><a href="logtool.html"> Tool </a></li>
-        <li><a href="#testimonials"> Reviws</a></li> </ul>
+}
+.menu li a{
+    margin: 0px 20px;
+
+    font-weight: 500;
+    transition: all ease 0.3s;
+}
+.menu li a:hover{
+    color: #014dd5;
+}
+
+        /* Section styles */
+        section {
+            padding: 80px 0;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 30px;
+            color: #122853;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Home1 section styles */
+        #home1 {  
+		background-image: url(front.jpg);
+      
+        background-size: cover;
+    background-repeat: no-repeat;
+            max-width: 1600px;
+            text-align: center;
+            padding: 50px;
+           
+        }
+
+        #home1 img {
+            width: 300px;
+            height: auto;
+            margin-bottom: 40px;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Home2 section styles */
+        #home2 {
+            background-color: #f5f7fb;
+            padding: 50px;
+            max-width: 1700px;
+   
+            text-align: left;
+        }
+
+        #home2 p{
+
+            margin-right: 290px;
+        }
+
+         /* New styles for the Chronic Diseases section */
+         #chronic-diseases {
+            background-color: #f5f7fb;
+            padding: 50px;
+        }
+
+        #chronic-diseases div {
+            max-width: 1500px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        #chronic-diseases h1 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #122853;
+            text-align: center;
+        }
+
+        #chronic-diseases p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        #chronic-diseases strong {
+            font-weight: bold;
+                  color: #122853;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            color: #122853;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        strong {
+            font-weight: 600;
+               color: #122853;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navigation">
+        <a href="#" class="logo"><span>Pure</span>Health</a><img src="logo.png" alt="" width="80" height="80">
+        <ul class="menu">
+            <li><a href="log.html">Home</a></li>
+            <li><a href="#our-team">Find Center</a></li>
+            <li><a href="#our-services">Our Services</a></li>
+            <li><a href="#testimonials">Contact Us</a></li>
+            <li><a href="#testimonials">Location</a></li>
+            <li><a href="#testimonials">Reviews</a></li>
+        </ul>
     </nav>
- <h1 style="text-align: center; font-size:50px;  color:#122853;"> Our Service </h1>
 
     <section id="home1">
-
-    <img src="dd3.png" width="450" height="450" style="float:left;" />
-
-<h1 style="position: relative;left:300px; top:30px ;color:#122853;">Sports physio</h1> 
-<p style="position: relative; top:30px;left:20px;" class="p1">
-    It is a science that deals with sports injuries to help the player restore the function of the injured member,
+        <div >
+            <h1 style="      font-size: 2.5rem;">  <i class="fa-sharp fa-solid fa-bicycle"></i> Sports physio</h1>
+            <img src="dd3.png" alt="Chronic Diseases" />
+            <p style="font-size: 1.3rem; color:#122853 ;   text-align: left;">
+                It is a science that deals with sports injuries to help the player restore the function of the injured member,
      return to the sport he was practicing and prevent any new injuries. This science includes helping and treating the injured on the field and 
-     transferring this patient <br> to the specialized medical staff and working as an integrated team to bring the patient to safety. The development 
+     transferring this patient  to the specialized medical staff and working as an integrated team to bring the patient to safety. The development 
      of physiotherapy for athletes and sports medicine so that the physiotherapist can predict the injury before it occurs. The physiotherapist has
     sufficient knowledge of medical sciences and mechanicalmovement In addition to the science of physiology, anatomy and first aid, all of these
      sciences are based on international studies.
         </section>
+            </p>
+        </div>
+    </section>
+<hr>
+       <!-- New section for Chronic Diseases examples -->
+       <section id="chronic-diseases">
+        <div>
+            <h1> <i class="fa-solid fa-disease"></i> Some Status</h1>
+            <p>
+                Some of the common sports-related diseases and conditions addressed by sports physiotherapy include:<br><br>
+                
+                <strong>1-Sprains and Strains:</strong> These injuries involve the stretching or tearing of ligaments (sprains) or muscles and tendons (strains).<br><br>
+                
+                <strong>2-CConcussions:</strong>  Head injuries, particularly concussions, are prevalent in contact sports. Sports physiotherapists play a role in the assessment, monitoring.<br><br>
+                
+                <strong>3-Overuse Injuries: </strong> Repetitive actions in sports can lead to overuse injuries such as tendinitis, stress fractures, and bursitis.<br><br>
+                
+                <strong>4-Muscle Imbalances: </strong> Athletes often develop muscle imbalances due to sport-specific movements, leading to injury risk. Sports physiotherapy targets these imbalances through specific exercises.<br><br>
+                
+                <strong>5-Post-Surgical Rehabilitation:</strong>  Athletes undergoing surgeries (such as ACL reconstruction, rotator cuff repair) require specialized rehabilitation.<br><br>
+                
+                <strong>6Performance Enhancement: </strong> Sports physiotherapy isn't solely about injury management; it also focuses on optimizing performance.<br><br>
+            </p>
+        </div>
+    </section>
+    <hr>
+    <section id="home2">
+        <div>
+            <h1 style="font-size: 2.5rem;text-align:center"> <i class="fa-solid fa-stethoscope"></i> Natural Remedies</h1>
+            <p>Natural remedies include a variety of options, including:</p> <br>
+            <p>
 
-        <section id="home2">
-<h3> There are many methods that can be used in physiotherapy for the musculoskeletal system. These methods include</h3>
+                <strong> 1- Professional exercises:  </strong>Physiotherapy uses professional exercises to strengthen muscles, ligaments and tendons, 
+                and improve flexibility and endurance. These exercises include flexibility exercises and functional exercises.  <br><br>
+            
+                <strong>2- Water exercises:</strong> This method is used to relieve pressure on joints and tendons, and to improve endurance and physical fitness. 
+                These exercises include swimming and other water exercises. <br><br>
+                
+                <strong>3- Manual therapy: </strong>Physiotherapy uses manual therapy to treat sports injuries, strengthen muscles, and improve flexibility and endurance.
+                 This method includes massage, treatment of misalignment errors, and manipulation of the joints. <br><br>
+                
+                 <strong>4- Functional training: </strong>Physiotherapy uses functional training to improve athletic performance and treat sports injuries. This method involves training 
+                the muscles, tendons, and ligaments to perform the appropriate movements.
+                . <br><br>
+                
+                <strong>5- Cold and heat therapy: </strong>Physiotherapy uses cold and heat therapy to relieve pain and improve injury healing. 
+                This method includes the use of ice, heat, hot and cold water, and ultraviolet light therapy. </p> <br><br>
+                      
+            </p>
+        </div>
+    </section>
 
-<p style="padding-top:10px;"> 1- Professional exercises: Physiotherapy uses professional exercises to strengthen muscles, ligaments and tendons, 
-    and improve flexibility and endurance. These exercises include flexibility exercises and functional exercises.  <br><br>
+    
+</body>
 
-    2- Water exercises: This method is used to relieve pressure on joints and tendons, and to improve endurance and physical fitness. 
-    These exercises include swimming and other water exercises. <br><br>
-    
-    3- Manual therapy: Physiotherapy uses manual therapy to treat sports injuries, strengthen muscles, and improve flexibility and endurance.
-     This method includes massage, treatment of misalignment errors, and manipulation of the joints. <br><br>
-    
-    4- Functional training: Physiotherapy uses functional training to improve athletic performance and treat sports injuries. This method involves training 
-    the muscles, tendons, and ligaments to perform the appropriate movements.
-    . <br><br>
-    
-    5- Cold and heat therapy: Physiotherapy uses cold and heat therapy to relieve pain and improve injury healing. 
-    This method includes the use of ice, heat, hot and cold water, and ultraviolet light therapy. </p> <br><br>
-            </section>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
