@@ -181,6 +181,7 @@ h2 {
     <?php
 
 date_default_timezone_set('Asia/Amman'); 
+
 $dates = [
   '12/17/2023', // Sunday
   '12/18/2023', // Monday
