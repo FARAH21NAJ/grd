@@ -169,7 +169,7 @@ h2 {
 <body>
 
 <div class="calendar">
-  <h2>  <img src="cen1.png" height="5%" width="5%">  Available Appointments</h2>
+  <h2>  <img src="cen3.png" height="5%" width="5%">  Available Appointments</h2>
 
   
   <div class="week">
