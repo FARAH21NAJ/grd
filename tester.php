@@ -701,7 +701,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <div  class="button-container">
 <a href="#"> <button class="submit"  onclick="openModal()"> To Pay </button></a>
-<a href="seeappoint1.php"><button class="reset" onclick="seeAppointment()">See Appointment</button></a>
+<a href="appointment.html"><button class="reset" onclick="seeAppointment()">Back</button></a>
 </div>
 
     
