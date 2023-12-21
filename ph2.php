@@ -214,7 +214,7 @@ try {
     if (count($results) > 0) {
         echo "<p> <i class='fa-solid fa-calendar-check'></i> Your Appointments</p>";
         echo "<table border='1'>";
-        echo "<tr><th> <i class='fa-solid fa-person'></i> Patient Name</th><th> <i class='fa-regular fa-calendar'></i> Day</th><th> <i class='fa-regular fa-clock'></i>Time Slot</th><th> <i class='fa-regular fa-credit-card'></i> Payment Status</th></tr>";
+        echo "<tr><th> <i class='fa-solid fa-person'></i> Patient Name</th><th> <i class='fa-regular fa-calendar'></i> Day</th><th> <i class='fa-regular fa-clock'></i> Time Slot</th><th> <i class='fa-regular fa-credit-card'></i> Payment Status</th></tr>";
         foreach ($results as $row) {
             $day = $row['day'];
             $dayName = isset($daysOfWeek[$day]) ? $daysOfWeek[$day] : 'Unknown';
@@ -237,7 +237,7 @@ try {
 
 
 
-<a href="ph1.html"> <button class="reset"> Back </button></a>
+<a href="physiotherapy2.php"> <button class="reset"> Back </button></a>
 
 
 
