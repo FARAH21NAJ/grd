@@ -230,7 +230,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
  
  
  
- <a href=""> <button class="reset"> send confirm email </button></a>
+ <a href="email-form.php"> <button class="reset"> send confirm email </button></a>
  
 <a href="appointment.html"> <button class="reset"> Back </button></a>
  
