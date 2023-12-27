@@ -247,7 +247,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $targetFile);
         }
     } 
-
     // Insert into the database
     $sql = "INSERT INTO appointments (firstname, location, chosen_center, file_name, 	patient_ph) VALUES ('$firstName', '$location', '$chosenCenter', '$uploadedFileName', '$phoneNumber')";
 
