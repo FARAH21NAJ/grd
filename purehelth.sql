@@ -305,6 +305,8 @@ CREATE TABLE `app_book1` (
   `time_slot` varchar(10) NOT NULL,
   `payment_status` tinyint(1) NOT NULL DEFAULT '0',
   `color` varchar(255) NOT NULL 
+
+  
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8; 
 
 CREATE TABLE `app_book2` (
