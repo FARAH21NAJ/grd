@@ -137,7 +137,6 @@ h2 {
 
 .modal-content {
   color: #122853;
-
   background-color: rgba(255,255,255,0.8);
   margin: 15% auto;
   padding: 20px;

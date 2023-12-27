@@ -103,13 +103,7 @@
             <div class="row mt-3">
               <div class="col-sm-4"><strong class="text-uppercase">Language:</strong></div>
               <div class="col-sm-8">Arabic,English, German,</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+            </div></div></div></div></div></div></div>
 <div class="section" id="skill">
   <div class="container">
     <div class="h4 text-center mb-4 title">Professional Skills</div>
@@ -174,8 +168,6 @@
     </div>
   </div>
 </div>
-
-
 <a href="log.html"> <button style="
 
 background-color:#315bb0; 

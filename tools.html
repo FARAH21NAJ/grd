@@ -224,8 +224,7 @@ color:  #014dd5;;
     
   <form action="save_order.php" method="post" Autocomplete="off">
     <!-- Add input fields for patient name, bill content, and total bill -->
-    <input type="text" name="patientName" placeholder="Full Name (First and Last):" pattern="[A-Z][a-zA-Z]*\s[A-Z][a-zA-Z]*" 
-    title="Please enter both names starting with a capital letter" required Autocomplete="off"    >
+    <input type="text" name="patientName" placeholder="Patient Name" required    >
     <input type="hidden" id="billContentInput" name="billContent">
     <input type="hidden" id="totalBillInput" name="totalBill">
     <input type="hidden" name="tool_id" placeholder="Tool ID">
@@ -270,7 +269,7 @@ const products = [
   {id: 3, name: 'walks on sensory', category: 'Equipment' ,image: 'tt3.jpg ' , price: 24.99},
   { id: 4, name: 'Acupuncture needles', category: 'Equipment',image: 'tt4.jpg' , price: 9.99},
   { id: 5,name: 'mats and black roll', category: 'Rehabilitation' ,image: 'tt5.jpg' , price: 49.99},
-  { id: 6, name: 'Fitness ball<', category: 'Rehabilitation' ,image: 'tt6.png' , price: 24.99},
+  { id: 6, name: 'Fitness ball', category: 'Rehabilitation' ,image: 'tt6.png' , price: 24.99},
   { id: 7,name: 'crutches', category: 'Rehabilitation' ,image: 'tt11.png', price: 29.99},
   { id: 8,name: 'Walker', category: 'Rehabilitation' ,image: 'ttt10.jpg' , price: 23.99},
   { id: 9, name: 'cupping therapy', category: 'Sports Physio' ,image: 'tt9.png' , price: 49.99},

@@ -111,7 +111,7 @@ body{
 
 
 p{font-size:40px ;text-align:center ;margin-left:550px ; margin-right:540px;
-	position:relative;left:370px ; padding-bottom:10px; padding-top:10px ;
+	position:relative;left:47px ; bottom:-15px; padding-bottom:10px; padding-top:10px ;
    width:500px;
     color:#122853;
     background-color: rgba(255,255,255,0.8);
@@ -135,31 +135,56 @@ margin-bottom:20px;
               margin: 0 10px; /* Adjusted margin */
               margin-top: 20px;
               position: relative;
-              left: 68%;
+              left: 47%;
+              float: left;
           }
 
-
-    table{
-        border-collapse: collapse;
-        background-color: rgba(255,255,255,0.8);
-	width:550px;
-   height: 350px;
-   position: relative; bottom: 10px;
-   right:20%;
-
-   
-
-    }
-    th,td{
-        color:#122853;
+     
 
 
-    }
+          table {
+            width: 80%;
+            margin: 30px auto;
+            border-collapse: collapse;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+            position: relative;
+              left: 3%;
+              color:#122853;
+             
 
-td{
-    text-align:center ;
+        }
 
-}
+        th, td {
+            padding: 12px 15px;
+            text-align: center;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        th {
+            background-color: #f5f5f5;
+            font-weight: bold;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        td:last-child {
+            text-align: left;
+        }
+
+        td a {
+            color: #122853;
+            text-decoration: underline;
+        }
+
+        .reset {
+            /* Your existing button styles */
+            /* Update or modify as needed */
+        }
 </style>
 </head>
 <body >
@@ -232,8 +257,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 <a href="appointment.html"> <button class="reset"> Back </button></a>
-
-
 
 
 

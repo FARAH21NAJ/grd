@@ -12,8 +12,6 @@ $b2="update patients set pass='$pao' where patient_phone='$ido'" ;
  mysqli_query($db2,$b2);
    header("Location:http://localhost/grd/login.html");
  mysqli_close($db2);
-
 ?> 
-
 </body>
 </html>

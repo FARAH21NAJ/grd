@@ -18,6 +18,72 @@
        <!-- Link Swiper's CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
 
+  <style>
+
+    .center-selection {
+        display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+
+
+
+  
+    }
+
+
+    
+.modal-content {
+  color: #122853;
+  background-color: rgba(255,255,255,0.8);
+  margin: 15% auto;
+  padding: 20px;
+  padding-left: 53px;
+  border: 1px solid #888;
+  width: 45%;
+  height: 52%;
+}
+
+.modal-content button{
+
+
+    background-color: #315bb0;
+              display: block;
+              text-align: center;
+              border-radius: 12px;
+              border: 2px solid rgb(173, 210, 244);
+              padding: 14px 110px;
+              outline: none;
+              color: white;
+              cursor: pointer;
+              transition: 0.2s;
+              margin: 0 10px; /* Adjusted margin */
+              margin-top: 20px;
+              width:14.1cm;
+
+
+}
+
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+  </style>
 
 </head>
 <body>
@@ -41,11 +107,22 @@
                 <li><a href="#testimonials"> Contact us </a></li>
                 <!--<li><a href="#testimonials"> Location </a></li>-->
                 <li><a href="logtool.html"> Tool </a></li>
-                <li><a href="#testimonials"> Reviws</a></li>
+                <li><a href="#" onclick="toggleCenterSelection()"> Reviws</a></li>
             </ul>
             
 
-
+            <div id="chooseCenter" class="center-selection" >
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                <h2 style="text-align: center;">Choose a Center for Evaluation:</h2>
+                
+                <button onclick="goToEvaluation('Creativity Center')"> <img class="m" src="cen1.png" height="6%" width="6%">  Creativity Center</button>
+                <button onclick="goToEvaluation('Mazaya Center')"> <img class="m" src="cen2.png" height="6%" width="6%">  Mazaya Center</button>
+                <button onclick="goToEvaluation('Tlaa Al Ali Center')"> <img class="m" src="cen3.png" height="6%" width="6%"> Tlaa Al Ali Center</button>
+                <button onclick="goToEvaluation('Al Shorouq Center')"><img class="m" src="cen 4.png" height="6%" width="6%">  Al Shorouq Center</button>
+                
+              </div>
+</div>
             
             <a href="basic.html" class="appo"  id="1">Log in</a>
         </nav>
@@ -71,7 +148,6 @@
         
     </section>
 
-
     
     <div class="appointment-search-container">
         <h3>Find Best HealthCare</h3>
@@ -86,13 +162,12 @@
             <i class="fa-solid fa-location-dot"></i>
             <input type="text" placeholder="Set Your Location">
         </div>
-        
+       
         <button>
             <i class="fa-solid fa-magnifying-glass"></i>
         </button>
         </form>
     </div>
-
 
     
     <section class="what-we-provide">
@@ -687,6 +762,36 @@
         },
       },
     });
+
+    function toggleCenterSelection() {
+    document.getElementById('chooseCenter').style.display = 'block';
+  }
+  
+ 
+    function goToEvaluation(centerName) {
+      // Redirect to the evaluation page based on the selected center
+      // Replace 'evaluation_page.html' with the actual URL of your evaluation page
+      switch (centerName) {
+        case 'Creativity Center':
+          window.location.href = 'revph.html';
+          break;
+        case 'Mazaya Center':
+          window.location.href = 'revph1.html';
+          break;
+        case 'Tlaa Al Ali Center':
+          window.location.href = 'revph2.html';
+          break;
+        case 'Al Shorouq Center':
+          window.location.href = 'revph3.html';
+          break;
+        default:
+          break;
+      }
+    }
+    
+  function closeModal() {
+    document.getElementById('chooseCenter').style.display = 'none';
+  }
   </script>
 
 </body>
