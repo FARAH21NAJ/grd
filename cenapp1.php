@@ -339,7 +339,7 @@ echo "<script>showCalendar(currentCalendar, $currentMonth, $currentYear );</scri
 mysqli_close($db1);
 
 
-$phoneNumber = $_GET['phone'] ;
+
 
 ?>
 
@@ -351,7 +351,7 @@ $phoneNumber = $_GET['phone'] ;
   </div>
 
 <form action="cenapp1.php" method="post">
-  <input type="hidden" value="<?php echo htmlspecialchars($_GET['phone'], ENT_QUOTES); ?>" name="phon">
+
 </form>
 
   <div id="bookingForm" style="display: none;">

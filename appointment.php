@@ -370,7 +370,7 @@ left: 330px;
 <br>
 <label> To select data and time 
 
-<a href="cenapp1.php?phone=<?php echo urlencode($_SESSION['logged_in_patient']); ?>">
+<a href="cenapp1.php">
 
 <input id="submitButton" id="otherButton" class="shet" type="button" value="Creativity"  >
 </a>

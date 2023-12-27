@@ -32,9 +32,9 @@ function updateOrInsertRecord($selectedDay, $selectedTime, $paymentStatus, $colo
     // Check if there is a record with the same time_slot and day values and orange color
     deleteRowsWithOrangeColor($selectedDay, $selectedTime);
     // Update the existing record if it exists, otherwise insert a new record
-    $sql = "INSERT INTO app_book1 (day, time_slot, payment_status, color, date , patient_phone) 
-            VALUES ($selectedDay, '$selectedTime', $paymentStatus, '$color', CURDATE() ,'$phoneNumber')
-            ON DUPLICATE KEY UPDATE payment_status = $paymentStatus, color = '$color', date = CURDATE(),patient_phone='$phoneNumber' ";
+    $sql = "INSERT INTO app_book1 (day, time_slot, payment_status, color, date ) 
+            VALUES ($selectedDay, '$selectedTime', $paymentStatus, '$color', CURDATE() ,)
+            ON DUPLICATE KEY UPDATE payment_status = $paymentStatus, color = '$color', date = CURDATE() ";
 
     if (mysqli_query($db1, $sql)) {
         // Return payment status, color, and date in the response
