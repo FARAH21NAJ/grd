@@ -49,7 +49,15 @@ h2 {
   border: 1px solid #ccc;
   padding: 5px;
   background-color: #f0f0f0;
-}
+} 
+.day2 {
+  text-align: center;
+  font-weight: bold;
+  
+  padding: 5px;
+  
+} 
+
 
 .timeslots {
   display: flex;
@@ -98,11 +106,25 @@ h2 {
     font-weight: bold;
     color: #122853;
     margin-bottom: 10px;
-  }
+  } 
+  /* Add this CSS to your existing styles or in a separate style block */
+.calendar-scroll-container {
+  overflow-y: auto;
+  max-height: 500px; /* Set the maximum height for the scrolling area, adjust as needed */
+}
+
+.calendar-content {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+/* Adjust other styles as needed */
+
 
 .submit{
-  background-color:#122853;
-              color: white;
+		background-color:#315bb0; 
+	
 	display:block;
 	margin:20px 0px 0px 20px;
 	text-align:center;
@@ -110,7 +132,7 @@ h2 {
 	border:2px solid rgb(173, 210, 244);
 	padding :14px 110px;
 	outline:none;
-
+	color: #122853;
 	cursor:pointer;
 	transition:0.25px;
   position: relative;
@@ -223,7 +245,8 @@ h2 {
  
 
 .calendar-content {
-  display: none;
+  display: none; 
+  
 }
 
 
@@ -248,17 +271,20 @@ h2 {
  
   <div id="currentMonthYear" class="month-year" ></div>
   
-  <div class="calendar-content ">
+  <div class="calendar-content "> 
+  <div class="calendar-scroll-container">
         <div class="tab-content gallery mt-5">
   <div class="week" id="calendar1">
     <!-- Display days of the week -->
-    <div class="day"></div>
-    <div class="day"></div>
-    <div class="day"></div>
-    <div class="day"></div>
-    <div class="day"></div>
-    <div class="day"></div>
-    <div class="day"></div>
+    
+    <div class="day2">Sunday</div>
+    <div class="day2">Monday</div>
+    <div class="day2">Tuesday</div>
+    <div class="day2">Wednesday</div>
+    <div class="day2" >Thursday</div>
+    <div class="day2">Friday</div>
+    <div class="day2">Saturday</div>
+    
 
     <!-- Loop through time slots for each day -->
     <?php
@@ -270,7 +296,16 @@ $availableAppointments = [
     ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM","2:00 PM", "3:00 PM","4:00 PM","5:00 PM","6:00 PM","7:00 PM","8:00 PM"], 
     ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM","2:00 PM", "3:00 PM","4:00 PM","5:00 PM","6:00 PM","7:00 PM","8:00 PM"], 
     ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM","2:00 PM", "3:00 PM","4:00 PM","5:00 PM","6:00 PM","7:00 PM","8:00 PM"], 
+    ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM","2:00 PM", "3:00 PM","4:00 PM","5:00 PM","6:00 PM","7:00 PM","8:00 PM"],
     ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM","2:00 PM", "3:00 PM","4:00 PM","5:00 PM","6:00 PM","7:00 PM","8:00 PM"], 
+    ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM","2:00 PM", "3:00 PM","4:00 PM","5:00 PM","6:00 PM","7:00 PM","8:00 PM"], 
+    ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM","2:00 PM", "3:00 PM","4:00 PM","5:00 PM","6:00 PM","7:00 PM","8:00 PM"], 
+    ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM","2:00 PM", "3:00 PM","4:00 PM","5:00 PM","6:00 PM","7:00 PM","8:00 PM"], 
+    ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM","2:00 PM", "3:00 PM","4:00 PM","5:00 PM","6:00 PM","7:00 PM","8:00 PM"], 
+    ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM","2:00 PM", "3:00 PM","4:00 PM","5:00 PM","6:00 PM","7:00 PM","8:00 PM"], 
+    ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM","2:00 PM", "3:00 PM","4:00 PM","5:00 PM","6:00 PM","7:00 PM","8:00 PM"], 
+    ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM","2:00 PM", "3:00 PM","4:00 PM","5:00 PM","6:00 PM","7:00 PM","8:00 PM"], 
+   
 ];
 
 error_reporting(E_ALL);
@@ -310,8 +345,15 @@ function getCurrentDate() {
 }
 
 // Loop through each day of the week
-for ($i = 0; $i < 7; $i++) {
+for ($i = 0; $i < 14; $i++) {
   echo "<div class='timeslots' id='timeslots_$i'>";
+  if ($i < 7) {
+   
+    echo "<div class='day'></div>";
+  } else {
+    // Display an empty div for the dates when $i is greater than 7
+    echo "<div class='day'></div>";
+  }
 
   // Display available time slots for each day with an index
   foreach ($availableAppointments[$i] as $index => $timeSlot) {
@@ -346,7 +388,8 @@ mysqli_close($db1);
 </div>
       </div>
 
-  </div>
+  </div> 
+</div>
   <div id="bookingForm" style="display: none;">
     <h3>Book an Appointment</h3>
     <form action="seeapoint1.php" method="post" id="appointmentForm">
@@ -506,7 +549,7 @@ function getCurrentMonthYear() {
     const lastDayOfMonth = new Date(currentYear, currentDate.getMonth() + 1, 0);
 
     // Calculate the total weeks in the month
-    const totalWeeks = Math.ceil((lastDayOfMonth.getDate() - firstDayOfMonth.getDate() + 1) / 7);
+    const totalWeeks = Math.ceil((lastDayOfMonth.getDate() - firstDayOfMonth.getDate() + 1) / 14);
 
     return { month: currentMonth, year: currentYear, day: currentDay, totalWeeks };
 }
@@ -542,7 +585,7 @@ function showCalendar(calendarIndex, month, year, week) {
     // Update the days with the current date
     const days = document.querySelectorAll('.day');
     days.forEach((day, index) => {
-        const dayOffset = (index + 7 - currentDayOfWeek) % 7; // Calculate the offset from the current day
+        const dayOffset = (index + 14 - currentDayOfWeek) % 14; // Calculate the offset from the current day
         const dayDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() + dayOffset);
         const formattedDate = `${dayDate.getFullYear()}-${('0' + (dayDate.getMonth() + 1)).slice(-2)}-${('0' + dayDate.getDate()).slice(-2)}`;
         day.textContent = `${formattedDate}: ${day.textContent}`;
