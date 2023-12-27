@@ -17,7 +17,8 @@
             transform: translate(0) scale(1) !important;
         }
 	.submit{
-		background-color:#315bb0; 
+    background-color:#122853;
+    color: white;
 	
 	display:block;
 	margin:20px 0px 0px 20px;
@@ -26,7 +27,7 @@
 	border:2px solid rgb(173, 210, 244);
 	padding :14px 110px;
 	outline:none;
-	color: #122853;
+
 	cursor:pointer;
 	transition:0.25px;
 	}

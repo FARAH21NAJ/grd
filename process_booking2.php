@@ -1,5 +1,4 @@
 <?php
-
 // Establish a database connection (modify with your database credentials)
 $db1 = mysqli_connect("localhost", "root", "12345678");
 
@@ -17,41 +16,98 @@ function checkIfSlotBooked($day, $timeSlot) {
     return mysqli_num_rows($result) > 0;
 }
 
+// Function to delete rows with the same time_slot and day values and orange color
+function deleteRowsWithOrangeColor($day, $timeSlot) {
+    global $db1;
+    $sql = "DELETE FROM app_book2 WHERE day = $day AND time_slot = '$timeSlot' AND color = 'orange'";
+    mysqli_query($db1, $sql);
+}
+
+// Function to update or insert a record
+// Function to update or insert a record
+function updateOrInsertRecord($selectedDay, $selectedTime, $paymentStatus, $color) {
+    global $db1;
+
+    // Check if there is a record with the same time_slot and day values and orange color
+    deleteRowsWithOrangeColor($selectedDay, $selectedTime);
+
+    // Update the existing record if it exists, otherwise insert a new record
+    $sql = "INSERT INTO app_book2 (day, time_slot, payment_status, color, date) 
+            VALUES ($selectedDay, '$selectedTime', $paymentStatus, '$color', CURDATE())
+            ON DUPLICATE KEY UPDATE payment_status = $paymentStatus, color = '$color', date = CURDATE()";
+
+    if (mysqli_query($db1, $sql)) {
+        // Return payment status, color, and date in the response
+        echo json_encode(['success' => true, 'paymentStatus' => $paymentStatus, 'color' => $color, 'date' => date('Y-m-d')]);
+    } else {
+        // Return an error message
+        echo json_encode(['success' => false, 'error' => mysqli_error($db1)]);
+    }
+}
+
+
+// Function to cancel all appointments for the current month
+function cancelAppointmentsForCurrentMonth() {
+    global $db1;
+
+    // Get the current month and year
+    $currentMonth = date('n');
+    $currentYear = date('Y');
+
+    // Check if it's the first day of a new month
+    if (date('j') == 1) {
+        // Cancel all appointments for the current month
+        $sql = "DELETE FROM app_book2 WHERE MONTH(CURDATE()) = $currentMonth AND YEAR(CURDATE()) = $currentYear";
+
+        if (mysqli_query($db1, $sql)) {
+            echo "All appointments for the current month have been canceled.";
+        } else {
+            echo "Error canceling appointments: " . mysqli_error($db1);
+        }
+    }
+}
+
+// Function to cancel all appointments for the current week
+function cancelAppointmentsForCurrentWeek() {
+    global $db1;
+
+    // Get the current week
+    $currentWeek = date('W');
+
+    // Check if it's the beginning of a new week
+    if (date('N') == 1) { // Assuming Monday is the first day of the week
+        // Cancel all appointments for the current week
+        $sql = "DELETE FROM app_book2 WHERE WEEK(CURDATE()) = $currentWeek";
+
+        if (mysqli_query($db1, $sql)) {
+            echo "All appointments for the current week have been canceled.";
+        } else {
+            echo "Error canceling appointments: " . mysqli_error($db1);
+        }
+    }
+}
+
+// Call the function to cancel appointments for the current month and week
+cancelAppointmentsForCurrentMonth();
+cancelAppointmentsForCurrentWeek();
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_POST['patientName']) && isset($_POST['selectedDay']) && isset($_POST['selectedTime'])) {
-        $patientName = $_POST['patientName'];
+    if (isset($_POST['selectedDay']) && isset($_POST['selectedTime'])) {
+
         $selectedDay = $_POST['selectedDay'];
         $selectedTime = $_POST['selectedTime'];
-        
+
         // Check if payment is made
         $paymentStatus = isset($_POST['paymentMade']) && $_POST['paymentMade'] === 'true' ? 1 : 0;
 
         // Set the color based on payment status
-       // Set the color based on payment status
-// Set the color based on payment status
-$color = $paymentStatus ? 'red' : 'orange';
+        $color = $paymentStatus ? 'red' : 'orange';
 
-$sql = "INSERT INTO app_book2 (patient_name, day, time_slot, payment_status, color) 
-        VALUES ('$patientName', $selectedDay, '$selectedTime', $paymentStatus, '$color')
-        ON DUPLICATE KEY UPDATE payment_status = $paymentStatus, color = '$color'";
-
-
-
-        if (mysqli_query($db1, $sql)) {
-            // Return payment status and color in the response
-            echo json_encode(['success' => true, 'paymentStatus' => $paymentStatus, 'color' => $color]);
-        } else {
-            // Return an error message
-            echo json_encode(['success' => false, 'error' => mysqli_error($db1)]);
-        }
+        // Update or insert the record with the appropriate checks
+        updateOrInsertRecord($selectedDay, $selectedTime, $paymentStatus, $color);
     }
 }
 
 // Close the database connection
 mysqli_close($db1);
-
 ?>
-
-<script>
-// Additional JavaScript code can be added here if needed
-</script>

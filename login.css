@@ -97,6 +97,7 @@ width: 420px;
 border-style: solid;
 border-color: #122853;
 
+
 }
 
  .log{   
@@ -142,7 +143,9 @@ padding-bottom: 15px;
 
 tr th{text-align: center;}
 
-
+.app:hover{
+    background-color: #014dd5;
+}
 
 
 

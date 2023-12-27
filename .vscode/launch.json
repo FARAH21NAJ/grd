@@ -8,7 +8,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "Open basic.html",
-            "file": "c:\\AppServ\\www\\grd\\basic.html"
+            "file": "c:\\AppServ\\www\\grd\basic.html"
         }
     ]
 }

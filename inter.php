@@ -1,38 +1,38 @@
-<html>
-<head>
-<title> pure health</title>
-</head>
-<body>
 <?php
+session_start();
 
-$db=mysqli_connect("localhost","root","12345678");
-mysqli_select_db($db,"purehelth");
+// Establish database connection
+$servername = "localhost";
+$username = "root";
+$password = "12345678";
+$dbname = "purehelth";
 
-    $id=$_POST["phone"];
-    $password=$_POST["pas"]; 
-	
-	
-$b="SELECT * FROM patients WHERE patient_phone='$id' and pass='$password'";
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-   $result=mysqli_query($db,$b);
- 
-   
- if(mysqli_num_rows($result)>0) {
-	 header("Location:appointment.html");
-	 }
-else{
-//header("Location:http://localhost/page1.html");	
-print("<script type='text/javascript'>");
-print("alert('Invalid Password or ID')");  
-echo ("</script>");
-
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
 
-mysqli_close($db);
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $phone = $_POST["phone"];
+    $password = $_POST["pas"];
+
+    $query = "SELECT * FROM patients WHERE patient_phone='$phone' AND pass='$password'";
+    $result = $conn->query($query);
+
+    if ($result->num_rows == 1) {
+        $row = $result->fetch_assoc();
+        $_SESSION['logged_in_patient'] = $phone; // Store patient's phone in session
+        $_SESSION['patient_name'] = $row['fname'] . " " . $row['lname']; // Store patient's name in session
+        header("Location: patient.php");
+        exit();
+    } else {
+        echo "Invalid phone number or password. Please try again.";
+    }
+}
 ?>
 
-</body>
-</html>
+
 
 
 

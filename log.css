@@ -87,8 +87,8 @@ ul{
     height: 45px;
     padding: 0px 20px;
     border-radius:4px;
-    background-color: #014dd5;
-    color: #ffffff;
+    background-color:#122853;
+    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -97,6 +97,9 @@ ul{
     font-size: 0.9rem;
 }
 
+.appo:hover{
+    background-color: #014dd5;
+}
 .home-content{
     max-width: 1200px;
     width: 90%;

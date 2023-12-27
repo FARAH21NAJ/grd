@@ -297,4 +297,40 @@ ALTER TABLE `work_on`
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */; 
+CREATE TABLE `app_book1` (
+  `id` int(11) NOT NULL,
+  `day` int(11) NOT NULL,
+  `date` date NOT NULL, -- Add the Date column
+  `time_slot` varchar(10) NOT NULL,
+  `payment_status` tinyint(1) NOT NULL DEFAULT '0',
+  `color` varchar(255) NOT NULL 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8; 
+
+CREATE TABLE `app_book2` (
+  `id` int(11) NOT NULL,
+  `day` int(11) NOT NULL,
+  `date` date NOT NULL, -- Add the Date column
+  `time_slot` varchar(10) NOT NULL,
+  `payment_status` tinyint(1) NOT NULL DEFAULT '0',
+  `color` varchar(255) NOT NULL 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `app_book3` (
+  `id` int(11) NOT NULL,
+  `day` int(11) NOT NULL,
+  `date` date NOT NULL, -- Add the Date column
+  `time_slot` varchar(10) NOT NULL,
+  `payment_status` tinyint(1) NOT NULL DEFAULT '0',
+  `color` varchar(255) NOT NULL 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8; 
+
+CREATE TABLE `app_book4` (
+  `id` int(11) NOT NULL,
+  `day` int(11) NOT NULL,
+  `date` date NOT NULL, -- Add the Date column
+  `time_slot` varchar(10) NOT NULL,
+  `payment_status` tinyint(1) NOT NULL DEFAULT '0',
+  `color` varchar(255) NOT NULL 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+

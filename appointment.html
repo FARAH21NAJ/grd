@@ -197,7 +197,8 @@
 	outline:none;
 	}
 	.submit{
-		background-color:#315bb0; 
+		background-color:#122853;
+              color: white;
 	
 	display:block;
 	margin:20px 0px 0px 20px;
@@ -206,12 +207,11 @@
 	border:2px solid rgb(173, 210, 244);
 	padding :14px 110px;
 	outline:none;
-	color: #122853;
+
 	cursor:pointer;
 	transition:0.25px;
 	}
 	.reset{
-		background-color:#315bb0; 
 	display:block;
 	margin:20px 0px 0px 20px;
 	text-align:center;
@@ -219,7 +219,8 @@
 	border:2px solid rgb(173, 210, 244);
 	padding :14px 110px;
 	outline:none;
-	color: #122853;
+    background-color:#122853;
+              color: white;
 	cursor:pointer;
 	transition:0.25px;
 
@@ -309,8 +310,6 @@ left: 330px;
     </label>
    
     <a href="" class="logo"><span>pure</span>health</a><img src="logo.png" alt="" width="80" height="80">
-    
-    
 
 <ul class="menu">
 <li><a href="log.html"; style="font-weight: bolder;">Home  </a></li>
@@ -322,9 +321,16 @@ left: 330px;
 <li><a href="log.html"> Reviws</a></li> </ul>
 </nav>
 
+
+
+
 <div class="regform"><h1>Appointment</h1></div>
 <div class="main" >
-<form method="POST" action="appoint.php" autocomplete="off">
+<form method="POST" action="appoints.php" autocomplete="off">
+
+
+<input type="hidden" value="" name="phon">
+
 <div id="name" style="position: relative; top:20px">
 <h2 class="name" >The Name</h2> 
 <label>
