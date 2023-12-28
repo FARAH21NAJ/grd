@@ -25,16 +25,16 @@ function deleteRowsWithOrangeColor($day, $timeSlot) {
 
 // Function to update or insert a record
 // Function to update or insert a record
-function updateOrInsertRecord($selectedDay, $selectedTime, $paymentStatus, $color) {
+function updateOrInsertRecord($selectedDay, $selectedTime, $paymentStatus, $color,$userName) {
     global $db1;
 
     // Check if there is a record with the same time_slot and day values and orange color
     deleteRowsWithOrangeColor($selectedDay, $selectedTime);
 
     // Update the existing record if it exists, otherwise insert a new record
-    $sql = "INSERT INTO app_book2 (day, time_slot, payment_status, color, date) 
-            VALUES ($selectedDay, '$selectedTime', $paymentStatus, '$color', CURDATE())
-            ON DUPLICATE KEY UPDATE payment_status = $paymentStatus, color = '$color', date = CURDATE()";
+    $sql = "INSERT INTO app_book2 (day, time_slot, payment_status, color, date, patient_name) 
+    VALUES ($selectedDay, '$selectedTime', $paymentStatus, '$color', CURDATE(), '$userName')
+    ON DUPLICATE KEY UPDATE payment_status = $paymentStatus, color = '$color', date = CURDATE(), patient_name = '$userName'";
 
     if (mysqli_query($db1, $sql)) {
         // Return payment status, color, and date in the response
@@ -96,7 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $selectedDay = $_POST['selectedDay'];
         $selectedTime = $_POST['selectedTime'];
-
+        $userName = $_POST['userName'];
         // Check if payment is made
         $paymentStatus = isset($_POST['paymentMade']) && $_POST['paymentMade'] === 'true' ? 1 : 0;
 
@@ -104,7 +104,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $color = $paymentStatus ? 'red' : 'orange';
 
         // Update or insert the record with the appropriate checks
-        updateOrInsertRecord($selectedDay, $selectedTime, $paymentStatus, $color);
+        updateOrInsertRecord($selectedDay, $selectedTime, $paymentStatus, $color,$userName);
     }
 }
 

@@ -335,9 +335,10 @@ left: 330px;
 <div id="name" style="position: relative; top:20px">
 <h2 class="name" >The Name</h2> 
 <label>
-<input class="firstname" type="text" name="firstna"required Autocomplete="off"><br>
-</label>
+<input class="firstname" type="text" id="patientName" name="firstna"required Autocomplete="off"><br>
 </div>
+
+
 <h2 class="name" style="display: block;">The location</h2>
 <label class="rad">
 <input type="radio" name="location" value="our clinc"> Our Clinic
@@ -370,28 +371,84 @@ left: 330px;
 <br>
 <label> To select data and time 
 
-<a href="cenapp1.php">
 
-<input id="submitButton" id="otherButton" class="shet" type="button" value="Creativity"  >
+
+<a href="javascript:void(0);" onclick="passNameToCenapp1()">
+<input id="submitButton" class="shet" type="button"   value="Creativity"  >
+</a>
+</label>
+
+<a href="javascript:void(0);" onclick="passNameToCenapp2()">
+    <input id="submitButton1" class="shet" type="button" value="Mazaya">
 </a>
 
+<!-- Link to cenapp3.php -->
+<a href="javascript:void(0);" onclick="passNameToCenapp3()">
+    <input id="submitButton2" class="shet" type="button" value="Tla'a Al Ali">
+</a>
 
-</label>
-<a href="cenapp2.php">
-	<input id="submitButton1"  class="shet" type="button" value="Mazaya" >
-	</a>
-	<a href="cenapp3.php">
-		<input id="submitButton2" class="shet" type="button" value="Tla'a Al Ali" >
-		</a>
-	<a href="cenapp4.php">
-			<input id="submitButton3"  class="shet" type="button" value="Al Shorouq" >
-			</a>
+<!-- Link to cenapp4.php -->
+<a href="javascript:void(0);" onclick="passNameToCenapp4()">
+    <input id="submitButton3" class="shet" type="button" value="Al Shorouq">
+</a>
 <br>
 <input class="submit" type="submit" value="Book">
 <input class="reset" type="reset" value="Cancel">
 
 </form>
 </div>
+
+
+<script>
+function passNameToCenapp1() {
+    var patientName = document.getElementById('patientName').value;
+    var encodedName = encodeURIComponent(patientName);
+    var url = 'cenapp1.php?patient_name=' + encodedName;
+    window.location.href = url;
+}
+
+
+function passNameToCenapp2() {
+    var patientName = document.getElementById('patientName').value;
+    var encodedName = encodeURIComponent(patientName);
+    var url = 'cenapp2.php?patient_name=' + encodedName;
+    window.location.href = url;
+}
+
+
+
+
+function passNameToCenapp3() {
+    var patientName = document.getElementById('patientName').value;
+    var encodedName = encodeURIComponent(patientName);
+    var url = 'cenapp3.php?patient_name=' + encodedName;
+    window.location.href = url;
+}
+
+function passNameToCenapp4() {
+    var patientName = document.getElementById('patientName').value;
+    var encodedName = encodeURIComponent(patientName);
+    var url = 'cenapp4.php?patient_name=' + encodedName;
+    window.location.href = url;
+}
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
 
 <script src="tes.js"></script>
 </body>

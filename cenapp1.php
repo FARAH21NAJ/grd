@@ -380,9 +380,12 @@ echo "<script>showCalendar(currentCalendar, $currentMonth, $currentYear );</scri
 // Close the database connection
 mysqli_close($db1);
  
- 
- 
- 
+if (isset($_GET['patient_name'])) {
+  // Sanitize the input to prevent any potential security issues
+  $patientName = htmlspecialchars($_GET['patient_name']);
+} else {
+  $patientName = ''; // Set a default value if the query parameter is not provided
+}
 ?>
  
 </div>
@@ -390,15 +393,35 @@ mysqli_close($db1);
  
   </div>
 </div>
+
+
+
   <div id="bookingForm" style="display: none;">
     <h3>Book an Appointment</h3>
+    
     <form action="seeapoint1.php" method="post" id="appointmentForm">
       <input type="hidden" id="selectedDay" name="selectedDay">
       <input type="hidden" id="selectedTime" name="selectedTime">
+      <input type="hidden" name="userName" value="<?php echo $patientName; ?>" >
      
      
+
+
+
+
+
       <label style="font-weight: bold;">Book without setting an appointment: <input type="submit" value="Book Appointment"></label>
     </form>
+
+
+
+
+
+
+
+
+
+    
     <div id="toPayContainer" style="display: none;"> <label style="font-weight: bold;">Book with fixed appointment:
   <button  onclick="openModal()">To Pay</button> </label>
   </div>
