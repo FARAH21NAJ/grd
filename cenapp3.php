@@ -414,7 +414,6 @@ if (isset($_GET['patient_name'])) {
 </div>
  
 
-  <a href="appointment.html"><button class="submit seeAppointment" >Back</button></a>
 
     
 <div id="myModal" class="modal">

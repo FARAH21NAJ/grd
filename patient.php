@@ -156,7 +156,6 @@ $resultAppointments = $conn->query($queryAppointments);
 $conn->close();
 
 
-$conn->close();
 ?>
 
 
@@ -197,51 +196,53 @@ $conn->close();
 
 
 
-
-
-
-
-
-
-
-
-
 <div class="section" id="about">
   <div class="container">
     <div class="card" data-aos="fade-up" data-aos-offset="10">
       <div class="row">
-        
-            
-     
-        <div class="col-lg-6 col-md-12">
+
+
+
+
+
+      <div class="col-lg-6 col-md-12">
+          <div class="card-body">
+            <div class="h4 mt-0 title" style="color:#122853;">About Pure Health</div>
+            <p style="color:#122853;">We are a clinic that contains four health centers for physiotherapy!</p>
+            <p> Treatment is provided to patients and those affected by accidents by booking an appointment at the center closest to your home. 
+              Either you are treated at the center or you request a doctor who comes to treat you at home.</p>
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+      <div class="col-lg-6 col-md-12">
           <div class="card-body">
             <div class="h4 mt-0 title" style="color:#122853;">Basic Information</div>
             <div class="row">
-              <div class="col-sm-4"><strong class="text-uppercase" style="color:#122853;">First Name</strong></div>
+              <div class="col-sm-4"><strong class="text-uppercase" style="color:#122853;">First Name :</strong></div>
               <div class="col-sm-8" style="color:#122853;"> <?php echo $firstName; ?> </div>
-            </div>
-
-
-            <div class="row mt-3">
-              <div class="col-sm-4"><strong class="text-uppercase" style="color:#122853;">Last Name</strong></div>
+            </div>  <div class="row mt-3">
+              <div class="col-sm-4"><strong class="text-uppercase" style="color:#122853;">Last Name :</strong></div>
               <div class="col-sm-8" style="color:#122853;"> <?php echo $lastName; ?> </div>
-            </div>
-
-
-            <div class="row mt-3">
-              <div class="col-sm-4"><strong class="text-uppercase" style="color:#122853;">Phone:</strong></div>
+            </div> <div class="row mt-3">
+              <div class="col-sm-4"><strong class="text-uppercase" style="color:#122853;">Phone :</strong></div>
               <div class="col-sm-8" style="color:#122853;"> <?php echo $phone; ?> </div>
-            </div>
-
-
-            <div class="row mt-3">
-              <div class="col-sm-4"><strong class="text-uppercase" style="color:#122853;">Gender </strong></div>
+            </div> <div class="row mt-3">
+              <div class="col-sm-4"><strong class="text-uppercase" style="color:#122853;">Gender : </strong></div>
               <div class="col-sm-8" style="color:#122853;"> <?php echo $gender; ?> </div>
             </div>
 
 
             <div class="row mt-3">
-              <div class="col-sm-4"><strong class="text-uppercase" style="color:#122853;"> Age</strong></div>
+              <div class="col-sm-4"><strong class="text-uppercase" style="color:#122853;"> Age :</strong></div>
               <div class="col-sm-8" style="color:#122853;"> <?php echo $age; ?> </div>
             </div></div></div></div></div></div></div>
 
@@ -288,48 +289,103 @@ $conn->close();
 if ($resultAppointments->num_rows > 0) {
     echo '<table class="table">';
     echo '<thead>';
-    echo '<tr>';
+    echo '<tr style="color:#122853;">';
     echo '<th scope="col"> <i class="fa-solid fa-person"></i> First Name</th>';
     echo '<th scope="col"> <i class="fa-solid fa-location-dot"></i> Location</th>';
     echo '<th scope="col"> <i class="fa-regular fa-hospital"> </i>  Chosen Center </th>';
-    echo '<th scope="col"> More Details</th>'; // New column header for more details
+    echo '<th scope="col"> <i class="fa-solid fa-circle-info"></i> More Details</th>'; // New column header for more details
+    echo '<th scope="col"> <i class="fa-solid fa-star"></i>  Review </th>'; 
+
+
+
+
     echo '</tr>';
     echo '</thead>';
     echo '<tbody>';
 
+
+
+
+
+
+
+
     while ($row = $resultAppointments->fetch_assoc()) {
-        echo '<tr>';
+        echo '<tr style="color:#122853;">';
         echo '<td>' . $row['firstname'] . '</td>';
         echo '<td>' . $row['location'] . '</td>';
         echo '<td>' . $row['chosen_center'] . '</td>';
-
+        
         echo '<td>'; // Column for links
+    
         // Display links based on the value of chosen_center
-        if ($row['chosen_center'] = 'Creativity') {
+        $chosenCenter = trim($row['chosen_center']); // Trim any leading/trailing spaces
+    
+        // Debug: Print the actual value of chosen_center
+   
+    
+        if ($chosenCenter === 'Creativity') {
             echo '<a href="ph1.php">more details</a>';
-
-        } elseif ($row['chosen_center'] = 'Mazaya') {
+        } elseif ($chosenCenter === 'Mazaya') {
             echo '<a href="ph2.php">more details</a>';
-
-            
-        }  elseif ($row['chosen_center'] = "Tla'a Al Ali") {
+        } elseif ($chosenCenter === "Tlaa") {
             echo '<a href="ph3.php">more details</a>';
-            
-        } elseif ($row['chosen_center'] = 'Al Shorouq') {
-            echo '<a href="ph4.php"> more details</a>';
+        } elseif ($chosenCenter === 'Al Shorouq') {
+            echo '<a href="ph4.php">more details</a>';
         } else {
-            echo 'N/A'; // Display N/A if chosen_center doesn't match any condition
+            echo 'ensure make appointment by sheet'; // Display message if chosen_center doesn't match any condition
         }
-
+    
         echo '</td>';
-        
-        
-        // End of column for links
+      
+
+
+
+
+ 
+        echo '<td>' ; // Column for links
+    
+        // Display links based on the value of chosen_center
+        $chosenCenter = trim($row['chosen_center']); // Trim any leading/trailing spaces
+    
+        // Debug: Print the actual value of chosen_center
+   
+    
+        if ($chosenCenter === 'Creativity') {
+            echo '<a href="revph.html"> Review Creativity Center</a>';
+        } elseif ($chosenCenter === 'Mazaya') {
+            echo '<a href="revph1.html"> Review Mazaya Center </a>';
+        } elseif ($chosenCenter === "Tlaa") {
+            echo '<a href="revph2.html">Review Tlaa Al Ali  Center</a>';
+        } elseif ($chosenCenter === 'Al Shorouq') {
+            echo '<a href="revph3.html">Review Al Shorouq Center</a>';
+        } else {
+            echo 'ensure make appointment by sheet'; // Display message if chosen_center doesn't match any condition
+        }
+    
+        echo '</td>';
+      
+
+
+
+
+
+
+
+
+
+
+
+
         echo '</tr>';
-        echo '<tr class="details-row" style="display: none;">';
-        echo '<td colspan="4">Please be there at the scheduled time</td>';
-        echo '</tr>';
+    
+        echo '<tr style="color:#122853;">';
+        echo '<td class="details-row" colspan="4">';
+        echo '<i class="fa-regular fa-comment"></i> Please be there at the scheduled time';
+        echo '</td>';
+        echo '</tr>'; // End of note tag
     }
+
 
     echo '</tbody>';
     echo '</table>';
@@ -540,9 +596,31 @@ background-color:#315bb0;
 	cursor:pointer;
 	transition:0.25px;
 position: absolute;
-left: 40%;"> Book new appoitment</button></a>
+left: 25%;
+
+float:left
+"> Book new appoitment</button></a>
  
 
+
+
+ <a href="login.html"> <button style="
+background-color:#315bb0; 
+	display:block;
+	margin:20px 0px 0px 20px;
+	text-align:center;
+	border-radius:12px;
+	border:2px solid rgb(173, 210, 244);
+	padding :14px 110px;
+	outline:none;
+	color:white;
+	cursor:pointer;
+	transition:0.25px;
+position: absolute;
+left: 53%;
+width:9cm;
+"> Log Out</button></a>
+ 
 
 
 

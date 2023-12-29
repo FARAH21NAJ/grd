@@ -430,7 +430,7 @@ if (isset($_GET['patient_name'])) {
 </div>
  
  
-  <a href="appointment.html"><button class="submit seeAppointment" >Back</button></a>
+  
  
    
 <div id="myModal" class="modal">
@@ -621,14 +621,7 @@ const weekParam = urlParams.get('week');
 // Set the initial month, year, day, and week
 const { month, year, totalWeeks, day } = getCurrentMonthYear();
 showCalendar(currentCalendar, month, year, weekParam === 'true' ? true : 1, day);
- 
- 
-   
 </script>
- 
- 
- 
- 
 <script src="credit.js"></script>
 </body>
 </html>

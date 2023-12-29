@@ -274,7 +274,7 @@ $conn->close();
 
 
 
-<a href="appointment.html"> <button class="reset"> Back </button></a>
+<a href="patient.php"> <button class="reset"> Back </button></a>
 
 
 
