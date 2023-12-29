@@ -180,6 +180,86 @@ margin-bottom:20px;
             text-decoration: underline;
         }
 
+        /* Modal styles */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px; /* Set a maximum width for the modal content */
+
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Form styles */
+.box {
+  text-align: center;
+  
+}
+
+.form-box {
+  margin-bottom: 20px;
+  
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #122853;
+}
+
+input[type="email"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+button[type="submit"] {
+  background-color: #122853;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+  background-color: #0e1c3b;
+}
+
+
         
 </style>
 </head>
@@ -272,11 +352,59 @@ $conn->close();
 
 <a href="patient.php"> <button class="reset" style="width:6.5cm"> Back </button></a>
 
-<a href="email-form.php"> <button class="rese" > send confirmation email </button></a>
+<button class="rese"  id="showMessageBox" > send confirmation email </button>
 </div>
 
+<div id="messageBox" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <div class="box">
+      <form method="post" action="send-email.php">
+        <div class="form-box">
+          <label for="user_email" style="color:#122853;font-weight:bold;">Email:</label>
+          <input type="email" id="user_email" name="user_email" placeholder="Enter your Email" required> <br> <br>
+          <button type="submit"> Send Email</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+
+// Get the modal element
+var modal = document.getElementById('messageBox');
+
+// Get the button that opens the modal
+var btn = document.getElementById('showMessageBox');
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName('close')[0];
+
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+  modal.style.display = 'block';
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = 'none';
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = 'none';
+  }
+}
 
 
+
+
+
+
+
+</script>
 </body>
 
 </html>
