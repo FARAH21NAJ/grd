@@ -136,8 +136,9 @@ margin-bottom:20px;
               margin-top: 20px;
               position: relative;
               left: 46%;
-              float: left;
+              
           }
+    
 
      
 
@@ -181,10 +182,7 @@ margin-bottom:20px;
             text-decoration: underline;
         }
 
-        .reset {
-            /* Your existing button styles */
-            /* Update or modify as needed */
-        }
+        
 </style>
 </head>
 <body >
@@ -275,6 +273,10 @@ $conn->close();
 
 
 <a href="patient.php"> <button class="reset"> Back </button></a>
+=======
+<a href="email-form.php"> <button class="reset" > send confirmation email </button></a>
+<a href="appointment.html"> <button class="reset"> Back </button></a>
+>>>>>>> f9d859434f9aace250167ad5aa90fa11f4e091c8
 
 
 
