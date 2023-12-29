@@ -121,26 +121,24 @@ margin-bottom:20px;
     ;}
 
 
-    .reset {
-        background-color:#122853;
-              display: inline-block;
-              text-align: center;
-              border-radius: 12px;
-              border: 2px solid rgb(173, 210, 244);
-              padding: 14px 110px;
-              outline: none;
-              color: white;
-              cursor: pointer;
-              transition: 0.2s;
-              margin: 0 10px; /* Adjusted margin */
-              margin-top: 20px;
-              position: relative;
-              left: 46%;
-              
-          }
-    
+    .button-container {
+  text-align: center; /* Center align the buttons */
+  margin-top: 20px; /* Adjust the top margin if needed */
+}
 
-     
+.reset, .rese {
+  background-color: #122853;
+  display: inline-block;
+  text-align: center;
+  border-radius: 12px;
+  border: 2px solid rgb(173, 210, 244);
+  padding: 14px 40px; /* Adjusted padding for better display */
+  outline: none;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+  margin: 0 10px; /* Adjusted margin */
+}
 
 
           table {
@@ -270,13 +268,12 @@ $conn->close();
 ?>
 
 
+<div class="button-container">
 
+<a href="patient.php"> <button class="reset" style="width:6.5cm"> Back </button></a>
 
-<a href="patient.php"> <button class="reset"> Back </button></a>
-=======
-<a href="email-form.php"> <button class="reset" > send confirmation email </button></a>
-<a href="appointment.html"> <button class="reset"> Back </button></a>
->>>>>>> f9d859434f9aace250167ad5aa90fa11f4e091c8
+<a href="email-form.php"> <button class="rese" > send confirmation email </button></a>
+</div>
 
 
 
