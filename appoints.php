@@ -271,7 +271,7 @@ $conn->close();
 
 
 
-<a href="email-form.php"> <button class="reset" style="margin-right:50%;"> send confirmation email </button></a>
+<a href="email-form.php"> <button class="reset" > send confirmation email </button></a>
 <a href="appointment.html"> <button class="reset"> Back </button></a>
 
 
