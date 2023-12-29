@@ -153,8 +153,6 @@ $resultAppointmentMazaya = $conn->query($queryAppointmentMazaya);
 $queryAppointments = "SELECT * FROM appointments WHERE patient_ph='$loggedInPatient'";
 $resultAppointments = $conn->query($queryAppointments);
 
-$conn->close();
-
 
 $conn->close();
 ?>

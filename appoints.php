@@ -136,7 +136,21 @@ margin-bottom:20px;
               margin-top: 20px;
               position: relative;
               left: 46%;
-              float: left;
+              
+          }
+          .reset1 {
+              background-color:#122853;
+              display: inline-block;
+              border-radius: 12px;
+              border: 2px solid rgb(173, 210, 244);
+              padding: 14px 90px;
+              outline: none;
+              color: white;
+              cursor: pointer;
+              transition: 0.2s;
+              margin-left: 46%;/* Adjusted margin */
+              margin-top: 20px;
+              
           }
 
      
@@ -181,10 +195,7 @@ margin-bottom:20px;
             text-decoration: underline;
         }
 
-        .reset {
-            /* Your existing button styles */
-            /* Update or modify as needed */
-        }
+        
 </style>
 </head>
 <body >
@@ -273,7 +284,7 @@ $conn->close();
 
 
 
-
+<a href="email-form.php"> <button class="reset1" style="margin-right:50%;"> send confirmation email </button></a>
 <a href="appointment.html"> <button class="reset"> Back </button></a>
 
 
