@@ -540,7 +540,7 @@ if (isset($_GET['patient_name'])) {
 
 
 // Function to get the current month, year, and week
-<!-- Modify the getCurrentMonthYear function to include the current date -->
+<!--Modify the getCurrentMonthYear function to include the current date -->
 
 
 
