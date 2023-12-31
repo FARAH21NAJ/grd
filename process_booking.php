@@ -32,21 +32,36 @@ function deleteRowsWithOrangeColor($day, $timeSlot) {
 function updateOrInsertRecord($selectedDay, $selectedTime, $paymentStatus, $color,$userName) {
     global $db1;
 
+
+
     // Check if there is a record with the same time_slot and day values and orange color
     deleteRowsWithOrangeColor($selectedDay, $selectedTime);
+
+
+    $dates = [];
+    for ($i = 0; $i < 14; $i++) {
+        $date = date('Y-m-d', strtotime("+$i days"));
+        $dates[] = $date;
+    }
+
+    // Use the current date for the selected day
+    $selectedDate = $dates[$selectedDay];
+
     // Update the existing record if it exists, otherwise insert a new record
    $sql = "INSERT INTO app_book1 (day, time_slot, payment_status, color, date, patient_name) 
-            VALUES ($selectedDay, '$selectedTime', $paymentStatus, '$color', CURDATE(), '$userName')
-            ON DUPLICATE KEY UPDATE payment_status = $paymentStatus, color = '$color', date = CURDATE(), patient_name = '$userName'";
+            VALUES ($selectedDay, '$selectedTime', $paymentStatus, '$color', '$selectedDate', '$userName')
+            ON DUPLICATE KEY UPDATE payment_status = $paymentStatus, color = '$color', date = '$selectedDate', patient_name = '$userName'";
 
     if (mysqli_query($db1, $sql)) {
         // Return payment status, color, and date in the response
-        echo json_encode(['success' => true, 'paymentStatus' => $paymentStatus, 'color' => $color, 'date' => date('Y-m-d')]);
+        echo json_encode(['success' => true, 'paymentStatus' => $paymentStatus, 'color' => $color, 'date' => $selectedDate]);
     } else {
         // Return an error message
         echo json_encode(['success' => false, 'error' => mysqli_error($db1)]);
     }
 }
+
+
 
 
 // Function to cancel all appointments for the current month

@@ -85,6 +85,40 @@ if ($resultPatientInfo->num_rows > 0) {
     $gender = $row['gender'];
     $age = $row['age'];
 }
+/*
+$queryPatientInfon = "SELECT * FROM appointments WHERE pfirstname='$firstName '";
+$resultPatientInfon = $conn->query($queryPatientInfon);
+
+if ($resultPatientInfon->num_rows > 0) {
+    $row = $resultPatientInfon->fetch_assoc();
+    $firstNa = $row['firstname'];
+    $lastNa = $row['lname'];
+    $phone = $row['patient_phone'];
+    $gender = $row['gender'];
+    $age = $row['age'];
+}
+*/
+
+
+
+
+
+
+
+
+/*
+$queryAppointments = "SELECT * FROM appointments WHERE patient_ph='$loggedInPatient'";
+$resultAppointments = $conn->query($queryAppointments);
+
+
+$queryAppointment = "SELECT app_book1.* FROM app_book1
+                      INNER JOIN appointments ON app_book1.patient_name = appointments.firstname
+                      WHERE appointments.chosen_center = 'Creativity' ";
+
+$resultAppointment = $conn->query($queryAppointment);
+
+*/
+
 
 
 $queryCombinedAppointments = "SELECT app_book1.*, appointments.firstname, appointments.location, appointments.chosen_center 
@@ -96,7 +130,7 @@ $queryCombinedAppointments = "SELECT app_book1.*, appointments.firstname, appoin
                               SELECT app_book2.*, appointments.firstname, appointments.location, appointments.chosen_center 
                               FROM app_book2
                               INNER JOIN appointments ON app_book2.patient_name = appointments.firstname
-                              WHERE appointments.chosen_center = ' Mazaya ' 
+                              WHERE appointments.chosen_center = 'Mazaya' 
                                 AND appointments.patient_ph = '$loggedInPatient'
                             UNION
                               SELECT app_book3.*, appointments.firstname, appointments.location, appointments.chosen_center 
@@ -127,9 +161,30 @@ if ($resultCombinedAppointments->num_rows > 0) {
 
 
 
+$resultCombinedAppointments = $conn->query($queryCombinedAppointments);
+
+if ($resultCombinedAppointments->num_rows > 0) {
+    // Process the combined results
+    // ... (your code to display appointments)
+} else {
+    echo "No appointments found for this patient at Creativity, Mazaya, or Tlaa centers.";
+}
 
 
 
+
+
+
+
+
+
+
+
+
+/*
+$queryAppointments = "SELECT * FROM appointments WHERE patient_ph='$loggedInPatient'";
+$resultAppointments = $conn->query($queryAppointments);
+*/
 
 ?>
 
@@ -257,6 +312,143 @@ if ($resultCombinedAppointments->num_rows > 0) {
 
 
 
+/*
+
+
+
+if ($resultAppointments->num_rows > 0) {
+    echo '<table class="table">';
+    echo '<thead>';
+    echo '<tr style="color:#122853;">';
+    echo '<th scope="col"> <i class="fa-solid fa-person"></i> First Name</th>';
+    echo '<th scope="col"> <i class="fa-solid fa-location-dot"></i> Location</th>';
+    echo '<th scope="col"> <i class="fa-regular fa-hospital"> </i>  Chosen Center </th>';
+
+
+
+
+    echo '</tr>';
+    echo '</thead>';
+    echo '<tbody>';
+
+
+
+    echo '<th scope="col"> <i class="fa-solid fa-circle-info"></i> More Details</th>'; // New column header for more details
+    echo '<th scope="col"> <i class="fa-solid fa-star"></i>  Review </th>'; 
+
+
+
+
+
+    while ($row = $resultAppointments->fetch_assoc()) {
+        echo '<tr style="color:#122853;">';
+        echo '<td>' . $row['firstname'] . '</td>';
+        echo '<td>' . $row['location'] . '</td>';
+        echo '<td>' . $row['chosen_center'] . '</td>';
+        
+
+
+        
+
+      
+        echo '<td>'; // Column for links
+    
+        // Display links based on the value of chosen_center
+        $chosenCenter = trim($row['chosen_center']); // Trim any leading/trailing spaces
+    
+        // Debug: Print the actual value of chosen_center
+   
+    
+        if ($chosenCenter === 'Creativity') {
+            echo '<a href="ph1.php">more details</a>';
+        } elseif ($chosenCenter === 'Mazaya') {
+            echo '<a href="ph2.php">more details</a>';
+        } elseif ($chosenCenter === "Tlaa") {
+            echo '<a href="ph3.php">more details</a>';
+        } elseif ($chosenCenter === 'Al Shorouq') {
+            echo '<a href="ph4.php">more details</a>';
+        } else {
+            echo 'ensure make appointment by sheet'; // Display message if chosen_center doesn't match any condition
+        }
+    
+        echo '</td>';
+      
+
+
+
+
+ 
+        echo '<td>' ; // Column for links
+    
+        // Display links based on the value of chosen_center
+        $chosenCenter = trim($row['chosen_center']); // Trim any leading/trailing spaces
+    
+        // Debug: Print the actual value of chosen_center
+   
+    
+        if ($chosenCenter === 'Creativity') {
+            echo '<a href="revph.html"> Review Creativity Center</a>';
+        } elseif ($chosenCenter === 'Mazaya') {
+            echo '<a href="revph1.html"> Review Mazaya Center </a>';
+        } elseif ($chosenCenter === "Tlaa") {
+            echo '<a href="revph2.html">Review Tlaa Al Ali  Center</a>';
+        } elseif ($chosenCenter === 'Al Shorouq') {
+            echo '<a href="revph3.html">Review Al Shorouq Center</a>';
+        } else {
+            echo 'ensure make appointment by sheet'; // Display message if chosen_center doesn't match any condition
+        }
+    
+        echo '</td>';
+      
+
+
+
+
+
+
+
+
+
+
+
+
+        echo '</tr>';
+    
+        echo '<tr style="color:#122853;">';
+        echo '<td class="details-row" colspan="4">';
+        echo '<i class="fa-regular fa-comment"></i> Please be there at the scheduled time';
+        echo '</td>';
+        echo '</tr>'; // End of note tag
+    }
+
+
+    echo '</tbody>';
+    echo '</table>';
+} else {
+    echo "No appointments found for this patient.";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*/
 
 
 if ($resultCombinedAppointments->num_rows > 0) {
@@ -266,9 +458,6 @@ if ($resultCombinedAppointments->num_rows > 0) {
   echo '<th scope="col"> <i class="fa-solid fa-person"></i> First Name</th>';
   echo '<th scope="col"> <i class="fa-solid fa-location-dot"></i> Location</th>';
   echo '<th scope="col"> <i class="fa-regular fa-hospital"> </i>  Chosen Center </th>';
-  echo '<th scope="col"> <i class="fa-solid fa-circle-info"></i> More Details</th>'; // New column header for more details
-  echo '<th scope="col"> <i class="fa-solid fa-star"></i>  Review </th>'; 
-
   echo '<th scope="col"></th>'; // Empty header for the button column
   echo '</tr>';
   echo '</thead>';
@@ -280,32 +469,8 @@ if ($resultCombinedAppointments->num_rows > 0) {
       echo '<td>' . $row['location'] . '</td>';
       echo '<td>' . $row['chosen_center'] . '</td>';
       echo '<td><button class="details-btn">+</button></td>'; // Plus button for details
-   
-      // Hidden row for additional details
-
-      echo '<td>' ; // Column for links
-    
-      // Display links based on the value of chosen_center
-      $chosenCenter = trim($row['chosen_center']); // Trim any leading/trailing spaces
-  
-      // Debug: Print the actual value of chosen_center
- 
-  
-      if ($chosenCenter === 'Creativity') {
-          echo '<a href="revph.html"> Review Creativity Center</a>';
-      } elseif ($chosenCenter === 'Mazaya') {
-          echo '<a href="revph1.html"> Review Mazaya Center </a>';
-      } elseif ($chosenCenter === "Tlaa") {
-          echo '<a href="revph2.html">Review Tlaa Al Ali  Center</a>';
-      } elseif ($chosenCenter === 'Al Shorouq') {
-          echo '<a href="revph3.html">Review Al Shorouq Center</a>';
-      } else {
-          echo 'ensure make appointment by sheet'; // Display message if chosen_center doesn't match any condition
-      }
-  
-      echo '</td>';
       echo '</tr>';
-      echo '<tr class="details-row" style="display: none;">';
+      echo '<tr class="details-row" style="display: none;">'; // Hidden row for additional details
       echo '<td colspan="4">';
       
       // Convert numerical day value to day name
@@ -315,12 +480,8 @@ if ($resultCombinedAppointments->num_rows > 0) {
       echo '<strong>Time:</strong> ' . $row['time_slot'] . '<br>';
       // Add other details as needed
       echo '</td>'; // Close the cell for additional details
-
-
-      
       echo '</tr>';
   }
-
 
   echo '</tbody>';
   echo '</table>';
@@ -349,6 +510,152 @@ if ($resultCombinedAppointments->num_rows > 0) {
 
 
 
+
+
+
+
+
+/*
+
+
+if ($resultAppointmentMazaya->num_rows > 0) {
+    echo '<table class="table">';
+    echo '<thead>';
+    echo '<tr>';
+    echo '<th scope="col"> <i class="fa-solid fa-person"></i> First Name</th>';
+    echo '<th scope="col"> <i class="fa-solid fa-location-dot"></i> Location</th>';
+    echo '<th scope="col"> <i class="fa-regular fa-hospital"> </i>  Chosen Center </th>';
+    echo '<th scope="col"></th>'; // Empty header for the button column
+    echo '</tr>';
+    echo '</thead>';
+    echo '<tbody>';
+
+    while ($row = $resultAppointmentMazaya->fetch_assoc()) {
+        echo '<tr>';
+        echo '<td>' . $row['firstname'] . '</td>';
+        echo '<td>' . $row['location'] . '</td>';
+        echo '<td>' . $row['chosen_center'] . '</td>';
+        echo '<td><button class="details-btn">+</button></td>'; // Plus button for details
+        echo '</tr>';
+        echo '<tr class="details-row" style="display: none;">'; // Hidden row for additional details
+        echo '<td colspan="4">';
+        echo '<strong>Day:</strong> ' . $row['day'] . '<br>';
+        echo '<strong>Date:</strong> ' . $row['date'] . '<br>';
+        echo '<strong>Time:</strong> ' . $row['time_slot'] . '<br>';
+        echo '</td>'; // Add more cells for detailed information
+        echo '</tr>';
+    }
+
+    echo '</tbody>';
+    echo '</table>';
+} else {
+    echo "No appointments found for this patient at the Mazaya center.";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+echo '<table class="table">';
+echo '<tr>';
+if ($resultAppointments->num_rows > 0) {
+    echo '<table class="table">';
+    echo '<thead>';
+    echo '<tr>';
+    echo '<th scope="col"> <i class="fa-solid fa-person"></i> First Name</th>';
+    echo '<th scope="col"> <i class="fa-solid fa-location-dot"></i> Location</th>';
+    echo '<th scope="col"> <i class="fa-regular fa-hospital"> </i>  Chosen Center </th>';
+    echo '<th scope="col"></th>'; // Empty header for the button column
+    echo '</tr>';
+    echo '</thead>';
+    echo '<tbody>';
+
+    while ($row = $resultAppointments->fetch_assoc()) {
+        echo '<tr>';
+        echo '<td>' . $row['firstname'] . '</td>';
+        echo '<td>' . $row['location'] . '</td>';
+        echo '<td>' . $row['chosen_center'] . '</td>';
+        echo '<td><button class="details-btn">+</button></td>'; // Plus button for details
+        echo '</tr>';
+        echo '<tr class="details-row" style="display: none;">'; // Hidden row for additional details
+        echo '<td colspan="4">Please be there at the scheduled time</td>'; // Add more cells for detailed information
+        echo '</tr>';
+    }
+
+    echo '</tbody>';
+    echo '</table>';
+} else {
+    echo "No appointments found for this patient.";
+}
+
+echo '</tr>';
+
+
+
+
+
+echo '<tr>';
+if ($resultAppointment->num_rows > 0) {
+    while ($row = $resultAppointment->fetch_assoc()) {
+        echo '<tr>';
+     
+        $dayNumber = (int)$row['day'];
+        $dayName = isset($dayNames[$dayNumber]) ?  $dayNames[$dayNumber] : 'Unknown';
+        echo '<div style="display: flex; justify-content: space-between;">';
+        echo '<div><strong>Time:</strong> ' . $row['time_slot'] . '</div>';
+        echo '<div><strong>Date:</strong> ' . $row['date'] . '</div>';
+        echo '</tr>';
+       
+    }
+} else {
+    echo "No appointments found for this patient at Creativity center.";
+}
+
+echo '</tr>';
+echo '</table>';
+
+
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+$resultAppointment = $conn->query($queryAppointment);
+$resultAppointmentMazaya = $conn->query($queryAppointmentMazaya);
+
+// Check the contents of $resultAppointment
+echo '<pre>';
+var_dump($resultAppointment);
+echo '</pre>';
+
+// Check the contents of $resultAppointmentMazaya
+echo '<pre>';
+var_dump($resultAppointmentMazaya);
+echo '</pre>';
+*/
 ?>
 
 
