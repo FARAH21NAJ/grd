@@ -122,7 +122,6 @@ $resultAppointment = $conn->query($queryAppointment);
 
 
 
-/*
 
 
 
@@ -135,7 +134,6 @@ $queryAppointment = "SELECT app_book1.*, appointments.firstname, appointments.lo
 $resultAppointment = $conn->query($queryAppointment);
 
 
-
 $queryAppointmentMazaya = "SELECT app_book2.*, appointments.firstname, appointments.location, appointments.chosen_center 
                      FROM app_book2
                      INNER JOIN appointments ON app_book2.patient_name = appointments.firstname
@@ -146,13 +144,20 @@ $resultAppointmentMazaya = $conn->query($queryAppointmentMazaya);
 
 
 
-*/
 
 
 
+
+
+
+
+
+
+
+/*
 $queryAppointments = "SELECT * FROM appointments WHERE patient_ph='$loggedInPatient'";
 $resultAppointments = $conn->query($queryAppointments);
-
+*/
 
 ?>
 
@@ -280,7 +285,7 @@ $resultAppointments = $conn->query($queryAppointments);
 
 
 
-
+/*
 
 
 
@@ -314,6 +319,11 @@ if ($resultAppointments->num_rows > 0) {
         echo '<td>' . $row['location'] . '</td>';
         echo '<td>' . $row['chosen_center'] . '</td>';
         
+
+
+        
+
+      
         echo '<td>'; // Column for links
     
         // Display links based on the value of chosen_center
@@ -408,40 +418,89 @@ if ($resultAppointments->num_rows > 0) {
 
 
 
-/*
+
+
+
+*/
+
+
+
+
 
 if ($resultAppointment->num_rows > 0) {
-    echo '<table class="table">';
-    echo '<thead>';
-    echo '<tr>';
-    echo '<th scope="col"> <i class="fa-solid fa-person"></i> First Name</th>';
-    echo '<th scope="col"> <i class="fa-solid fa-location-dot"></i> Location</th>';
-    echo '<th scope="col"> <i class="fa-regular fa-hospital"> </i>  Chosen Center </th>';
-    echo '<th scope="col"></th>'; // Empty header for the button column
-    echo '</tr>';
-    echo '</thead>';
-    echo '<tbody>';
+  echo '<table class="table">';
+  echo '<thead>';
+  echo '<tr>';
+  echo '<th scope="col"> <i class="fa-solid fa-person"></i> First Name</th>';
+  echo '<th scope="col"> <i class="fa-solid fa-location-dot"></i> Location</th>';
+  echo '<th scope="col"> <i class="fa-regular fa-hospital"> </i>  Chosen Center </th>';
+  echo '<th scope="col"></th>'; // Empty header for the button column
+  echo '</tr>';
+  echo '</thead>';
+  echo '<tbody>';
 
-    while ($row = $resultAppointment->fetch_assoc()) {
-        echo '<tr>';
-        echo '<td>' . $row['firstname'] . '</td>';
-        echo '<td>' . $row['location'] . '</td>';
-        echo '<td>' . $row['chosen_center'] . '</td>';
-        echo '<td><button class="details-btn">+</button></td>'; // Plus button for details
-        echo '</tr>';
-        echo '<tr class="details-row" style="display: none;">'; // Hidden row for additional details
-        echo '<td colspan="4">';
-        echo '<strong>Day:</strong> ' . $row['day'] . '<br>';
-        echo '<strong>Date:</strong> ' . $row['date'] . '<br>';
-        echo '<strong>Time:</strong> ' . $row['time_slot'] . '<br>';
-        echo '</td>'; // Add more cells for detailed information
-        echo '</tr>';
-    }
+  while ($row = $resultAppointment->fetch_assoc()) {
+      echo '<tr>';
+      echo '<td>' . $row['firstname'] . '</td>';
+      echo '<td>' . $row['location'] . '</td>';
+      echo '<td>' . $row['chosen_center'] . '</td>';
+      echo '<td><button class="details-btn">+</button></td>'; // Plus button for details
+      echo '</tr>';
+      echo '<tr class="details-row" style="display: none;">'; // Hidden row for additional details
+      echo '<td colspan="4">';
+      
+      // Convert numerical day value to day name
+      $dayName = isset($dayNames[$row['day']]) ? $dayNames[$row['day']] : 'Unknown';
+      echo '<strong>Day:</strong> ' . $dayName . '<br>';
+      echo '<strong>Date:</strong> ' . $row['date'] . '<br>';
+      echo '<strong>Time:</strong> ' . $row['time_slot'] . '<br>';
+      // Add other details as needed
+      echo '</td>'; // Close the cell for additional details
+      echo '</tr>';
+  }
 
-    echo '</tbody>';
-    echo '</table>';
+  
+  echo '</tbody>';
+  echo '</table>';
 } else {
-    echo "No appointments found for this patient.";
+  echo "No appointments found for this patient.";
+}
+
+
+if ($resultAppointmentMazaya ->num_rows > 0) {
+  echo '<table class="table">';
+  echo '<thead>';
+  echo '<tr>';
+  echo '<th scope="col"> <i class="fa-solid fa-person"></i> First Name</th>';
+  echo '<th scope="col"> <i class="fa-solid fa-location-dot"></i> Location</th>';
+  echo '<th scope="col"> <i class="fa-regular fa-hospital"> </i>  Chosen Center </th>';
+  echo '<th scope="col"></th>'; // Empty header for the button column
+  echo '</tr>';
+  echo '</thead>';
+  echo '<tbody>';
+
+  while ($row = $resultAppointmentMazaya ->fetch_assoc()) {
+      echo '<tr>';
+      echo '<td>' . $row['firstname'] . '</td>';
+      echo '<td>' . $row['location'] . '</td>';
+      echo '<td>' . $row['chosen_center'] . '</td>';
+      echo '<td><button class="details-btn">+</button></td>'; // Plus button for details
+      echo '</tr>';
+      echo '<tr class="details-row" style="display: none;">'; // Hidden row for additional details
+      echo '<td colspan="4">';
+      $dayName = isset($dayNames[$row['day']]) ? $dayNames[$row['day']] : 'Unknown';
+      echo '<strong>Day:</strong> ' . $dayName . '<br>';
+      echo '<strong>Date:</strong> ' . $row['date'] . '<br>';
+      echo '<strong>Time:</strong> ' . $row['time_slot'] . '<br>';
+      // Add other details as needed
+      echo '</td>'; // Close the cell for additional details
+      echo '</tr>';
+  }
+
+  echo '</tbody>';
+  echo '</table>';
+} else {
+  echo "No appointments found for this patient at the Mazaya center.";
 }
 
 
@@ -449,6 +508,32 @@ if ($resultAppointment->num_rows > 0) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 
 
 if ($resultAppointmentMazaya->num_rows > 0) {
@@ -499,7 +584,7 @@ if ($resultAppointmentMazaya->num_rows > 0) {
 
 
 
-/*
+
 echo '<table class="table">';
 echo '<tr>';
 if ($resultAppointments->num_rows > 0) {
@@ -564,7 +649,18 @@ echo '</table>';
 */
 
 
+$resultAppointment = $conn->query($queryAppointment);
+$resultAppointmentMazaya = $conn->query($queryAppointmentMazaya);
 
+// Check the contents of $resultAppointment
+echo '<pre>';
+var_dump($resultAppointment);
+echo '</pre>';
+
+// Check the contents of $resultAppointmentMazaya
+echo '<pre>';
+var_dump($resultAppointmentMazaya);
+echo '</pre>';
 
 ?>
 
