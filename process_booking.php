@@ -46,6 +46,7 @@ function updateOrInsertRecord($selectedDay, $selectedTime, $paymentStatus, $colo
 
     // Use the current date for the selected day
     $selectedDate = $dates[$selectedDay];
+    
 
     // Update the existing record if it exists, otherwise insert a new record
    $sql = "INSERT INTO app_book1 (day, time_slot, payment_status, color, date, patient_name) 
@@ -105,9 +106,6 @@ function cancelAppointmentsForCurrentWeek() {
     }
 }
 
-// Call the function to cancel appointments for the current month and week
-cancelAppointmentsForCurrentMonth();
-cancelAppointmentsForCurrentWeek();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['selectedDay']) && isset($_POST['selectedTime'])) {

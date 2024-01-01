@@ -97,8 +97,6 @@ function cancelAppointmentsForCurrentWeek() {
 }
 
 // Call the function to cancel appointments for the current month and week
-cancelAppointmentsForCurrentMonth();
-cancelAppointmentsForCurrentWeek();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['selectedDay']) && isset($_POST['selectedTime'])) {
