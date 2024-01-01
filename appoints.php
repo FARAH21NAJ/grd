@@ -191,7 +191,6 @@ margin-bottom:20px;
   height: 100%;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.5);
-  
 }
 
 .modal-content {
@@ -201,7 +200,6 @@ margin-bottom:20px;
   border: 1px solid #888;
   width: 80%;
   max-width: 600px; /* Set a maximum width for the modal content */
-
 }
 
 .close {
@@ -221,12 +219,10 @@ margin-bottom:20px;
 /* Form styles */
 .box {
   text-align: center;
-  
 }
 
 .form-box {
   margin-bottom: 20px;
-  
 }
 
 label {
@@ -362,8 +358,8 @@ $conn->close();
       <form method="post" action="send-email.php">
         <div class="form-box">
           <label for="user_email" style="color:#122853;font-weight:bold;">Email:</label>
-          <input type="email" id="user_email" name="user_email" placeholder="Enter your Email" required> <br> <br>
-          <button type="submit"> Send Email</button>
+          <input type="email" id="user_email" name="user_email" placeholder="Enter your Email" required>  <Br> <Br> 
+          <button type="submit">Send Email</button>
         </div>
       </form>
     </div>

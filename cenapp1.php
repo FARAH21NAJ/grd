@@ -439,13 +439,13 @@ if (isset($_GET['patient_name'])) {
     <h2>Enter Credit Card Details</h2>
     <form id="paymentForm" action="seeapoint1.php">
       <label for="cardNumber">Card Number:</label>
-      <input type="text" id="cardNumber" placeholder="1234 5678 9101 1121" required><br><br>
+      <input type="text" id="cardNumber" placeholder="1234 5678 9101 1121" required><br/><br/>
      
       <label for="expiry">Expiration Date:</label>
-      <input type="text" id="expiry" placeholder="MM/YY" required><br><br>
+      <input type="text" id="expiry" placeholder="MM/YY" required><br/><br/>
      
       <label for="cvv">CVV:</label>
-      <input type="text" id="cvv" placeholder="123" required><br><br>
+      <input type="text" id="cvv" placeholder="123" required><br/><br/>
      
       <button type="button" onclick="processPayment()">Submit Payment</button>
     </form>

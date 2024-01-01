@@ -16,32 +16,32 @@
             opacity: 1 !important;
             transform: translate(0) scale(1) !important;
         }
-  .submit{
+	.submit{
     background-color:#122853;
     color: white;
- 
-  display:block;
-  margin:20px 0px 0px 20px;
-  text-align:center;
-  border-radius:12px;
-  border:2px solid rgb(173, 210, 244);
-  padding :14px 110px;
-  outline:none;
- 
-  cursor:pointer;
-  transition:0.25px;
-  }
- 
+	
+	display:block;
+	margin:20px 0px 0px 20px;
+	text-align:center;
+	border-radius:12px;
+	border:2px solid rgb(173, 210, 244);
+	padding :14px 110px;
+	outline:none;
+
+	cursor:pointer;
+	transition:0.25px;
+	}
+
 body{
     color:#122853;
 }
- 
+
       </style>
     </noscript>
   </head>
   <?php
- 
- 
+
+
 $dayNames = [
     0 => 'Sunday',
     1 => 'Monday',
@@ -51,32 +51,32 @@ $dayNames = [
     5 => 'Friday',
     6 => 'Saturday'
 ];
- 
+
 session_start();
- 
+
 if (!isset($_SESSION['logged_in_patient'])) {
     header("Location: login.html");
     exit();
 }
- 
+
 // Establish database connection (Replace with your database credentials)
 $servername = "localhost";
 $username = "root";
 $password = "12345678";
 $dbname = "purehelth";
- 
+
 $conn = new mysqli($servername, $username, $password, $dbname);
- 
+
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
- 
+
 $loggedInPatient = $_SESSION['logged_in_patient'];
- 
+
 // Fetch patient's information from the database
 $queryPatientInfo = "SELECT * FROM patients WHERE patient_phone='$loggedInPatient'";
 $resultPatientInfo = $conn->query($queryPatientInfo);
- 
+
 if ($resultPatientInfo->num_rows > 0) {
     $row = $resultPatientInfo->fetch_assoc();
     $firstName = $row['fname'];
@@ -121,54 +121,86 @@ $resultAppointment = $conn->query($queryAppointment);
 
 
 
+$queryCombinedAppointments = "SELECT app_book1.*, appointments.firstname, appointments.location, appointments.chosen_center 
+                              FROM app_book1
+                              INNER JOIN appointments ON app_book1.patient_name = appointments.firstname
+                              WHERE appointments.chosen_center = 'Creativity' 
+                                AND appointments.patient_ph = '$loggedInPatient'
+                            UNION
+                              SELECT app_book2.*, appointments.firstname, appointments.location, appointments.chosen_center 
+                              FROM app_book2
+                              INNER JOIN appointments ON app_book2.patient_name = appointments.firstname
+                              WHERE appointments.chosen_center = 'Mazaya' 
+                                AND appointments.patient_ph = '$loggedInPatient'
+                            UNION
+                              SELECT app_book3.*, appointments.firstname, appointments.location, appointments.chosen_center 
+                              FROM app_book3
+                              INNER JOIN appointments ON app_book3.patient_name = appointments.firstname
+                              WHERE appointments.chosen_center = 'Tlaa' 
+                                AND appointments.patient_ph = '$loggedInPatient'
+                            UNION
+                              SELECT app_book4.*, appointments.firstname, appointments.location, appointments.chosen_center 
+                              FROM app_book4
+                              INNER JOIN appointments ON app_book4.patient_name = appointments.firstname
+                              WHERE appointments.chosen_center = 'Al Shorouq' 
+                                AND appointments.patient_ph = '$loggedInPatient'";
+
+$resultCombinedAppointments = $conn->query($queryCombinedAppointments);
+
+if ($resultCombinedAppointments->num_rows > 0) {
+    // Process the combined results
+    // ... (your code to display appointments)
+} else {
+    echo "No appointments found for this patient at Creativity, Mazaya, Tlaa, or Al Shorouq centers.";
+}
+
+
+
+
+
+
+
+
+$resultCombinedAppointments = $conn->query($queryCombinedAppointments);
+
+if ($resultCombinedAppointments->num_rows > 0) {
+    // Process the combined results
+    // ... (your code to display appointments)
+} else {
+    echo "No appointments found for this patient at Creativity, Mazaya, or Tlaa centers.";
+}
+
+
+
+
+
+
+
+
+
+
+
 
 /*
-
-
-
-$queryAppointment = "SELECT app_book1.*, appointments.firstname, appointments.location, appointments.chosen_center 
-                     FROM app_book1
-                     INNER JOIN appointments ON app_book1.patient_name = appointments.firstname
-                     WHERE appointments.chosen_center = 'Creativity' 
-                       AND appointments.patient_ph = '$loggedInPatient'";
-
-$resultAppointment = $conn->query($queryAppointment);
-
-
-
-$queryAppointmentMazaya = "SELECT app_book2.*, appointments.firstname, appointments.location, appointments.chosen_center 
-                     FROM app_book2
-                     INNER JOIN appointments ON app_book2.patient_name = appointments.firstname
-                     WHERE appointments.chosen_center = 'Mazaya' 
-                       AND appointments.patient_ph = '$loggedInPatient'";
-
-$resultAppointmentMazaya = $conn->query($queryAppointmentMazaya);
-
-
-
-*/
-
-
-
 $queryAppointments = "SELECT * FROM appointments WHERE patient_ph='$loggedInPatient'";
 $resultAppointments = $conn->query($queryAppointments);
-
+*/
 
 ?>
- 
- 
+
+
   <body id="top">
     <header>
       <div class="profile-page sidebar-collapse">
         <nav class="navbar navbar-expand-lg fixed-top navbar-transparent bg-primary" color-on-scroll="400">
           <div class="container">
- 
+
                 <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-bar bar1"></span><span class="navbar-toggler-bar bar2"></span><span class="navbar-toggler-bar bar3"></span></button>
               </div>
           </div>
         </nav>
       </div>
- 
+
     </header>
     <div class="page-content">
       <div>
@@ -191,36 +223,36 @@ $resultAppointments = $conn->query($queryAppointments);
     </div>
   </div>
 </div>
- 
- 
- 
+
+
+
 <div class="section" id="about">
   <div class="container">
     <div class="card" data-aos="fade-up" data-aos-offset="10">
       <div class="row">
- 
- 
- 
- 
- 
+
+
+
+
+
       <div class="col-lg-6 col-md-12">
           <div class="card-body">
             <div class="h4 mt-0 title" style="color:#122853;">About Pure Health</div>
             <p style="color:#122853;">We are a clinic that contains four health centers for physiotherapy!</p>
-            <p> Treatment is provided to patients and those affected by accidents by booking an appointment at the center closest to your home.
+            <p> Treatment is provided to patients and those affected by accidents by booking an appointment at the center closest to your home. 
               Either you are treated at the center or you request a doctor who comes to treat you at home.</p>
           </div>
         </div>
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+
+
+
+
+
+
+
+
+
+
       <div class="col-lg-6 col-md-12">
           <div class="card-body">
             <div class="h4 mt-0 title" style="color:#122853;">Basic Information</div>
@@ -237,34 +269,34 @@ $resultAppointments = $conn->query($queryAppointments);
               <div class="col-sm-4"><strong class="text-uppercase" style="color:#122853;">Gender : </strong></div>
               <div class="col-sm-8" style="color:#122853;"> <?php echo $gender; ?> </div>
             </div>
- 
- 
+
+
             <div class="row mt-3">
               <div class="col-sm-4"><strong class="text-uppercase" style="color:#122853;"> Age :</strong></div>
               <div class="col-sm-8" style="color:#122853;"> <?php echo $age; ?> </div>
             </div></div></div></div></div></div></div>
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="section" id="skill">
   <!-- Place this PHP snippet within the HTML file to display appointments in a table -->
 <div class="container">
     <div class="h4 text-center mb-4 title" style="color:#122853;">Your Appointments</div>
     <div class="card" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
         <div class="card-body">
- 
-       
+
+        
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
- 
+
 <script>
     $(document).ready(function() {
         $('.details-btn').on('click', function() {
@@ -273,14 +305,14 @@ $resultAppointments = $conn->query($queryAppointments);
         });
     });
 </script>
- 
+
 <?php
 
 
 
 
 
-
+/*
 
 
 
@@ -291,8 +323,6 @@ if ($resultAppointments->num_rows > 0) {
     echo '<th scope="col"> <i class="fa-solid fa-person"></i> First Name</th>';
     echo '<th scope="col"> <i class="fa-solid fa-location-dot"></i> Location</th>';
     echo '<th scope="col"> <i class="fa-regular fa-hospital"> </i>  Chosen Center </th>';
-    echo '<th scope="col"> <i class="fa-solid fa-circle-info"></i> More Details</th>'; // New column header for more details
-    echo '<th scope="col"> <i class="fa-solid fa-star"></i>  Review </th>'; 
 
 
 
@@ -303,6 +333,8 @@ if ($resultAppointments->num_rows > 0) {
 
 
 
+    echo '<th scope="col"> <i class="fa-solid fa-circle-info"></i> More Details</th>'; // New column header for more details
+    echo '<th scope="col"> <i class="fa-solid fa-star"></i>  Review </th>'; 
 
 
 
@@ -314,6 +346,11 @@ if ($resultAppointments->num_rows > 0) {
         echo '<td>' . $row['location'] . '</td>';
         echo '<td>' . $row['chosen_center'] . '</td>';
         
+
+
+        
+
+      
         echo '<td>'; // Column for links
     
         // Display links based on the value of chosen_center
@@ -388,6 +425,67 @@ if ($resultAppointments->num_rows > 0) {
     echo '</tbody>';
     echo '</table>';
 } else {
+    echo "No appointments found for this patient.";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*/
+
+
+if ($resultCombinedAppointments->num_rows > 0) {
+  echo '<table class="table">';
+  echo '<thead>';
+  echo '<tr>';
+  echo '<th scope="col"> <i class="fa-solid fa-person"></i> First Name</th>';
+  echo '<th scope="col"> <i class="fa-solid fa-location-dot"></i> Location</th>';
+  echo '<th scope="col"> <i class="fa-regular fa-hospital"> </i>  Chosen Center </th>';
+  echo '<th scope="col"></th>'; // Empty header for the button column
+  echo '</tr>';
+  echo '</thead>';
+  echo '<tbody>';
+
+  while ($row = $resultCombinedAppointments->fetch_assoc()) {
+      echo '<tr>';
+      echo '<td>' . $row['firstname'] . '</td>';
+      echo '<td>' . $row['location'] . '</td>';
+      echo '<td>' . $row['chosen_center'] . '</td>';
+      echo '<td><button class="details-btn">+</button></td>'; // Plus button for details
+      echo '</tr>';
+      echo '<tr class="details-row" style="display: none;">'; // Hidden row for additional details
+      echo '<td colspan="4">';
+      
+      // Convert numerical day value to day name
+      $dayName = isset($dayNames[$row['day']]) ? $dayNames[$row['day']] : 'Unknown';
+      echo '<strong>Day:</strong> ' . $dayName . '<br>';
+      echo '<strong>Date:</strong> ' . $row['date'] . '<br>';
+      echo '<strong>Time:</strong> ' . $row['time_slot'] . '<br>';
+      // Add other details as needed
+      echo '</td>'; // Close the cell for additional details
+      echo '</tr>';
+  }
+
+  echo '</tbody>';
+  echo '</table>';
+} else {
   echo "No appointments found for this patient.";
 }
 
@@ -408,47 +506,16 @@ if ($resultAppointments->num_rows > 0) {
 
 
 
+
+
+
+
+
+
+
+
+
 /*
-
-if ($resultAppointment->num_rows > 0) {
-    echo '<table class="table">';
-    echo '<thead>';
-    echo '<tr>';
-    echo '<th scope="col"> <i class="fa-solid fa-person"></i> First Name</th>';
-    echo '<th scope="col"> <i class="fa-solid fa-location-dot"></i> Location</th>';
-    echo '<th scope="col"> <i class="fa-regular fa-hospital"> </i>  Chosen Center </th>';
-    echo '<th scope="col"></th>'; // Empty header for the button column
-    echo '</tr>';
-    echo '</thead>';
-    echo '<tbody>';
-
-    while ($row = $resultAppointment->fetch_assoc()) {
-        echo '<tr>';
-        echo '<td>' . $row['firstname'] . '</td>';
-        echo '<td>' . $row['location'] . '</td>';
-        echo '<td>' . $row['chosen_center'] . '</td>';
-        echo '<td><button class="details-btn">+</button></td>'; // Plus button for details
-        echo '</tr>';
-        echo '<tr class="details-row" style="display: none;">'; // Hidden row for additional details
-        echo '<td colspan="4">';
-        echo '<strong>Day:</strong> ' . $row['day'] . '<br>';
-        echo '<strong>Date:</strong> ' . $row['date'] . '<br>';
-        echo '<strong>Time:</strong> ' . $row['time_slot'] . '<br>';
-        echo '</td>'; // Add more cells for detailed information
-        echo '</tr>';
-    }
-
-    echo '</tbody>';
-    echo '</table>';
-} else {
-    echo "No appointments found for this patient.";
-}
-
-
-
-
-
-
 
 
 if ($resultAppointmentMazaya->num_rows > 0) {
@@ -499,7 +566,7 @@ if ($resultAppointmentMazaya->num_rows > 0) {
 
 
 
-/*
+
 echo '<table class="table">';
 echo '<tr>';
 if ($resultAppointments->num_rows > 0) {
@@ -566,62 +633,85 @@ echo '</table>';
 
 
 
+
+
+
+
+
+
+
+
+/*
+
+$resultAppointment = $conn->query($queryAppointment);
+$resultAppointmentMazaya = $conn->query($queryAppointmentMazaya);
+
+// Check the contents of $resultAppointment
+echo '<pre>';
+var_dump($resultAppointment);
+echo '</pre>';
+
+// Check the contents of $resultAppointmentMazaya
+echo '<pre>';
+var_dump($resultAppointmentMazaya);
+echo '</pre>';
+*/
 ?>
- 
- 
+
+
         </div>
     </div>
 </div>
- 
- 
- 
- 
- 
- 
- 
- 
- 
+
+
+
+
+
+
+
+
+
 <a href="appointment.php ?phone=<?php echo urlencode($loggedInPatient); ?>"> <button style="
-background-color:#315bb0;
-  display:block;
-  margin:20px 0px 0px 20px;
-  text-align:center;
-  border-radius:12px;
-  border:2px solid rgb(173, 210, 244);
-  padding :14px 110px;
-  outline:none;
-  color:white;
-  cursor:pointer;
-  transition:0.25px;
+background-color:#315bb0; 
+	display:block;
+	margin:20px 0px 0px 20px;
+	text-align:center;
+	border-radius:12px;
+	border:2px solid rgb(173, 210, 244);
+	padding :14px 110px;
+	outline:none;
+	color:white;
+	cursor:pointer;
+	transition:0.25px;
 position: absolute;
 left: 25%;
- 
+
 float:left
 "> Book new appoitment</button></a>
  
- 
- 
- 
+
+
+
  <a href="login.html"> <button style="
-background-color:#315bb0;
-  display:block;
-  margin:20px 0px 0px 20px;
-  text-align:center;
-  border-radius:12px;
-  border:2px solid rgb(173, 210, 244);
-  padding :14px 110px;
-  outline:none;
-  color:white;
-  cursor:pointer;
-  transition:0.25px;
+background-color:#315bb0; 
+	display:block;
+	margin:20px 0px 0px 20px;
+	text-align:center;
+	border-radius:12px;
+	border:2px solid rgb(173, 210, 244);
+	padding :14px 110px;
+	outline:none;
+	color:white;
+	cursor:pointer;
+	transition:0.25px;
 position: absolute;
 left: 53%;
 width:9cm;
 "> Log Out</button></a>
  
- 
- 
- 
+
+
+
     <script src="jquery.min.js"></script>
     <script src="popper.min.js"></script>
     <script src="bootstrap.min.js"></script>
