@@ -16,32 +16,32 @@
             opacity: 1 !important;
             transform: translate(0) scale(1) !important;
         }
-	.submit{
+  .submit{
     background-color:#122853;
     color: white;
-	
-	display:block;
-	margin:20px 0px 0px 20px;
-	text-align:center;
-	border-radius:12px;
-	border:2px solid rgb(173, 210, 244);
-	padding :14px 110px;
-	outline:none;
-
-	cursor:pointer;
-	transition:0.25px;
-	}
-
+ 
+  display:block;
+  margin:20px 0px 0px 20px;
+  text-align:center;
+  border-radius:12px;
+  border:2px solid rgb(173, 210, 244);
+  padding :14px 110px;
+  outline:none;
+ 
+  cursor:pointer;
+  transition:0.25px;
+  }
+ 
 body{
     color:#122853;
 }
-
+ 
       </style>
     </noscript>
   </head>
   <?php
-
-
+ 
+ 
 $dayNames = [
     0 => 'Sunday',
     1 => 'Monday',
@@ -51,32 +51,32 @@ $dayNames = [
     5 => 'Friday',
     6 => 'Saturday'
 ];
-
+ 
 session_start();
-
+ 
 if (!isset($_SESSION['logged_in_patient'])) {
     header("Location: login.html");
     exit();
 }
-
+ 
 // Establish database connection (Replace with your database credentials)
 $servername = "localhost";
 $username = "root";
 $password = "12345678";
 $dbname = "purehelth";
-
+ 
 $conn = new mysqli($servername, $username, $password, $dbname);
-
+ 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-
+ 
 $loggedInPatient = $_SESSION['logged_in_patient'];
-
+ 
 // Fetch patient's information from the database
 $queryPatientInfo = "SELECT * FROM patients WHERE patient_phone='$loggedInPatient'";
 $resultPatientInfo = $conn->query($queryPatientInfo);
-
+ 
 if ($resultPatientInfo->num_rows > 0) {
     $row = $resultPatientInfo->fetch_assoc();
     $firstName = $row['fname'];
@@ -85,67 +85,67 @@ if ($resultPatientInfo->num_rows > 0) {
     $gender = $row['gender'];
     $age = $row['age'];
 }
-
-
-$queryCombinedAppointments = "SELECT app_book1.*, appointments.firstname, appointments.location, appointments.chosen_center 
+ 
+ 
+$queryCombinedAppointments = "SELECT app_book1.*, appointments.firstname, appointments.location, appointments.chosen_center
                               FROM app_book1
                               INNER JOIN appointments ON app_book1.patient_name = appointments.firstname
-                              WHERE appointments.chosen_center = 'Creativity' 
+                              WHERE appointments.chosen_center = 'Creativity'
                                 AND appointments.patient_ph = '$loggedInPatient'
                             UNION
-                              SELECT app_book2.*, appointments.firstname, appointments.location, appointments.chosen_center 
+                              SELECT app_book2.*, appointments.firstname, appointments.location, appointments.chosen_center
                               FROM app_book2
                               INNER JOIN appointments ON app_book2.patient_name = appointments.firstname
-                              WHERE appointments.chosen_center = ' Mazaya ' 
+                              WHERE appointments.chosen_center = ' Mazaya '
                                 AND appointments.patient_ph = '$loggedInPatient'
                             UNION
-                              SELECT app_book3.*, appointments.firstname, appointments.location, appointments.chosen_center 
+                              SELECT app_book3.*, appointments.firstname, appointments.location, appointments.chosen_center
                               FROM app_book3
                               INNER JOIN appointments ON app_book3.patient_name = appointments.firstname
-                              WHERE appointments.chosen_center = 'Tlaa' 
+                              WHERE appointments.chosen_center = 'Tlaa'
                                 AND appointments.patient_ph = '$loggedInPatient'
                             UNION
-                              SELECT app_book4.*, appointments.firstname, appointments.location, appointments.chosen_center 
+                              SELECT app_book4.*, appointments.firstname, appointments.location, appointments.chosen_center
                               FROM app_book4
                               INNER JOIN appointments ON app_book4.patient_name = appointments.firstname
-                              WHERE appointments.chosen_center = 'Al Shorouq' 
+                              WHERE appointments.chosen_center = 'Al Shorouq'
                                 AND appointments.patient_ph = '$loggedInPatient'";
-
+ 
 $resultCombinedAppointments = $conn->query($queryCombinedAppointments);
-
+ 
 if ($resultCombinedAppointments->num_rows > 0) {
     // Process the combined results
     // ... (your code to display appointments)
 } else {
     echo "No appointments found for this patient at Creativity, Mazaya, Tlaa, or Al Shorouq centers.";
 }
-
-
-
-
-
-
-
-
-
-
-
-
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 ?>
-
-
+ 
+ 
   <body id="top">
     <header>
       <div class="profile-page sidebar-collapse">
         <nav class="navbar navbar-expand-lg fixed-top navbar-transparent bg-primary" color-on-scroll="400">
           <div class="container">
-
+ 
                 <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-bar bar1"></span><span class="navbar-toggler-bar bar2"></span><span class="navbar-toggler-bar bar3"></span></button>
               </div>
           </div>
         </nav>
       </div>
-
+ 
     </header>
     <div class="page-content">
       <div>
@@ -168,36 +168,36 @@ if ($resultCombinedAppointments->num_rows > 0) {
     </div>
   </div>
 </div>
-
-
-
+ 
+ 
+ 
 <div class="section" id="about">
   <div class="container">
     <div class="card" data-aos="fade-up" data-aos-offset="10">
       <div class="row">
-
-
-
-
-
+ 
+ 
+ 
+ 
+ 
       <div class="col-lg-6 col-md-12">
           <div class="card-body">
             <div class="h4 mt-0 title" style="color:#122853;">About Pure Health</div>
             <p style="color:#122853;">We are a clinic that contains four health centers for physiotherapy!</p>
-            <p> Treatment is provided to patients and those affected by accidents by booking an appointment at the center closest to your home. 
+            <p> Treatment is provided to patients and those affected by accidents by booking an appointment at the center closest to your home.
               Either you are treated at the center or you request a doctor who comes to treat you at home.</p>
           </div>
         </div>
-
-
-
-
-
-
-
-
-
-
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
       <div class="col-lg-6 col-md-12">
           <div class="card-body">
             <div class="h4 mt-0 title" style="color:#122853;">Basic Information</div>
@@ -214,34 +214,34 @@ if ($resultCombinedAppointments->num_rows > 0) {
               <div class="col-sm-4"><strong class="text-uppercase" style="color:#122853;">Gender : </strong></div>
               <div class="col-sm-8" style="color:#122853;"> <?php echo $gender; ?> </div>
             </div>
-
-
+ 
+ 
             <div class="row mt-3">
               <div class="col-sm-4"><strong class="text-uppercase" style="color:#122853;"> Age :</strong></div>
               <div class="col-sm-8" style="color:#122853;"> <?php echo $age; ?> </div>
             </div></div></div></div></div></div></div>
-
-
-
-
-
-
-
-
-
-
-
-
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 <div class="section" id="skill">
   <!-- Place this PHP snippet within the HTML file to display appointments in a table -->
 <div class="container">
     <div class="h4 text-center mb-4 title" style="color:#122853;">Your Appointments</div>
     <div class="card" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
         <div class="card-body">
-
-        
+ 
+       
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+ 
 <script>
     $(document).ready(function() {
         $('.details-btn').on('click', function() {
@@ -250,15 +250,15 @@ if ($resultCombinedAppointments->num_rows > 0) {
         });
     });
 </script>
-
+ 
 <?php
-
-
-
-
-
-
-
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 if ($resultCombinedAppointments->num_rows > 0) {
   echo '<table class="table">';
   echo '<thead>';
@@ -267,13 +267,13 @@ if ($resultCombinedAppointments->num_rows > 0) {
   echo '<th scope="col"> <i class="fa-solid fa-location-dot"></i> Location</th>';
   echo '<th scope="col"> <i class="fa-regular fa-hospital"> </i>  Chosen Center </th>';
   echo '<th scope="col"> <i class="fa-solid fa-circle-info"></i> More Details</th>'; // New column header for more details
-  echo '<th scope="col"> <i class="fa-solid fa-star"></i>  Review </th>'; 
-
+  echo '<th scope="col"> <i class="fa-solid fa-star"></i>  Review </th>';
+ 
   echo '<th scope="col"></th>'; // Empty header for the button column
   echo '</tr>';
   echo '</thead>';
   echo '<tbody>';
-
+ 
   while ($row = $resultCombinedAppointments->fetch_assoc()) {
       echo '<tr>';
       echo '<td>' . $row['firstname'] . '</td>';
@@ -282,15 +282,15 @@ if ($resultCombinedAppointments->num_rows > 0) {
       echo '<td><button class="details-btn">+</button></td>'; // Plus button for details
    
       // Hidden row for additional details
-
+ 
       echo '<td>' ; // Column for links
-    
+   
       // Display links based on the value of chosen_center
       $chosenCenter = trim($row['chosen_center']); // Trim any leading/trailing spaces
-  
+ 
       // Debug: Print the actual value of chosen_center
  
-  
+ 
       if ($chosenCenter === 'Creativity') {
           echo '<a href="revph.html"> Review Creativity Center</a>';
       } elseif ($chosenCenter === 'Mazaya') {
@@ -302,12 +302,12 @@ if ($resultCombinedAppointments->num_rows > 0) {
       } else {
           echo 'ensure make appointment by sheet'; // Display message if chosen_center doesn't match any condition
       }
-  
+ 
       echo '</td>';
       echo '</tr>';
       echo '<tr class="details-row" style="display: none;">';
       echo '<td colspan="4">';
-      
+     
       // Convert numerical day value to day name
       $dayName = isset($dayNames[$row['day']]) ? $dayNames[$row['day']] : 'Unknown';
       echo '<strong>Day:</strong> ' . $dayName . '<br>';
@@ -315,94 +315,94 @@ if ($resultCombinedAppointments->num_rows > 0) {
       echo '<strong>Time:</strong> ' . $row['time_slot'] . '<br>';
       // Add other details as needed
       echo '</td>'; // Close the cell for additional details
-
-
-      
+ 
+ 
+     
       echo '</tr>';
   }
-
-
+ 
+ 
   echo '</tbody>';
   echo '</table>';
 } else {
   echo "No appointments found for this patient.";
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 ?>
-
-
+ 
+ 
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 <a href="appointment.php ?phone=<?php echo urlencode($loggedInPatient); ?>"> <button style="
-background-color:#315bb0; 
-	display:block;
-	margin:20px 0px 0px 20px;
-	text-align:center;
-	border-radius:12px;
-	border:2px solid rgb(173, 210, 244);
-	padding :14px 110px;
-	outline:none;
-	color:white;
-	cursor:pointer;
-	transition:0.25px;
+background-color:#315bb0;
+  display:block;
+  margin:20px 0px 0px 20px;
+  text-align:center;
+  border-radius:12px;
+  border:2px solid rgb(173, 210, 244);
+  padding :14px 110px;
+  outline:none;
+  color:white;
+  cursor:pointer;
+  transition:0.25px;
 position: absolute;
 left: 25%;
-
+ 
 float:left
 "> Book new appoitment</button></a>
  
-
-
-
+ 
+ 
+ 
  <a href="login.html"> <button style="
-background-color:#315bb0; 
-	display:block;
-	margin:20px 0px 0px 20px;
-	text-align:center;
-	border-radius:12px;
-	border:2px solid rgb(173, 210, 244);
-	padding :14px 110px;
-	outline:none;
-	color:white;
-	cursor:pointer;
-	transition:0.25px;
+background-color:#315bb0;
+  display:block;
+  margin:20px 0px 0px 20px;
+  text-align:center;
+  border-radius:12px;
+  border:2px solid rgb(173, 210, 244);
+  padding :14px 110px;
+  outline:none;
+  color:white;
+  cursor:pointer;
+  transition:0.25px;
 position: absolute;
 left: 53%;
 width:9cm;
 "> Log Out</button></a>
 
-
+ 
     <script src="jquery.min.js"></script>
     <script src="popper.min.js"></script>
     <script src="bootstrap.min.js"></script>
