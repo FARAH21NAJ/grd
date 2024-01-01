@@ -401,8 +401,6 @@ position: absolute;
 left: 53%;
 width:9cm;
 "> Log Out</button></a>
- 
-
 
 
     <script src="jquery.min.js"></script>
