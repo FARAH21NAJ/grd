@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         "
         <script>
         alert('Message Sent Successfully!');
-        document.location.href='email-form.php';
+        document.location.href='patient.php';
         </script>
         ";
         

@@ -326,7 +326,7 @@ left: 330px;
 
 <div class="regform"><h1>Appointment</h1></div>
 <div class="main" >
-<form method="POST" action="appoints.php" autocomplete="off">
+<form method="POST" action="appoints.php" autocomplete="off" enctype="multipart/form-data">
 
 
 <input type="hidden" value="<?php echo htmlspecialchars($_GET['phone'], ENT_QUOTES); ?>" name="phon">
@@ -363,19 +363,12 @@ left: 330px;
 <input type="radio" name="treat" value="Al Shorouq "  style="margin-left: 30px;">
 <img class="m" src="cen 4.png" height="10%" width="10%">
 </label></div></div>
-
-
-
 <div class="sub">
     <label for="uploadBtn" style="padding-right: 90px;"><i class="fa-solid fa-upload"></i> Upload File (PDF only)</label>
 	<br>
-	<input type="file" id="uploadßtn" name="fileToUpload" accept=".pdf">
+	<input type="file" name="fileToUpload" id="fileToUpload" accept=".pdf">
 </div>
 <br>
-
-
-
-
 <label> To select data and time 
 
 
@@ -449,15 +442,6 @@ function passNameToCenapp4() {
 
 
 
-
-
-
-
-
-
-
-
 <script src="tes.js"></script>
 </body>
 </html>
-

@@ -191,6 +191,7 @@ margin-bottom:20px;
   height: 100%;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.5);
+  
 }
 
 .modal-content {
@@ -200,6 +201,7 @@ margin-bottom:20px;
   border: 1px solid #888;
   width: 80%;
   max-width: 600px; /* Set a maximum width for the modal content */
+
 }
 
 .close {
@@ -219,10 +221,12 @@ margin-bottom:20px;
 /* Form styles */
 .box {
   text-align: center;
+  
 }
 
 .form-box {
   margin-bottom: 20px;
+  
 }
 
 label {
@@ -276,8 +280,7 @@ button[type="submit"]:hover {
 
 
     </nav>
-    <?php
-
+  <?php
 // Establish database connection (Replace DB_HOST, DB_USER, DB_PASS, and DB_NAME with your actual database credentials)
 $servername = "localhost";
 $username = "root";
@@ -303,7 +306,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Handling the uploaded file
     $uploadedFileName = isset($_FILES['fileToUpload']['name']) ? $_FILES['fileToUpload']['name'] : '';
     $targetFile = '';
-
+    if ($_FILES['fileToUpload']['error'] !== UPLOAD_ERR_OK) {
+      echo "File upload failed with error code: " . $_FILES['fileToUpload']['error'];
+      exit;
+  }
     // Check if a file was uploaded and it is a PDF
     if ($_FILES['fileToUpload']['error'] === UPLOAD_ERR_OK) {
         $fileExtension = strtolower(pathinfo($_FILES['fileToUpload']['name'], PATHINFO_EXTENSION));
@@ -318,9 +324,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $targetFile = $targetDirectory . basename($uploadedFileName);
             move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $targetFile);
         }
-    } 
+    }
+    $targetDirectory = 'uploads/';
+$targetFile = $targetDirectory . basename($uploadedFileName);
+
+
     // Insert into the database
-    $sql = "INSERT INTO appointments (firstname, location, chosen_center, file_name, 	patient_ph) VALUES ('$firstName', '$location', '$chosenCenter', '$uploadedFileName', '$phoneNumber')";
+    $sql = "INSERT INTO appointments (firstname, location, chosen_center, file_name, patient_ph) VALUES ('$firstName', '$location', '$chosenCenter', '$uploadedFileName', '$phoneNumber')";
 
     if ($conn->query($sql) === TRUE) {
         // Displaying the extracted form data in a table
@@ -334,6 +344,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<td>" . "<a href='$targetFile' target='_blank'>$uploadedFileName</a>" . "</td>";
         echo "</tr>";
         echo "</table>";
+
+        // Provide download link
+        echo "<p><a href='$targetFile' download>Download Your File</a></p>";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
@@ -342,6 +355,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 // Close the database connection
 $conn->close();
 ?>
+
 
 
 <div class="button-container">
@@ -358,8 +372,8 @@ $conn->close();
       <form method="post" action="send-email.php">
         <div class="form-box">
           <label for="user_email" style="color:#122853;font-weight:bold;">Email:</label>
-          <input type="email" id="user_email" name="user_email" placeholder="Enter your Email" required>  <Br> <Br> 
-          <button type="submit">Send Email</button>
+          <input type="email" id="user_email" name="user_email" placeholder="Enter your Email" required> <br> <br>
+          <button type="submit"> Send Email</button>
         </div>
       </form>
     </div>
@@ -393,9 +407,6 @@ window.onclick = function(event) {
     modal.style.display = 'none';
   }
 }
-
-
-
 
 
 
