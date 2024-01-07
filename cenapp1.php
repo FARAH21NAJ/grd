@@ -617,17 +617,13 @@ function showCalendar(calendarIndex, month, year, week) {
     // Get the current day of the week (0 = Sunday, 1 = Monday, ..., 6 = Saturday)
     const currentDayOfWeek = currentDate.getDay();
  
-    // Update the days with the current date
-    const days = document.querySelectorAll('.day');
-   
+   // Update the days with the current date
+   const days = document.querySelectorAll('.day');
     days.forEach((day, index) => {
-        const dayOffset = (index +14 - currentDayOfWeek) % 14; // Calculate the offset from the current day
+        const dayOffset = (index + 14 - currentDayOfWeek) % 14; // Calculate the offset from the current day
         const dayDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() + dayOffset);
         const formattedDate = `${dayDate.getFullYear()}-${('0' + (dayDate.getMonth() + 1)).slice(-2)}-${('0' + dayDate.getDate()).slice(-2)}`;
-      // day.textContent = `${formattedDate} ${day.textContent}`;
-      day.textContent = currentDayOfWeek;
-
-       //day.textContent =currentDayOfWeek;
+        day.textContent = `${formattedDate}  ${day.textContent}`;
     });
 }
 // Extract the week parameter from the URL

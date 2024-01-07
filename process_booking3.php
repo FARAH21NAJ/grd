@@ -31,17 +31,54 @@ function updateOrInsertRecord($selectedDay, $selectedTime, $paymentStatus, $colo
     // Check if there is a record with the same time_slot and day values and orange color
     deleteRowsWithOrangeColor($selectedDay, $selectedTime);
 
+  
     $dates = [];
-    $startDate = date('Y-m-d', strtotime("-2 days")); // Subtract 2 days from today's date
-    
     for ($i = 0; $i < 14; $i++) {
-        $date = date('Y-m-d', strtotime("$startDate +$i days"));
+        $date = date('Y-m-d', strtotime("+$i days"));
         $dates[] = $date;
     }
 
     // Use the current date for the selected day
     $selectedDate = $dates[$selectedDay];
 
+    
+   $sql1="select * from app_book1 where patient_name='$userName' and date='$selectedDate'";
+   $result1= mysqli_query($db1, $sql1);
+   $rows1=mysqli_num_rows($result1);
+
+   $sql2="select * from app_book2 where patient_name='$userName' and date='$selectedDate'";
+   $result2= mysqli_query($db1, $sql2);
+   $rows2=mysqli_num_rows($result2);
+
+   $sql3="select * from app_book3 where patient_name='$userName' and date='$selectedDate'";
+   $result3= mysqli_query($db1, $sql3);
+   $rows3=mysqli_num_rows($result3);
+
+   $sql4="select * from app_book4 where patient_name='$userName' and date='$selectedDate'";
+   $result4= mysqli_query($db1, $sql4);
+   $rows4=mysqli_num_rows($result4);
+  
+ 
+if($rows1>0)
+{
+  
+}
+
+elseif($rows2>0)
+{
+
+}
+elseif($rows3>0)
+{
+
+}
+elseif($rows4>0)
+{
+
+}
+
+else
+{
     // Update the existing record if it exists, otherwise insert a new record
    $sql = "INSERT INTO app_book3 (day, time_slot, payment_status, color, date, patient_name) 
             VALUES ($selectedDay, '$selectedTime', $paymentStatus, '$color', '$selectedDate', '$userName')
@@ -53,7 +90,7 @@ function updateOrInsertRecord($selectedDay, $selectedTime, $paymentStatus, $colo
     } else {
         // Return an error message
         echo json_encode(['success' => false, 'error' => mysqli_error($db1)]);
-    }
+    }}
 }
 
 // Function to cancel all appointments for the current month
