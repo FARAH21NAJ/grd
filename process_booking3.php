@@ -32,8 +32,10 @@ function updateOrInsertRecord($selectedDay, $selectedTime, $paymentStatus, $colo
     deleteRowsWithOrangeColor($selectedDay, $selectedTime);
 
     $dates = [];
+    $startDate = date('Y-m-d', strtotime("-2 days")); // Subtract 2 days from today's date
+    
     for ($i = 0; $i < 14; $i++) {
-        $date = date('Y-m-d', strtotime("+$i days"));
+        $date = date('Y-m-d', strtotime("$startDate +$i days"));
         $dates[] = $date;
     }
 

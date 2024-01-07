@@ -1,4 +1,4 @@
-<!DOCTYPE html5>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -260,6 +260,14 @@ h2 {
  
  
 </head>
+
+
+
+
+
+
+
+
 <body>  
  
  
@@ -373,7 +381,7 @@ for ($i = 0; $i < 14; $i++) {
 }
  
 // Pass the current month and year to the showCalendar function
-echo "<script>showCalendar(currentCalendar, $currentMonth, $currentYear );</script>";
+//echo "<script>showCalendar(currentCalendar, $currentMonth, $currentYear );</script>";
  
  
  
@@ -386,6 +394,8 @@ if (isset($_GET['patient_name'])) {
 } else {
   $patientName = ''; // Set a default value if the query parameter is not provided
 }
+
+
 ?>
  
 </div>
@@ -396,6 +406,8 @@ if (isset($_GET['patient_name'])) {
  
  
  
+
+
   <div id="bookingForm" style="display: none;">
     <h3>Book an Appointment</h3>
    
@@ -431,7 +443,7 @@ if (isset($_GET['patient_name'])) {
  
  
  
- 
+
    
 <div id="myModal" class="modal">
   <div class="modal-content">
@@ -607,11 +619,15 @@ function showCalendar(calendarIndex, month, year, week) {
  
     // Update the days with the current date
     const days = document.querySelectorAll('.day');
+   
     days.forEach((day, index) => {
-        const dayOffset = (index + 14 - currentDayOfWeek) % 14; // Calculate the offset from the current day
+        const dayOffset = (index +14 - currentDayOfWeek) % 14; // Calculate the offset from the current day
         const dayDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() + dayOffset);
         const formattedDate = `${dayDate.getFullYear()}-${('0' + (dayDate.getMonth() + 1)).slice(-2)}-${('0' + dayDate.getDate()).slice(-2)}`;
-        day.textContent = `${formattedDate}: ${day.textContent}`;
+      // day.textContent = `${formattedDate} ${day.textContent}`;
+      day.textContent = currentDayOfWeek;
+
+       //day.textContent =currentDayOfWeek;
     });
 }
 // Extract the week parameter from the URL
@@ -623,5 +639,20 @@ const { month, year, totalWeeks, day } = getCurrentMonthYear();
 showCalendar(currentCalendar, month, year, weekParam === 'true' ? true : 1, day);
 </script>
 <script src="credit.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>

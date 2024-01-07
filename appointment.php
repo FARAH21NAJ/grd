@@ -304,6 +304,8 @@ left: 330px;
 </head>
 <body>
 
+
+
     <nav class="navigation">
         <label for="menu-btn" class="menu-icon">
         <span class="nav-icon"></span>
@@ -326,7 +328,7 @@ left: 330px;
 
 <div class="regform"><h1>Appointment</h1></div>
 <div class="main" >
-<form method="POST" action="appoints.php" autocomplete="off" enctype="multipart/form-data">
+<form method="POST" action="appoints.php"  enctype="multipart/form-data" >
 
 
 <input type="hidden" value="<?php echo htmlspecialchars($_GET['phone'], ENT_QUOTES); ?>" name="phon">
@@ -335,7 +337,7 @@ left: 330px;
 <div id="name" style="position: relative; top:20px">
 <h2 class="name" >The Name</h2> 
 <label>
-<input class="firstname" type="text" id="patientName" name="firstna"required Autocomplete="off"><br>
+<input class="firstname" type="text" id="patientName" name="firstna"required ><br>
 </div>
 
 
@@ -432,12 +434,10 @@ function passNameToCenapp4() {
     window.location.href = url;
 }
 
-
-
-
-
-
 </script>
+
+
+<!-- Inside appointments.php -->
 
 
 
